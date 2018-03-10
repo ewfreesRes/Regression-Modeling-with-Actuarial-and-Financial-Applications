@@ -25,7 +25,7 @@ Frees testy
 
 `@pre_exercise_code`
 ```{r}
-heights1 <- read.csv("datasets/GaltonFamily.csv",header=TRUE)
+heights1 <- read.csv("../datasets/GaltonFamily.csv",header=TRUE)
 ```
 `@sample_code`
 ```{r}
