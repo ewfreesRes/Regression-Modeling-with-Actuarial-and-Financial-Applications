@@ -15,14 +15,30 @@ skills: 1
 key: 6154f289da
 ```
 
-Do some data science.
+Do some data science. Okay
+
+`@instructions`
+Frees testy
+
+`@hint`
 
 
-
-
-
-
-
+`@pre_exercise_code`
+```{r}
+heights1 <- read.csv("datasets/GaltonFamily.csv",header=TRUE)
+```
+`@sample_code`
+```{r}
+str(heights1)
+```
+`@solution`
+```{r}
+str(heights1)
+```
+`@sct`
+```{r}
+str(heights1)
+```
 
 
 
