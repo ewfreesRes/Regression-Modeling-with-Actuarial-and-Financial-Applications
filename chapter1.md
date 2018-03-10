@@ -1,8 +1,10 @@
 ---
-title: Template Chapter 1
-description: This is a template chapter.
----
+title: Chapter 1. Regression and the Normal Distribution
+description: >-
+  This is a template chapter. Okay
 
+
+---
 ## Ex 1.1
 
 ```yaml
@@ -15,32 +17,13 @@ key: 6154f289da
 
 Do some data science.
 
-`@instructions`
 
 
-`@hint`
 
 
-`@pre_exercise_code`
 
-```{r}
 
-```
 
-`@sample_code`
 
-```{r}
 
-```
 
-`@solution`
-
-```{r}
-
-```
-
-`@sct`
-
-```{r}
-
-```
