@@ -44,7 +44,7 @@ str(heights1)
 
 
 ---
-## <<<Galton Data>>>
+## Galton Data
 
 ```yaml
 type: TabExercise
@@ -71,7 +71,6 @@ str(heights)
 ```yaml
 type: NormalExercise
 xp: 100
-key: 4f6e84ac7d
 ```
 
 `@instructions`
@@ -99,7 +98,6 @@ head(heights)
 ```yaml
 type: NormalExercise
 xp: 100
-key: 2861d7320b
 ```
 
 `@instructions`
@@ -129,7 +127,6 @@ plot(density(heights$CHILDC) )
 ```yaml
 type: NormalExercise
 xp: 100
-key: 66ebb7d56b
 ```
 
 `@instructions`
