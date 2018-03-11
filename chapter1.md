@@ -71,6 +71,7 @@ str(heights)
 ```yaml
 type: NormalExercise
 xp: 100
+key: d649521c6d
 ```
 
 `@instructions`
@@ -98,6 +99,7 @@ head(heights)
 ```yaml
 type: NormalExercise
 xp: 100
+key: 7a9447abd4
 ```
 
 `@instructions`
@@ -127,6 +129,7 @@ plot(density(heights$CHILDC) )
 ```yaml
 type: NormalExercise
 xp: 100
+key: 575a39d478
 ```
 
 `@instructions`
