@@ -43,6 +43,8 @@ str(heights1)
 
 
 
+
+
 ---
 ## Galton Data
 
@@ -153,3 +155,82 @@ abline(lm(heights$CHILDC~ heights$PARENTC))
 summary(lm(heights$CHILDC~ heights$PARENTC))
 
 ```
+
+---
+## <<<New Exercise>>>
+
+```yaml
+type: VideoExercise
+key: 82997984a4
+lang: r
+xp: 50
+skills: 1
+video_link: player.vimeo.com/video/154783078
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
