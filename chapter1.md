@@ -29,7 +29,7 @@ The video has explained simple analysis using parents' heights. Now replicate us
 
 `@pre_exercise_code`
 ```{r}
-heights <- read.csv("https://assets.datacamp.com/production/course_7546/datasets/galton_height.csv",header=TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv")
 ```
 `@sample_code`
 ```{r}
