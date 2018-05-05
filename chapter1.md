@@ -14,7 +14,7 @@ skills: 1
 key: 6154f289da
 ```
 
-The video has explained simple analysis using parents' heights. Now replicate using the heights of sons.
+The video has explained simple analysis using parents' heights. Now replicate using the heights of sons. Recall that the data are in the file `heights`.
 
 
 `@instructions`
