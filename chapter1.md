@@ -64,20 +64,6 @@ str(heights)
 
 
 ---
-## <<<New Exercise>>>
-
-```yaml
-type: VideoExercise
-lang: r
-xp: 50
-skills: 1
-key: 82997984a4
-```
-
-`@projector_key`
-undefined
-
----
 ## Fitting a Normal Distribution
 
 ```yaml
