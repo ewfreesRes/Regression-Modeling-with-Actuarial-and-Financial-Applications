@@ -1,4 +1,6 @@
 title: Regression Modeling with Actuarial and Financial Applications
 description: A description of the course.
 programming_language: r
-from: 'r-base-prod:30'
+from: r-base-prod:30
+datasets:
+  GaltonFamily.csv: Galtonfamily
