@@ -1,6 +1,7 @@
 ---
 title: Chapter 1. Regression and the Normal Distribution
-description: Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter provides an introduction to the role of the normal distribution in regression, the use of logarithmic transformations in specifying regression relationships and the sampling basis that is critical for inferring regression results to broad populations of interest.
+description: >-
+  Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter provides an introduction to the role of the normal distribution in regression, the use of logarithmic transformations in specifying regression relationships and the sampling basis that is critical for inferring regression results to broad populations of interest.
 
 
 ---
@@ -16,14 +17,14 @@ key: 6154f289da
 
 The video has explained simple analysis using parents' heights. Now replicate using the heights of sons. Recall that the data are in the file `heights`.
 
-
 `@instructions`
-
 -  Define the variable
 -  Calculate the mean and standard deviation
 -  Calculate the histogram
 -  Determine a sequence. Then, graph a histogram with a normal curve superimposed
 -  Determine the probability that a son's height is less than 72 inches
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -41,10 +42,10 @@ sdchild <- ___
 ___(ht_child, freq=FALSE)
 #Determine a sequence. Then, graph a histogram with a normal curve superimposed
 x <- seq(60, 80,by=0.1)
+___(ht_child, freq=FALSE)
+lines(x, ___(x, mean=Mchild, sd=sdchild), col="blue")
 #Determine the probability that a son's height is less than 72 inches
 ___(72, mean=Mchild , sd=sdchild)
-
-
 ```
 `@solution`
 ```{r}
@@ -60,6 +61,8 @@ pnorm(72, mean=Mchild , sd=sdchild)
 ```{r}
 str(heights)
 ```
+
+
 
 
 
