@@ -35,18 +35,18 @@ heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/da
 ht_child <- ___
 
 #Calculate the mean and standard deviation
-Mchild <- ___
+mchild <- ___
 sdchild <- ___
 
 #Determine the probability that a child's height is less than 72 inches
-___(72, mean=Mchild , sd=sdchild)
+___(72, mean=mchild , sd=sdchild)
 ```
 `@solution`
 ```{r}
 ht_child <- heights$child_ht
 (mchild <- mean(ht_child))
 (sdchild <- sd(ht_child))
-pnorm(72,mean=Mchild, sd=sdchild)
+pnorm(72,mean=mchild, sd=sdchild)
 ```
 `@sct`
 ```{r}
