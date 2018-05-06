@@ -36,6 +36,8 @@ The Galton data has already been read into a dataset called `heights`. These dat
 -  Use the `R` function `mean` to calculate the mean and the function `sd` to calculate the standard deviation 
 -  Use the normal approximation and the `R` function `pnorm` determine the probability that a child's height is less than 72 inches
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -173,6 +175,64 @@ hist(logclaims , breaks = 40,freq = FALSE)
 box()
 plot(density(logclaims))
 plot(density(logclaims, bw = 0.03))
+```
+
+
+
+
+
+
+---
+## Summarizing Bodily Injury Claims with Box and QQ Plots
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 70a5a3a60b
+```
+
+The Massachusetts bodily injury data has already been read and used to create the local variable `claims` representing condily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
+
+So this assignment is based on claims, not the logarithmic version. You will review the `R` functions `boxplot` and ``qqnorm`` for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
+
+`@instructions`
+-  Produce a box plot for claims
+-  Determine the 25th empirical percentile for claims using the `R` function `quantile`.
+-  Determine the 25th percentile for claims based on a normal distribution using the `R` function `qnorm`.
+-  Produce a qq plot for claims
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+claims <- injury$claims
+```
+`@sample_code`
+```{r}
+#Produce a box plot for claims
+___(claims)
+
+#Determine the 25th empirical percentile for claims
+___(claims, probs = ___)
+
+#Determine the 25th percentile for claims based on a normal distribution
+___(p = ___, mean = mean(claims), sd = sd(claims))
+
+#Produce a qq plot for claims
+___(claims)
+___(claims) 
+```
+`@solution`
+```{r}
+boxplot(claims)
+quantile(claims, probs = 0.25)
+qnorm(p = 0.25, mean = mean(claims), sd = sd(claims))
+qqnorm(claims)
+qqline(claims) 
 ```
 
 
