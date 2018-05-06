@@ -199,9 +199,9 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 
 `@instructions`
 -  Produce a box plot for claims
--  Determine the 25th empirical percentile for claims using the `R` function `quantile`.
--  Determine the 25th percentile for claims based on a normal distribution using the function [qqnorm()].
--  Produce a qq plot for claims
+-  Determine the 25th empirical percentile for claims using the  [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/quantile/) function.
+-  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
+-  Produce a qq plot for claims. The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
 `@hint`
 
