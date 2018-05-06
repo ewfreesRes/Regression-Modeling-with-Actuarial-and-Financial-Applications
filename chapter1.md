@@ -148,7 +148,7 @@ In the prior video, you got some background information on the Massachusetts bod
 
 `@pre_exercise_code`
 ```{r}
-injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
 `@sample_code`
