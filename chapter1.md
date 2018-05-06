@@ -27,7 +27,7 @@ The Galton data has already been read into a dataset called `heights`. These dat
 
 `@pre_exercise_code`
 ```{r}
-heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv")
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ```
 `@sample_code`
 ```{r}
