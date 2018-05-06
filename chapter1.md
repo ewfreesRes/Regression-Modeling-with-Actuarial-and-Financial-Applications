@@ -37,9 +37,11 @@ ht_child <- ___
 #Calculate the mean and standard deviation
 mchild <- ___
 sdchild <- ___
+mchild
+sdchild
 
 #Determine the probability that a child's height is less than 72 inches
-___(72, mean=mchild , sd=sdchild)
+___(72, mean=mchild, sd=sdchild)
 ```
 `@solution`
 ```{r}
@@ -70,3 +72,36 @@ key: cc4b0289d5
 
 `@projector_key`
 02abc0a8a3727420f7c6f719ae15a203
+
+---
+## Visualizing Child's Height Distribution
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 7dc98dc1ff
+```
+
+
+
+`@instructions`
+As in the prior exercise, from the Galton dataset `heights`, the heights of 928 adult children have been used to create a local variable called `ht_child`. We also have basic summary statistics, the mean height `mchild` and the standard deviation of heights in `sdchild`. In this exercise, we explore the fit of the normal curve to this distribution.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+heights <- read.csv("CSVData\\GaltonFamily.csv", header = TRUE)
+ht_child <- heights$child_ht
+mchild <- mean(ht_child)
+sdchild <- sd(ht_child)
+```
+
+
+
+
+
+
