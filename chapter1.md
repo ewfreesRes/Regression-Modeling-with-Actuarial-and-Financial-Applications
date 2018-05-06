@@ -19,9 +19,6 @@ key: cc4b0289d5
 02abc0a8a3727420f7c6f719ae15a203
 
 ---
-
-
-
 ## Fitting Child's Height Distribution
 
 ```yaml
@@ -38,8 +35,6 @@ The Galton data has already been read into a dataset called `heights`. These dat
 -  Define the variable
 -  Use the `R` function `mean` to calculate the mean and the function `sd` to calculate the standard deviation 
 -  Use the normal approximation and the `R` function `pnorm` determine the probability that a child's height is less than 72 inches
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -77,7 +72,6 @@ str(heights)
 
 
 ---
-
 ## Visualizing Child's Height Distribution
 
 ```yaml
@@ -123,6 +117,55 @@ hist(ht_child, freq = FALSE)
 x <- seq(60, 80,by = 0.1)
 lines(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 1 - pnorm(72, mean = mchild , sd = sdchild)
+```
+
+
+
+
+
+
+---
+## Visualizing Bodily Injury Claims with Density Plots
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 2b2ea998af
+```
+
+In the prior video, you got some background information on the Massachusetts bodily injury dataset. This dataset, `injury`, has been read in and local variables `claims` has been created. This assignment reviews the `R` function `hist` for visualizing the distribution and allows you to explore density plotting, a smoothed version of the histogram.
+
+`@instructions`
+-  Use the `R` function `log` to create the logarithmic version of the claims variable
+-  Calculate a histogram of logarithmic with 40 bins using the `R` option `breaks = `.
+-  Create a density plot of logarithmic claims using the `R` functions `plot` and `density`.
+-  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use the `R` option `bw = `.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
+claims <- injury$claims
+```
+`@sample_code`
+```{r}
+logclaims <- log(claims)
+hist(logclaims , breaks = 40,freq = FALSE)
+box()
+plot(density(logclaims))
+plot(density(logclaims, bw = 0.03))
+```
+`@solution`
+```{r}
+logclaims <- log(claims)
+hist(logclaims , breaks = 40,freq = FALSE)
+box()
+plot(density(logclaims))
+plot(density(logclaims, bw = 0.03))
 ```
 
 
