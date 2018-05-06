@@ -153,11 +153,18 @@ claims <- injury$claims
 ```
 `@sample_code`
 ```{r}
-logclaims <- log(claims)
-hist(logclaims , breaks = 40,freq = FALSE)
+#Create the logarithmic claims variable
+logclaims <- ___
+
+#Create a histogram usins 40 bins
+___(logclaims, breaks = 40,freq = FALSE)
 box()
-plot(density(logclaims))
-plot(density(logclaims, bw = 0.03))
+
+# Create a density plot of logarithmic claims
+plot(___(logclaims))
+
+# Create a density plot of logarithmic claims with a smaller bandwidth
+___
 ```
 `@solution`
 ```{r}
