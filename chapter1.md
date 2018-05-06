@@ -238,3 +238,61 @@ qqline(claims)
 
 
 
+
+
+---
+## Distribution of transformed bodily injury claims
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 2127303de1
+```
+
+We have now examined the distributions of bodily injury claims and its logarithmic version. Grudgingly, we have concluded that to fit a normal curve the logarithmic version of claims is a better choice (again, we really do not like log dollars but you'll get used to it in this course). But, why logarithmic and not some other transformations?
+
+A partial response to this question will appear in later chapters when we describe interpretation of regression coefficients. Another partial response is that the log transform seems to work well with skewed insurance data sets, as we demonstrate visually in this exercise.
+
+`@instructions`
+Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matrix format for easy comparisons. Plot the density of
+
+-  claims
+-  square root of claims
+-  logarithmic claims
+-  negative reciprocal of claims
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+claims <- injury$claims
+```
+`@sample_code`
+```{r}
+#This code helps to organize the four graphs into a 2 by 2 format
+par(mfrow = c(2, 2))
+#Plot the density of claims
+plot(density(___))
+#Plot the density of square root of claims
+plot(density(___)) 
+#Plot the density of logarithmic claims
+plot(density(___))
+#Plot the density of the negative reciprocal of claims
+plot(density(___))
+```
+`@solution`
+```{r}
+par(mfrow = c(2, 2))
+plot(density(claims))    
+plot(density(claims^(0.5)))  
+plot(density(log(claims)))  
+plot(density(-claims^(-1)))  
+```
+
+
+
+
