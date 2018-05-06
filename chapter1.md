@@ -5,7 +5,7 @@ description: >-
 
 
 ---
-## Fitting a Normal Distribution
+## Fitting a normal distribution
 
 ```yaml
 type: VideoExercise
