@@ -127,7 +127,7 @@ lines(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 
 
 ---
-## Visualizing Bodily Injury Claims with Density Plots
+## Visualizing bodily injury claims with density plots
 
 ```yaml
 type: NormalExercise
