@@ -20,7 +20,7 @@ The Galton data has already been read into a dataset called `heights`. These dat
 `@instructions`
 -  Define the variable
 -  Use the `R` function `mean` to calculate the mean and the function `sd` to calculate the standard deviation 
--  Use the normal approximation and the `R` function `pnorm` determine the probability that a son's height is less than 72 inches
+-  Use the normal approximation and the `R` function `pnorm` determine the probability that a child's height is less than 72 inches
 
 `@hint`
 
