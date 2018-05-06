@@ -87,8 +87,8 @@ key: 7dc98dc1ff
 As in the prior exercise, from the Galton dataset `heights`, the heights of 928 adult children have been used to create a local variable called `ht_child`. We also have basic summary statistics, the mean height `mchild` and the standard deviation of heights in `sdchild`. In this exercise, we explore the fit of the normal curve to this distribution.
 
 `@instructions`
--  To visualize the distribution, use the `R` function `hist` to calculate the histogram. Use the `freq = FALSE` option to give a histogram with proportions instead of counts.
--  Determine a sequence. Then,  `R` function `lines` to superimpose a normal curve on the histogram
+-  To visualize the distribution, use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) to calculate the histogram. Use the `freq = FALSE` option to give a histogram with proportions instead of counts.
+-  Determine a sequence. Then, function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/) to superimpose a normal curve on the histogram
 -  Determine the probability that a son's height is greater than 72 inches
 
 `@hint`
