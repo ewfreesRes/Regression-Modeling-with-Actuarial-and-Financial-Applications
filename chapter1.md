@@ -140,10 +140,10 @@ key: 2b2ea998af
 In the prior video, you got some background information on the Massachusetts bodily injury dataset. This dataset, `injury`, has been read in and local variables `claims` has been created. This assignment reviews the `R` function `hist` for visualizing the distribution and allows you to explore density plotting, a smoothed version of the histogram.
 
 `@instructions`
--  Use the `R` function `log` to create the logarithmic version of the claims variable
--  Calculate a histogram of logarithmic with 40 bins using the `R` option `breaks = `.
--  Create a density plot of logarithmic claims using the `R` functions `plot` and `density`.
--  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use the `R` option `bw = `.
+-  Use the function [log()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/log/) to create the logarithmic version of the claims variable
+-  Calculate a histogram of logarithmic with 40 bins using an option in the [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function,  `breaks = `.
+-  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
+-  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `.
 
 `@hint`
 
