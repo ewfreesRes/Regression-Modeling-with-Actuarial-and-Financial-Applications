@@ -94,7 +94,7 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 
 `@pre_exercise_code`
 ```{r}
-heights <- read.csv("CSVData\\GaltonFamily.csv", header = TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ht_child <- heights$child_ht
 mchild <- mean(ht_child)
 sdchild <- sd(ht_child)
