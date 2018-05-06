@@ -137,7 +137,7 @@ xp: 100
 key: 2b2ea998af
 ```
 
-In the prior video, you got some background information on the Massachusetts bodily injury dataset. This dataset, `injury`, has been read in and local variables `claims` has been created. This assignment reviews the `R` function `hist` for visualizing the distribution and allows you to explore density plotting, a smoothed version of the histogram.
+In the prior video, you got somebackground information on the Massachusetts bodily injury dataset. This dataset, `injury`, has been read in and local variables `claims` has been created. This assignment reviews the  [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function for visualizing the distribution and allows you to explore density plotting, a smoothed version of the histogram.
 
 `@instructions`
 -  Use the function [log()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/log/) to create the logarithmic version of the claims variable
