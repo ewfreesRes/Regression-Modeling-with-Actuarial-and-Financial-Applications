@@ -183,7 +183,7 @@ plot(density(logclaims, bw = 0.03))
 
 
 ---
-## Summarizing Bodily Injury Claims with Box and QQ Plots
+## Summarizing bodily injury claims with box and qq plots
 
 ```yaml
 type: NormalExercise
@@ -193,14 +193,14 @@ xp: 100
 key: 70a5a3a60b
 ```
 
-The Massachusetts bodily injury data has already been read and used to create the local variable `claims` representing condily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
+The Massachusetts bodily injury data has already been read and used to create the local variable `claims` representing bodily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
 
-So this assignment is based on claims, not the logarithmic version. You will review the `R` functions `boxplot` and ``qqnorm`` for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
+So this assignment is based on claims, not the logarithmic version. You will review the functions  [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
 
 `@instructions`
 -  Produce a box plot for claims
 -  Determine the 25th empirical percentile for claims using the `R` function `quantile`.
--  Determine the 25th percentile for claims based on a normal distribution using the `R` function `qnorm`.
+-  Determine the 25th percentile for claims based on a normal distribution using the function [qqnorm()].
 -  Produce a qq plot for claims
 
 `@hint`
