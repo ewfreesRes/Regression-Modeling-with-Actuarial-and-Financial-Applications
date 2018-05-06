@@ -5,6 +5,23 @@ description: >-
 
 
 ---
+## Fitting a Normal Distribution
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: cc4b0289d5
+```
+
+`@projector_key`
+02abc0a8a3727420f7c6f719ae15a203
+
+---
+
+
+
 ## Fitting Child's Height Distribution
 
 ```yaml
@@ -60,20 +77,7 @@ str(heights)
 
 
 ---
-## Fitting a Normal Distribution
 
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: cc4b0289d5
-```
-
-`@projector_key`
-02abc0a8a3727420f7c6f719ae15a203
-
----
 ## Visualizing Child's Height Distribution
 
 ```yaml
