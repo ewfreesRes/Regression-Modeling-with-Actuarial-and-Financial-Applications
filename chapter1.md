@@ -5,7 +5,7 @@ description: >-
 
 
 ---
-## Fitting Parents' Height Distribution
+## Fitting Child's Height Distribution
 
 ```yaml
 type: NormalExercise
@@ -15,14 +15,12 @@ skills: 1
 key: 6154f289da
 ```
 
-The video has explained simple analysis using parents' heights. Now replicate using the heights of sons. Recall that the data are in the file `heights`.
+The Galton data has already been read into a dataset called `heights`. These data include the heights of 928 adult children (child\_ht), together with an index of their parents' height (parent\_ht).  The video explored the distribution of the parents' height; in this assignment, we investigate the distribution of the heights of the adult children.
 
 `@instructions`
 -  Define the variable
--  Calculate the mean and standard deviation
--  Calculate the histogram
--  Determine a sequence. Then, graph a histogram with a normal curve superimposed
--  Determine the probability that a son's height is less than 72 inches
+-  Use the `R` function `mean` to calculate the mean and the function `sd` to calculate the standard deviation 
+-  Use the normal approximation and the `R` function `pnorm` determine the probability that a son's height is less than 72 inches
 
 `@hint`
 
@@ -35,27 +33,20 @@ heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/da
 ```{r}
 #Define the variable
 ht_child <- ___
+
 #Calculate the mean and standard deviation
 Mchild <- ___
 sdchild <- ___
-#Calculate the histogram
-___(ht_child, freq=FALSE)
-#Determine a sequence. Then, graph a histogram with a normal curve superimposed
-x <- seq(60, 80,by=0.1)
-___(ht_child, freq=FALSE)
-lines(x, ___(x, mean=Mchild, sd=sdchild), col="blue")
-#Determine the probability that a son's height is less than 72 inches
+
+#Determine the probability that a child's height is less than 72 inches
 ___(72, mean=Mchild , sd=sdchild)
 ```
 `@solution`
 ```{r}
 ht_child <- heights$child_ht
-(Mchild <- mean(ht_child))
+(mchild <- mean(ht_child))
 (sdchild <- sd(ht_child))
-x <- seq(60, 80,by=0.1)
-hist(ht_child, freq=FALSE)
-lines(x, dnorm(x, mean=Mchild, sd=sdchild), col="blue")
-pnorm(72, mean=Mchild , sd=sdchild)
+pnorm(72,mean=Mchild, sd=sdchild)
 ```
 `@sct`
 ```{r}
