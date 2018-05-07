@@ -211,8 +211,6 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a qq plot for claims. The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -271,8 +269,6 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -304,3 +300,18 @@ plot(density(-claims^(-1)))
 
 
 
+
+
+---
+## Summarizing distributions
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 210f239af2
+```
+
+`@projector_key`
+548a52c0975ffc2c8719c26dc5a1d00a
