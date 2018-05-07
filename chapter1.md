@@ -186,6 +186,10 @@ plot(density(logclaims, bw = 0.03))
 ```
 
 
+
+
+
+
 ---
 ## Summarizing distributions
 
@@ -199,8 +203,6 @@ key: 210f239af2
 
 `@projector_key`
 548a52c0975ffc2c8719c26dc5a1d00a
-
-
 
 ---
 ## Summarizing bodily injury claims with box and qq plots
@@ -311,3 +313,19 @@ plot(density(-claims^(-1)))
 
 
 
+
+
+
+---
+## Transformations
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 6efae24831
+```
+
+`@projector_key`
+470199e6243748dfac8891486e37b372
