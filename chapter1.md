@@ -36,8 +36,6 @@ The Galton data has already been read into a dataset called `heights`. These dat
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that a child's height is less than 72 inches
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -91,8 +89,6 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 -  Determine a sequence. Then, function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/) to superimpose a normal curve on the histogram
 -  Determine the probability that a son's height is greater than 72 inches
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -144,8 +140,6 @@ In the prior video, you got somebackground information on the Massachusetts bodi
 -  Calculate a histogram of logarithmic with 40 bins using an option in the [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function,  `breaks = `.
 -  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
 -  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -203,8 +197,6 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a qq plot for claims. The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -224,7 +216,7 @@ ___(p = ___, mean = mean(claims), sd = sd(claims))
 
 #Produce a qq plot for claims
 ___(claims)
-___(claims) 
+___(claims)
 ```
 `@solution`
 ```{r}
@@ -232,7 +224,7 @@ boxplot(claims)
 quantile(claims, probs = 0.25)
 qnorm(p = 0.25, mean = mean(claims), sd = sd(claims))
 qqnorm(claims)
-qqline(claims) 
+qqline(claims)
 ```
 
 
@@ -263,8 +255,6 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -290,9 +280,24 @@ par(mfrow = c(2, 2))
 plot(density(claims))    
 plot(density(claims^(0.5)))  
 plot(density(log(claims)))  
-plot(density(-claims^(-1)))  
+plot(density(-claims^(-1)))
 ```
 
 
 
 
+
+
+---
+## Visualizing distributions
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: a6c75bd534
+```
+
+`@projector_key`
+eb65055761c45534183ae2de06b6d265
