@@ -256,7 +256,19 @@ qqline(claims)
 ```
 
 
+---
+## Transformations
 
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 6efae24831
+```
+
+`@projector_key`
+470199e6243748dfac8891486e37b372
 
 
 
@@ -316,16 +328,3 @@ plot(density(-claims^(-1)))
 
 
 
----
-## Transformations
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: 6efae24831
-```
-
-`@projector_key`
-470199e6243748dfac8891486e37b372
