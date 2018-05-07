@@ -186,7 +186,19 @@ plot(density(logclaims, bw = 0.03))
 ```
 
 
+---
+## Summarizing distributions
 
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 210f239af2
+```
+
+`@projector_key`
+548a52c0975ffc2c8719c26dc5a1d00a
 
 
 
@@ -299,19 +311,3 @@ plot(density(-claims^(-1)))
 
 
 
-
-
-
----
-## Summarizing distributions
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: 210f239af2
-```
-
-`@projector_key`
-548a52c0975ffc2c8719c26dc5a1d00a
