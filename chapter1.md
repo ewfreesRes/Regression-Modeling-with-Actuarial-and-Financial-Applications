@@ -119,7 +119,19 @@ lines(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 
 
 
+---
+## Visualizing distributions
 
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: a6c75bd534
+```
+
+`@projector_key`
+eb65055761c45534183ae2de06b6d265
 
 
 ---
@@ -283,21 +295,12 @@ plot(density(log(claims)))
 plot(density(-claims^(-1)))
 ```
 
-
-
-
-
-
 ---
-## Visualizing distributions
 
-```yaml
-type: VideoExercise
 
-xp: 50
 
-key: a6c75bd534
-```
 
-`@projector_key`
-eb65055761c45534183ae2de06b6d265
+
+
+
+
