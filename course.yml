@@ -3,6 +3,15 @@ description: A description of the course.
 programming_language: r
 from: r-base-prod:30
 datasets:
+  Ch1FitNormalCurveParentsHt.png: Ch1fitnormalcurveparentsht
+  Ch1MassBIClaimsDistn.png: Ch1massbiclaimsdistn
+  Ch1MassBILogClaimsBoxplot.png: Ch1massbilogclaimsboxplot
+  Ch1MassBILogClaimsBoxplotAnnotated.png: Ch1massbilogclaimsboxplotannotated
+  Ch1MassBILogClaimsDensityPlots.png: Ch1massbilogclaimsdensityplots
+  Ch1MassBILogClaimsDistn.png: Ch1massbilogclaimsdistn
+  Ch1MassBILogClaimsQQplot.png: Ch1massbilogclaimsqqplot
+  Ch1ParentsHeight.png: Ch1parentsheight
+  Ch1Transformations.png: Ch1transformations
   GaltonFamily.csv: Galtonfamily
   MassBI.csv: Massbi
   README.md: Readme
