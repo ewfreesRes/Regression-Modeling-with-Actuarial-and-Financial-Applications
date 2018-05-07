@@ -3,7 +3,6 @@ description: Statistical techniques can be used to address new situations. This 
 programming_language: r
 from: r-base-prod:30
 datasets:
-  GaltonFamily.csv: Galtonfamily
-  MassBI.csv: Massbi
+  MassBI.csv: Mass Bodily Injury
   README.md: Readme
-  galton_height.csv: Galton height
+  galton_height.csv: Galton Height
