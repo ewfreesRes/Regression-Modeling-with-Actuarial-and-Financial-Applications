@@ -119,6 +119,9 @@ lines(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 
 
 
+
+
+
 ---
 ## Visualizing distributions
 
@@ -132,7 +135,6 @@ key: a6c75bd534
 
 `@projector_key`
 eb65055761c45534183ae2de06b6d265
-
 
 ---
 ## Visualizing bodily injury claims with density plots
@@ -209,6 +211,8 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a qq plot for claims. The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -267,6 +271,8 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -294,12 +300,6 @@ plot(density(claims^(0.5)))
 plot(density(log(claims)))  
 plot(density(-claims^(-1)))
 ```
-
----
-
-
-
-
 
 
 
