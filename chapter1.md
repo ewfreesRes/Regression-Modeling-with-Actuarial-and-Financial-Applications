@@ -200,6 +200,7 @@ plot(density(logclaims, bw = 0.03))
 `@sct`
 ```{r}
 test_object("logclaims", incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
+ex() %>% check_object("logclaims") %>% check_equal(incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
 success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
 ```
 
