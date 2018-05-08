@@ -36,14 +36,13 @@ The Galton data has already been read into a dataset called `heights`. These dat
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that a child's height is less than 72 inches
 
+`@hint`
+Remember that we can reference a variable, say `var`, from a data set such as `injury`, as `injury$var`.
 
 `@pre_exercise_code`
 ```{r}
 heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ```
-
-
-
 `@sample_code`
 ```{r}
 #Define the variable
@@ -260,6 +259,10 @@ qqline(claims)
 ```
 
 
+
+
+
+
 ---
 ## Transformations
 
@@ -273,8 +276,6 @@ key: 6efae24831
 
 `@projector_key`
 470199e6243748dfac8891486e37b372
-
-
 
 ---
 ## Distribution of transformed bodily injury claims
@@ -326,8 +327,6 @@ plot(density(claims^(0.5)))
 plot(density(log(claims)))  
 plot(density(-claims^(-1)))
 ```
-
-
 
 
 
