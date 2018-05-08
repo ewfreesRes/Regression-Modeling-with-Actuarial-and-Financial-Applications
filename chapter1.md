@@ -242,6 +242,8 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a qq plot for claims. The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -271,7 +273,10 @@ qnorm(p = 0.25, mean = mean(claims), sd = sd(claims))
 qqnorm(claims)
 qqline(claims)
 ```
-
+`@sct`
+```{r}
+success_msg("Congratulations on learning about box and qq plots. You are unlikely to show these plots to consumers of your analysis but you will find them useful tools as we explore multivariate aspects of the data.")
+```
 
 
 
@@ -314,6 +319,8 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -341,7 +348,10 @@ plot(density(claims^(0.5)))
 plot(density(log(claims)))  
 plot(density(-claims^(-1)))
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
+```
 
 
 
