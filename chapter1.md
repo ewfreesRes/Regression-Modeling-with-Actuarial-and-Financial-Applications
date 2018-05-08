@@ -37,7 +37,7 @@ The Galton data has already been read into a dataset called `heights`. These dat
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that a child's height is less than 72 inches
 
 `@hint`
-Remember that we can reference a variable, say `var`, from a data set such as `injury`, as `injury$var`.
+Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
 
 `@pre_exercise_code`
 ```{r}
@@ -48,9 +48,11 @@ heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/da
 #Define the variable
 ht_child <- ___
 
-#Calculate the mean and standard deviation
+#Calculate the mean height
 mchild <- ___
 mchild
+
+#Calculate the standard deviation of heights
 sdchild <- ___
 sdchild
 
