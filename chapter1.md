@@ -96,7 +96,7 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 -  Determine the probability that a son's height is greater than 72 inches
 
 `@hint`
-No hints for now
+No hints for now. No hints for now. No hints for now.
 
 `@pre_exercise_code`
 ```{r}
@@ -167,7 +167,7 @@ In the prior video, you got somebackground information on the Massachusetts bodi
 -  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `.
 
 `@hint`
-No hints for now
+No hints for now. No hints for now. No hints for now.
 
 `@pre_exercise_code`
 ```{r}
@@ -243,7 +243,7 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 -  Produce a qq plot for claims. The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
 `@hint`
-No hints for now.
+No hints for now. No hints for now. No hints for now.
 
 `@pre_exercise_code`
 ```{r}
