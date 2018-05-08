@@ -4,5 +4,4 @@ programming_language: r
 from: r-base-prod:30
 datasets:
   MassBI.csv: Mass Bodily Injury
-  README.md: Readme
   galton_height.csv: Galton Height
