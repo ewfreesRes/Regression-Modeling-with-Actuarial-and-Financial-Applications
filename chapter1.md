@@ -1,7 +1,7 @@
 ---
 title: Chapter 1. Regression and the Normal Distribution
 description: >-
-  Regression analysis is a statistical method that is widely used in many fields of study, with insurance being no exception. This chapter provides an introduction to the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.
+  Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter provides an introduction to the role of the normal distribution in regression, the use of logarithmic transformations in specifying regression relationships and the sampling basis that is critical for inferring regression results to broad populations of interest.
 
 
 ---
@@ -17,6 +17,20 @@ key: cc4b0289d5
 
 `@projector_key`
 02abc0a8a3727420f7c6f719ae15a203
+
+
+---
+## Just to Try
+
+```yaml
+type: VideoExercise
+key: aab497f8e6
+lang: r
+xp: 50
+skills: 1
+video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%201/What%20is%20regression.mp4
+```
+
 
 ---
 ## Fitting child's height distribution
