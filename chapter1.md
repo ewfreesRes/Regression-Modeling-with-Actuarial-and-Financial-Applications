@@ -95,6 +95,8 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 -  Determine a sequence. Then, function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/) to superimpose a normal curve on the histogram
 -  Determine the probability that a son's height is greater than 72 inches
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -122,7 +124,10 @@ x <- seq(60, 80,by = 0.1)
 lines(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 1 - pnorm(72, mean = mchild , sd = sdchild)
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! Visualizing the distribution, especially with reference to a normal, is important for communicating results of your analysis.")
+```
 
 
 
