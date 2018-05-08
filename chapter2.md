@@ -1,5 +1,5 @@
 ---
-title       : Chapter 3. Multiple Linear Regression
+title       : Chapter 2. Basic Linear Regression
 description : Insert the chapter description here
 ---
 ## Method of Least Squares
