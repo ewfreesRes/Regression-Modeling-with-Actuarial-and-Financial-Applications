@@ -148,7 +148,7 @@ key: a6c75bd534
 eb65055761c45534183ae2de06b6d265
 
 ---
-## Visualizing bodily injury claims with density plots
+## Visualizing injury claims with density plots
 
 ```yaml
 type: NormalExercise
@@ -222,7 +222,7 @@ key: 210f239af2
 548a52c0975ffc2c8719c26dc5a1d00a
 
 ---
-## Summarizing bodily injury claims with box and qq plots
+## Summarizing injury claims with box and qq plots
 
 ```yaml
 type: NormalExercise
