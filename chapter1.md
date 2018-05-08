@@ -41,6 +41,9 @@ The Galton data has already been read into a dataset called `heights`. These dat
 ```{r}
 heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ```
+
+
+
 `@sample_code`
 ```{r}
 #Define the variable
@@ -48,8 +51,8 @@ ht_child <- ___
 
 #Calculate the mean and standard deviation
 mchild <- ___
-sdchild <- ___
 mchild
+sdchild <- ___
 sdchild
 
 #Determine the probability that a child's height is less than 72 inches
@@ -58,13 +61,14 @@ ___(72, mean=mchild, sd=sdchild)
 `@solution`
 ```{r}
 ht_child <- heights$child_ht
-(mchild <- mean(ht_child))
-(sdchild <- sd(ht_child))
+mchild <- mean(ht_child)
+sdchild <- sd(ht_child)
 pnorm(72,mean=mchild, sd=sdchild)
 ```
 `@sct`
 ```{r}
-str(heights)
+test_object("ht_child", incorrect_msg = "The child's height variable was defined in the wrong way. (You might check the hint.)")
+success_msg("Excellent! With this procedure, you can now calculate probabilities for any distribution using a normal curve approximation.")
 ```
 
 
