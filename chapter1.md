@@ -166,6 +166,8 @@ In the prior video, you got somebackground information on the Massachusetts bodi
 -  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
 -  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -195,7 +197,11 @@ box()
 plot(density(logclaims))
 plot(density(logclaims, bw = 0.03))
 ```
-
+`@sct`
+```{r}
+test_object("logclaims", incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
+success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
+```
 
 
 
