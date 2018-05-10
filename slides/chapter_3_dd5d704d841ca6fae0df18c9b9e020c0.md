@@ -191,6 +191,10 @@ key: a7cdc911f7
 ```
 
 `@part1`
+**This Figure**
+
+*logface* = 5 + 0.221 *education* +0.354 *logincome*
+
 ```
 education <- seq(3, 16, length = 15)
 logincome <- seq(5, 15, length = 15)
@@ -205,10 +209,6 @@ persp(education, logincome, logface,
       expand = 0.5, 
       ticktype = "detailed")
 ```
-
-**This Figure**
-
-*logface* = 5 + 0.221 *education* +0.354 *logincome*
 
 `@part2`
 ![](https://assets.datacamp.com/production/repositories/2610/datasets/65af12e346237f01d770c86d32ec484c8bb02127/Ch3RegressionPlane.png)
