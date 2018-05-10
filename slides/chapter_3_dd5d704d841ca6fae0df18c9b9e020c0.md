@@ -62,7 +62,7 @@ We study *y = face*, the amount that the company will pay in the event of the de
 - the number of years of *education* of the survey respondent and
 - the number of household members, *numhh*.
 
-The statistics suggest that *income* and *face* are skewed.
+The data suggest that *income* and *face* are skewed so we also introduce logarithmic versions.
 
 
 
