@@ -118,6 +118,11 @@ key: a6913ce44f
 ```
 
 `@part1`
+```
+par(mfrow = c(1, 2))
+plot(Term2$income, Term2$face, xlab = "income", ylab = "face")
+plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
+```
 ![](https://assets.datacamp.com/production/repositories/2610/datasets/4452970eef5312f68838ed2ebb931dcdab764795/Ch3TermLifeBasic.png)
 
 
@@ -232,18 +237,21 @@ key: 8d8a7b9205
 ```
 model_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
 round(coefficients(model_mlr), digits=4)
-
-
-newdata <- data.frame(logincome = log(60000), education = 12, numhh = 3)
-exp(predict(model_mlr, newdata))
 ```
-
-`@part2`
 ```
 > (Intercept)   education       numhh   logincome 
 >    2.5841      0.2064      0.3060      0.4935 
+```
 
+$\hat{logface} = 2.5841 + 0.2064 education+0.3060 numhh+ 0.4935logincome$
 
+`@part2`
+```
+newdata <- data.frame(education = 12, numhh = 3, logincome = log(60000))
+exp(predict(model_mlr, newdata))
+```
+
+```
 >         1 
 >  90135.86 
 ```
