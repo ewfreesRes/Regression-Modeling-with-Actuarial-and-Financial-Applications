@@ -104,8 +104,6 @@ numhh          2.96       1.493   1.000      3.00        9.00 275
 
 
 
-`@script`
-
 
 
 
@@ -128,8 +126,6 @@ plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
 
 
 
-
-`@script`
 
 
 
@@ -161,8 +157,6 @@ numhh        -0.064 0.107  0.142   0.288     0.179  1.000
 
 
 
-`@script`
-
 
 
 
@@ -184,8 +178,6 @@ pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
 
 
 
-
-`@script`
 
 
 
@@ -214,13 +206,16 @@ persp(education, logincome, logface,
       ticktype = "detailed")
 ```
 
+**This Figure**
+
+*logface* = 5 + 0.221 *education* +0.354 *logincome*
+
 `@part2`
 ![](https://assets.datacamp.com/production/repositories/2610/datasets/65af12e346237f01d770c86d32ec484c8bb02127/Ch3RegressionPlane.png)
 
 
 
 
-`@script`
 
 
 
@@ -234,17 +229,14 @@ key: 0ba68583d6
 
 `@part1`
 -  For observation $\{(y, x_1, \ldots, x_k)\}$,   the height of the regression plane is $$b_0 + b_1 x_1 + \cdots + b_k x_k .$$
--  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation
-- The sum of deviations squared is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2$$
+-  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation.
+- The sum of squared deviations is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2 .$$
 - The *method of least squares* -- determine values of $b_0, \ldots, b_k$ that minimize $SS$.
 
 `@part2`
 ![](https://assets.datacamp.com/production/repositories/2610/datasets/96cd1706aed99fc70a4979990323cc01313f0621/Ch3RegressionPlane2.png)
 
 
-
-
-`@script`
 
 
 
@@ -283,8 +275,6 @@ exp(predict(model_mlr, newdata))
 
 
 
-
-`@script`
 
 
 
