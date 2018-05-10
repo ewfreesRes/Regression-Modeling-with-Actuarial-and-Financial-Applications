@@ -224,6 +224,31 @@ persp(education, logincome, logface,
 
 
 
+---
+## Method of Least Squares
+
+```yaml
+type: TwoRows
+key: 0ba68583d6
+```
+
+`@part1`
+-  For observation $\{(y, x_1, \ldots, x_k)\}$,   the height of the regression plane is $$b_0 + b_1 x_1 + \cdots + b_k x_k .$$
+-  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation
+- The sum of deviations squared is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2$$
+- The *method of least squares* -- determine values of $b_0, \ldots, b_k$ that minimize $SS$.
+
+`@part2`
+![](https://assets.datacamp.com/production/repositories/2610/datasets/96cd1706aed99fc70a4979990323cc01313f0621/Ch3RegressionPlane2.png)
+
+
+
+
+`@script`
+
+
+
+
 
 ---
 ## Fit a Multiple Linear Regression Model
@@ -255,31 +280,6 @@ exp(predict(model_mlr, newdata))
 >         1 
 >  90135.86 
 ```
-
-
-
-
-`@script`
-
-
-
-
----
-## Method of Least Squares
-
-```yaml
-type: TwoRows
-key: 0ba68583d6
-```
-
-`@part1`
--  For observation $\{(y, x_1, \ldots, x_k)\}$,   the height of the regression plane is $$b_0 + b_1 x_1 + \cdots + b_k x_k .$$
--  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation
-- The sum of deviations squared is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2$$
-- The *method of least squares* -- determine values of $b_0, \ldots, b_k$ that minimize $SS$.
-
-`@part2`
-![](https://assets.datacamp.com/production/repositories/2610/datasets/96cd1706aed99fc70a4979990323cc01313f0621/Ch3RegressionPlane2.png)
 
 
 
