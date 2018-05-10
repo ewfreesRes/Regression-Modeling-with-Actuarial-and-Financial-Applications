@@ -174,7 +174,7 @@ key: dc73fa06e8
 Term3 <- Term2[,c("numhh", "education", "logincome", "logface")]
 pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
 ```
-![](https://assets.datacamp.com/production/repositories/2610/datasets/4dac4bced7e97117a48043eb418240ffaa3ba4e2/Ch3ScatterplotMatrix.png)
+![](https://assets.datacamp.com/production/repositories/2610/datasets/6e496c2af706c1d1889671206e7256d402dabe00/Ch3ScatterplotMatrixA.png)
 
 
 
