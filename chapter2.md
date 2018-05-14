@@ -126,10 +126,6 @@ predict(model_blr1, newdata)
 ```
 
 
-
-
-
-
 ---
 ## Understanding Variability
 

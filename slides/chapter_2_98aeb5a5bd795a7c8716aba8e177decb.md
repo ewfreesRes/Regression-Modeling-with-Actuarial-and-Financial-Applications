@@ -1,5 +1,5 @@
 ---
-title: Insert title here
+title: Correlation
 key: 98aeb5a5bd795a7c8716aba8e177decb
 
 ---
@@ -10,15 +10,9 @@ type: TitleSlide
 key: 0901319abc
 ```
 
-
-
-
-
 `@lower_third`
 name: Frees
 title: Instructor
-
-
 
 
 ---
