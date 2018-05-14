@@ -147,3 +147,48 @@ key: ac4eb7cd57
 
 `@projector_key`
 72cd0d9806aa6b026cecc961b32c2a13
+
+---
+## Summarizing measures of uncertainty
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: e97a0cfbd0
+```
+
+Instead of population, in this exercise we will consider the variable `medhome` which is the median house price for each zip code, in thousands of dollars, available in the Wisconsin lottery dataset  `Wisc_lottery`. We will run a regression of `medhome` on `sales`. It will be helpful if you compare the results to the regression of `pop` on `sales`. We have seen that `pop` is more highly correlated with `sales` than `medhome`, so we are expecting greater uncertainty in this regression fit.
+
+`@instructions`
+- Run a regression of `medhome` on `sales`.
+- Summarize the fitted regression model in an ANOVA table.
+- Determine the size of the typical residual, $s$.
+- Determine the coefficient of determination, $R^2$.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```
+`@sample_code`
+```{r}
+model_blr <- lm(sales  ~ medhome, data = Lot)
+anova(model_blr)
+sqrt(anova(model_blr)$Mean[2])
+summary(model_blr)$r.squared
+```
+`@solution`
+```{r}
+model_blr <- lm(sales  ~ medhome, data = Lot)
+anova(model_blr)
+sqrt(anova(model_blr)$Mean[2])
+summary(model_blr)$r.squared
+```
+
+
+
+
