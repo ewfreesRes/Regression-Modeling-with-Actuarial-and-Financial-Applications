@@ -192,3 +192,74 @@ summary(model_blr)$r.squared
 
 
 
+
+
+---
+## Effects of linear transforms on measures of uncertainty
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 1f57405e27
+```
+
+Let us see how rescaling, a special kind of linear transformation, affects our measures of uncertainty. As before, the Wisconsin lottery dataset  `Wisc_lottery` is available and this dataset contains `sales_1000`, sales in thousands of dollars, and `pop_1000`, zip code population in thousands. How do measures of uncertainty change when going from the original units to thousands of those units?
+
+`@instructions`
+- Run a regression of `pop` on `sales_1000` and summarize this in an ANOVA table.
+- For this regression, determine the $s$ and the coefficient of determiniation, $R^2$.  
+- Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.
+- For this regression, determine the $s$ and the coefficient of determination, $R^2$.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+Lot$pop_1000 <- Lot$pop/1000
+Lot$sales_1000 <- Lot$sales/1000
+```
+`@sample_code`
+```{r}
+model_blr1 <- lm(sales_1000  ~ pop, data = Lot)
+anova(model_blr1)
+sqrt(anova(model_blr1)$Mean[2])
+summary(model_blr1)$r.squared
+model_blr2 <- lm(sales_1000  ~ pop_1000 , data = Lot)
+anova(model_blr2)
+sqrt(anova(model_blr2)$Mean[2])
+summary(model_blr2)$r.squared
+```
+`@solution`
+```{r}
+model_blr1 <- lm(sales_1000  ~ pop, data = Lot)
+anova(model_blr1)
+sqrt(anova(model_blr1)$Mean[2])
+summary(model_blr1)$r.squared
+model_blr2 <- lm(sales_1000  ~ pop_1000 , data = Lot)
+anova(model_blr2)
+sqrt(anova(model_blr2)$Mean[2])
+summary(model_blr2)$r.squared
+```
+
+
+
+
+
+
+---
+## Insert exercise title here
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 5fe9830aee
+```
+
+`@projector_key`
+52ba98c5d7d64932628206d473a425b4
