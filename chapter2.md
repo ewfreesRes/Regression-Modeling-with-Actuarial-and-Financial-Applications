@@ -46,15 +46,19 @@ Like insurance claims, lotteries are uncertain events and so you want to be able
 ```{r}
 Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 #library(Rcmdr)
-library(psych)
+#library(psych)
 ```
-
+`@sample_code`
+```{r}
+Lot$pop_1000 <- ___/1000
+Lot$sales_1000 <- ___
+```
 `@solution`
 ```{r}
 Lot$pop_1000 <- Lot$pop/1000
 Lot$sales_1000 <- Lot$sales/1000
 #numSummary(Lot[,c("pop_1000", "sales_1000")], statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
-(as.data.frame(psych::describe(Lot)))[,c(2,3,4,5,8,9)]
+#(as.data.frame(psych::describe(Lot)))[,c(2,3,4,5,8,9)]
 plot(Lot$pop_1000, Lot$sales_1000)
 cor(Lot$pop_1000, Lot$sales_1000)
 ```
