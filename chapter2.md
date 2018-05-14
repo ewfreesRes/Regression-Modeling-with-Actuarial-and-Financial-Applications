@@ -66,3 +66,18 @@ cor(Lot$pop_1000, Lot$sales_1000)
 
 
 
+
+
+---
+## Method of least squares
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 5209238d14
+```
+
+`@projector_key`
+6e4030abdd8e964f0911ab70682762cd
