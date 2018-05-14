@@ -237,6 +237,3 @@ sqrt(anova(model_blr2)$Mean[2])
 summary(model_blr2)$r.squared
 ```
 
-
-
-
