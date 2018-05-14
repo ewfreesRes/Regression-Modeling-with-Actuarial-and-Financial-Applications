@@ -19,7 +19,7 @@ key: 5e5beff472
 98aeb5a5bd795a7c8716aba8e177decb
 
 ---
-## Linear transformations of Wisconsin lottery data
+## Correlations and linear transformations
 
 ```yaml
 type: NormalExercise
@@ -81,3 +81,69 @@ key: 5209238d14
 
 `@projector_key`
 6e4030abdd8e964f0911ab70682762cd
+
+---
+## Least squares fit using housing prices
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 97ec81af2a
+```
+
+Instead of population, suppose that you wish to understand the effect that housing prices have on the sale of lottery tickets. In the Wisconsin lottery dataset  `Wisc_lottery` is the variable `medhome` which is the median house price for each zip code, in thousands of dollars. In this exercise, we will give feel for the distribution of this variable by examining summary statistics, examine its relationship with sales graphically and via correlations, fit a basic linear regression model and use this model to predict sales.
+
+`@instructions`
+- Create a table summarizing the distributions of `medhome` and `sales`.
+- Plot `medhome` versus `sales` and calculate the corresponding correlation coefficient.
+- Regress `medhome`, the explanatory variable, on `sales`, the dependent variable.
+- Use the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```
+`@sample_code`
+```{r}
+#(as.data.frame(psych::describe(Lot[,c("medhome", "sales")])))[,c(2,3,4,5,8,9)]
+cor(Lot$medhome,Lot$sales)
+plot(Lot$medhome,Lot$sales)
+model_blr1 <- lm(sales ~ medhome, data = Lot)
+round(coefficients(model_blr1), digits=4)
+newdata <- data.frame(medhome = 50)
+predict(model_blr1, newdata)
+```
+`@solution`
+```{r}
+#(as.data.frame(psych::describe(Lot[,c("medhome", "sales")])))[,c(2,3,4,5,8,9)]
+cor(Lot$medhome,Lot$sales)
+plot(Lot$medhome,Lot$sales)
+model_blr1 <- lm(sales ~ medhome, data = Lot)
+round(coefficients(model_blr1), digits=4)
+newdata <- data.frame(medhome = 50)
+predict(model_blr1, newdata)
+```
+
+
+
+
+
+
+---
+## Understanding Variability
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: ac4eb7cd57
+```
+
+`@projector_key`
+72cd0d9806aa6b026cecc961b32c2a13
