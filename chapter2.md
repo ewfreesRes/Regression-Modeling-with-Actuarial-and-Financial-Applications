@@ -1,22 +1,8 @@
 ---
 title: Chapter 2. Basic Linear Regression
 description: >-
-  Insert the chapter description here
+  This chapter considers regression in the case of only one explanatory variable. Despite this seeming simplicity, most of the deep ideas of regression can be developed in this framework. By limiting ourselves to the one variable case, we can illustrate the relationships between two variables graphically because we are working in only two dimensions. Graphical tools prove to be important for developing a link between the data and a model.
 
-
----
-## Method of Least Squares
-
-```yaml
-type: VideoExercise
-lang: r
-xp: 50
-skills: 1
-key: e36068d39a
-```
-
-`@projector_key`
-undefined
 
 ---
 ## Correlation
@@ -60,6 +46,7 @@ Like insurance claims, lotteries are uncertain events and so you want to be able
 ```{r}
 Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 #library(Rcmdr)
+library(psych)
 ```
 
 `@solution`
@@ -67,6 +54,7 @@ Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datase
 Lot$pop_1000 <- Lot$pop/1000
 Lot$sales_1000 <- Lot$sales/1000
 #numSummary(Lot[,c("pop_1000", "sales_1000")], statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
+(as.data.frame(psych::describe(Lot)))[,c(2,3,4,5,8,9)]
 plot(Lot$pop_1000, Lot$sales_1000)
 cor(Lot$pop_1000, Lot$sales_1000)
 ```
