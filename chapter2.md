@@ -39,8 +39,6 @@ Like insurance claims, lotteries are uncertain events and so you want to be able
 - Plot `pop_1000` versus `sales_1000`.
 - Calculation the correlation between `pop_1000` versus `sales_1000`. How does this differ between the correlation between population and sales in the original units?
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -100,8 +98,6 @@ Instead of population, suppose that you wish to understand the effect that housi
 - Plot `medhome` versus `sales` and calculate the corresponding correlation coefficient.
 - Regress `medhome`, the explanatory variable, on `sales`, the dependent variable.
 - Use the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -167,8 +163,6 @@ Instead of population, in this exercise we will consider the variable `medhome` 
 - Determine the size of the typical residual, $s$.
 - Determine the coefficient of determination, $R^2$.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -213,8 +207,6 @@ Let us see how rescaling, a special kind of linear transformation, affects our m
 - Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.
 - For this regression, determine the $s$ and the coefficient of determination, $R^2$.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -248,18 +240,3 @@ summary(model_blr2)$r.squared
 
 
 
-
-
----
-## Insert exercise title here
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: 5fe9830aee
-```
-
-`@projector_key`
-52ba98c5d7d64932628206d473a425b4
