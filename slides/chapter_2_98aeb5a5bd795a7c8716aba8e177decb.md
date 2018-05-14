@@ -18,33 +18,27 @@ key: 0901319abc
 name: Frees
 title: Instructor
 
-`@script`
-
 
 
 
 ---
-## Description of the data
+## Wisconsin lottery data description
 
 ```yaml
 type: FullSlide
 key: 141ba302d2
 ```
 
-`@part1`
 
 
 
 
-
-
-`@script`
 
 
 
 
 ---
-## Summary Statistics
+## Summary statistics
 
 ```yaml
 type: TwoRows
@@ -53,29 +47,31 @@ key: 61bb65a96a
 
 `@part1`
 ```
-library(Rcmdr)
-options(scipen = 100, digits = 4)
-numSummary(Lot[,c("pop", "sales")], statistics = c("mean", "sd", "quantiles"), 
-                              quantiles = c(0,.5,1))
+(as.data.frame(psych::describe(Lot)))[,c(2,3,4,5,8,9)]
+
+#library(Rcmdr)
+#options(scipen = 100, digits = 4)
+#numSummary(Lot[,c("pop", "sales")], statistics = c("mean", "sd", "quantiles"), 
+#                            quantiles = c(0,.5,1))
+
 ```
 
 `@part2`
 ```
-      mean    sd  0%  50%  100%  n
-pop   9311 11098 280 4406 39098 50
-sales 6495  8103 189 2426 33181 50
+         n     mean          sd   median   min     max
+pop     50 9311.040 11098.15695 4405.500 280.0 39098.0
+sales   50 6494.829  8103.01250 2426.406 189.0 33181.4
+medhome 50   57.092    18.37312   53.900  34.5   120.0
 ```
 
 
 
-
-`@script`
 
 
 
 
 ---
-## Visualizing Skewed Distributions
+## Visualizing skewed distributions
 
 ```yaml
 type: FullImageSlide
@@ -84,16 +80,13 @@ key: 61e50a6ab8
 
 `@part1`
 ```
-par(mfrow = c(1, 2))
-hist(Lot$pop, main = "")
-hist(Lot$sales, main = "")
+par(mfrow = c(1, 2)); hist(Lot$pop, main = ""); hist(Lot$sales, main = "")
 ```
+![](https://assets.datacamp.com/production/repositories/2610/datasets/d56a7b1a213b62bc51a55e00b8e13f3975de06f9/Ch2DistnPop_Sales.png)
 
 
 
 
-
-`@script`
 
 
 
@@ -108,20 +101,18 @@ key: 6f0c4e1815
 
 `@part1`
 ```
-plot(Lot$pop, Lot$sales)
-```
+plot(Lot$pop, Lot$sales, xlab = "population", ylab = "sales")```
+![](https://assets.datacamp.com/production/repositories/2610/datasets/95126817af9ffd6f0dde8977d357a58b9e2216c6/Ch2PlotPop_Sales.png)
 
 
 
 
-
-`@script`
 
 
 
 
 ---
-## Correlation Coefficient
+## Correlation coefficient
 
 ```yaml
 type: FullSlide
@@ -129,13 +120,11 @@ key: 23565d7a07
 ```
 
 `@part1`
-Correlation Coefficient
+Correlation coefficient
 
 
 
 
-
-`@script`
 
 
 
@@ -152,8 +141,6 @@ key: 81b9a849f9
 
 
 
-
-`@script`
 
 
 
