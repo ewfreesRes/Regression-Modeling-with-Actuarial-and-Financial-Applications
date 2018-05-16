@@ -1,7 +1,7 @@
 ---
 title: Chapter 2. Basic Linear Regression
 description: >-
-  This chapter considers regression in the case of only one explanatory variable. Despite this seeming simplicity, most of the deep ideas of regression can be developed in this framework. By limiting ourselves to the one variable case, we can illustrate the relationships between two variables graphically because we are working in only two dimensions. Graphical tools prove to be important for developing a link between the data and a model.
+  This chapter considers regression in the case of only one explanatory variable. Despite this seeming simplicity, most of the deep ideas of regression can be developed in this framework. By limiting ourselves to the one variable case, we can illustrate the relationships between two variables graphically. Graphical tools prove to be important for developing a link between the data and a model.
 
 
 ---
@@ -19,7 +19,7 @@ key: 5e5beff472
 98aeb5a5bd795a7c8716aba8e177decb
 
 ---
-## Correlations and linear transformations
+## Correlations and the Wisconsin lottery
 
 ```yaml
 type: NormalExercise
