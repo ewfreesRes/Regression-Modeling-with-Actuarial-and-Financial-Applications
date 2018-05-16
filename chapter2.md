@@ -126,6 +126,10 @@ predict(model_blr1, newdata)
 ```
 
 
+
+
+
+
 ---
 ## Understanding Variability
 
@@ -203,6 +207,8 @@ Let us see how rescaling, a special kind of linear transformation, affects our m
 - Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.
 - For this regression, determine the $s$ and the coefficient of determination, $R^2$.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -233,3 +239,21 @@ sqrt(anova(model_blr2)$Mean[2])
 summary(model_blr2)$r.squared
 ```
 
+
+
+
+
+
+---
+## Statistical inference
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 4e5ae2cad6
+```
+
+`@projector_key`
+d2a8a48c0938cd9168aa1467e9d1cef0
