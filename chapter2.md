@@ -257,3 +257,52 @@ key: 4e5ae2cad6
 
 `@projector_key`
 d2a8a48c0938cd9168aa1467e9d1cef0
+
+---
+## Statistical inference and Wisconsin lottery
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 7f691f8ace
+```
+
+As an alternative to population, in this exercise we will summarize the effect that `medhome` has on `sales`. For interpretation, recall that `medhome` is in thousands of dollars whereas sales is in dollars. These variables are available in the dataset `Wisc_lottery` which has already been read in. This exercise will give you practice i the standard inferential tasks: hypothesis testing, confidence intervals, and prediction.
+
+`@instructions`
+- Summarize the regression model and identify the $t$-statistic for testing the importance of the regression coefficient associated with `medhome`.
+- Provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
+- Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Provide a point prediction and a 95\% prediction interval for sales.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```
+`@sample_code`
+```{r}
+model_blr1 <- lm(sales ~ medhome, data = Lot)
+summary(model_blr1)
+#Rcmdr::Confint(model_blr1, level = .95)
+confint(model_blr1, level = .95)
+NewData1 <- data.frame(medhome = 50)
+predict(model_blr1, NewData1, interval = "prediction", level = .95)
+```
+`@solution`
+```{r}
+model_blr1 <- lm(sales ~ medhome, data = Lot)
+summary(model_blr1)
+#Rcmdr::Confint(model_blr1, level = .95)
+confint(model_blr1, level = .95)
+NewData1 <- data.frame(medhome = 50)
+predict(model_blr1, NewData1, interval = "prediction", level = .95)
+
+```
+
+
+
+
