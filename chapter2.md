@@ -207,8 +207,6 @@ Let us see how rescaling, a special kind of linear transformation, affects our m
 - Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.
 - For this regression, determine the $s$ and the coefficient of determination, $R^2$.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -276,8 +274,6 @@ As an alternative to population, in this exercise we will summarize the effect t
 - Provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
 - Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Provide a point prediction and a 95\% prediction interval for sales.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -300,7 +296,6 @@ summary(model_blr1)
 confint(model_blr1, level = .95)
 NewData1 <- data.frame(medhome = 50)
 predict(model_blr1, NewData1, interval = "prediction", level = .95)
-
 ```
 
 
