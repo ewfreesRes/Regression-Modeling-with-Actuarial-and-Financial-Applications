@@ -316,3 +316,69 @@ key: 62746a09aa
 
 `@projector_key`
 5a57a76dab158361957acfdc662c35ea
+
+---
+## Assessing outliers in lottery sales
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 496a3a7c29
+```
+
+The scatter plot of population versus sales exhibits an outlier; the point in the upper left-hand side of the plot represents a zip code that includes Kenosha, Wisconsin. Sales for this zip code are unusually high given its population. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. This exercise summarizes the regression fit both with and without this zip code. 
+
+`@instructions`
+- A basic linear regression fit of population on sales has already been fit. Fit this same model to the data, omiting Kenosha (observation number 9).
+- Plot these two least square fitted lines superimposed on the full data set.
+-  What is the effect on the distribution  of residuals by removing this point? Calculate a qq plot with and without Kenosha.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```
+`@sample_code`
+```{r}
+model_blr <-lm(sales ~ pop, data = Lot)
+summary(model_blr)
+model_Kenosha <- lm(sales ~ pop, data = Lot, subset = -c(9))
+summary(model_Kenosha)
+
+plot(Lot$pop, Lot$sales, xlab = "population", ylab = "sales")
+text(5000, 24000, "Kenosha")
+abline(model_blr, col="blue")
+abline(model_Kenosha, col="red")
+
+par(mfrow = c(1, 2))
+qqnorm(residuals(model_blr), main = "")
+qqline(residuals(model_blr))
+qqnorm(residuals(model_Kenosha), main = "")
+qqline(residuals(model_Kenosha))
+```
+`@solution`
+```{r}
+model_blr <-lm(sales ~ pop, data = Lot)
+summary(model_blr)
+model_Kenosha <- lm(sales ~ pop, data = Lot, subset = -c(9))
+summary(model_Kenosha)
+
+plot(Lot$pop, Lot$sales, xlab = "population", ylab = "sales")
+text(5000, 24000, "Kenosha")
+abline(model_blr, col="blue")
+abline(model_Kenosha, col="red")
+
+par(mfrow = c(1, 2))
+qqnorm(residuals(model_blr), main = "")
+qqline(residuals(model_blr))
+qqnorm(residuals(model_Kenosha), main = "")
+qqline(residuals(model_Kenosha))
+```
+
+
+
+
