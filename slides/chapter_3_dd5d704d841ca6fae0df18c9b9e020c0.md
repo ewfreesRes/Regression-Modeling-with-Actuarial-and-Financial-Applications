@@ -11,6 +11,9 @@ key: 10a4648260
 ```
 
 
+
+
+
 `@lower_third`
 name: Frees
 title: Instructor
@@ -19,7 +22,7 @@ title: Instructor
 
 
 ---
-## Demand for Term Life Insurance
+## Demand for term life insurance
 
 ```yaml
 type: FullSlide
@@ -37,8 +40,14 @@ To understand demand, consider the Survey of Consumer Finances (*SCF*)
 - We now focus on *n* = 275 households that purchased term life insurance
 
 
+
+
+
+
+
+
 ---
-## Term Life Insurance Summary Statistics
+## Term life insurance summary statistics
 
 ```yaml
 type: FullSlide
@@ -56,8 +65,14 @@ We study *y = face*, the amount that the company will pay in the event of the de
 The data suggest that *income* and *face* are skewed so we also introduce logarithmic versions.
 
 
+
+
+
+
+
+
 ---
-## Summary Statistics
+## Summary statistics
 
 ```yaml
 type: TwoRows
@@ -110,8 +125,13 @@ plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
 
 
 
+
+
+
+
+
 ---
-## Table of Correlations
+## Correlation table
 
 ```yaml
 type: TwoRows
@@ -141,7 +161,7 @@ numhh        -0.064 0.107  0.142   0.288     0.179  1.000
 
 
 ---
-## Scatterplot Matrix
+## Scatterplot matrix
 
 ```yaml
 type: FullImageSlide
@@ -163,7 +183,7 @@ pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
 
 
 ---
-## Regression Plane
+## Visualizing a regression plane
 
 ```yaml
 type: TwoColumns
@@ -200,7 +220,7 @@ persp(education, logincome, logface,
 
 
 ---
-## Method of Least Squares
+## Method of least squares
 
 ```yaml
 type: TwoRows
@@ -223,7 +243,7 @@ key: 0ba68583d6
 
 
 ---
-## Fit a Multiple Linear Regression Model
+## Fit a multiple linear regression model
 
 ```yaml
 type: TwoRows
