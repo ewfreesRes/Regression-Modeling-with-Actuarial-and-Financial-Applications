@@ -306,3 +306,18 @@ predict(model_blr1, NewData1, interval = "prediction", level = .95)
 
 
 
+
+
+---
+## Diagnostics
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 62746a09aa
+```
+
+`@projector_key`
+5a57a76dab158361957acfdc662c35ea
