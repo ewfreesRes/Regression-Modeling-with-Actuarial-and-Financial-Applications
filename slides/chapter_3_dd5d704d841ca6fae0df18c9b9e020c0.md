@@ -1,17 +1,14 @@
 ---
-title: Insert title here
+title: Method of least squares
 key: dd5d704d841ca6fae0df18c9b9e020c0
 
 ---
-## Method of Least Squares
+## Method of least squares
 
 ```yaml
 type: TitleSlide
 key: 10a4648260
 ```
-
-
-
 
 
 `@lower_third`
@@ -40,12 +37,6 @@ To understand demand, consider the Survey of Consumer Finances (*SCF*)
 - We now focus on *n* = 275 households that purchased term life insurance
 
 
-
-
-
-
-
-
 ---
 ## Term Life Insurance Summary Statistics
 
@@ -63,12 +54,6 @@ We study *y = face*, the amount that the company will pay in the event of the de
 - the number of household members, *numhh*.
 
 The data suggest that *income* and *face* are skewed so we also introduce logarithmic versions.
-
-
-
-
-
-
 
 
 ---
@@ -122,11 +107,6 @@ plot(Term2$income, Term2$face, xlab = "income", ylab = "face")
 plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
 ```
 ![](https://assets.datacamp.com/production/repositories/2610/datasets/4452970eef5312f68838ed2ebb931dcdab764795/Ch3TermLifeBasic.png)
-
-
-
-
-
 
 
 
