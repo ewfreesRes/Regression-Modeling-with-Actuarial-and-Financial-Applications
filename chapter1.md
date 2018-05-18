@@ -293,6 +293,9 @@ success_msg("Congratulations on learning about box and qq plots. You are unlikel
 ```
 
 
+
+
+
 ---
 ## Effects on distributions of removing the largest claim
 
@@ -311,7 +314,7 @@ The Massachusetts bodily injury dataset `injury` has been read in; our focus is 
 So this assignment is based on claims, not the logarithmic version. You will review the `R` functions `boxplot` and ``qqnorm`` for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
 
 `@instructions`
--  Use the `R` function `tail` to examine the `omkru` dataset and identify the largest claim
+-  Use the `R` function `tail` to examine the `injury` dataset and identify the largest claim
 -  Use the `R` function `subset` to create a subset omitting the largest claim
 -  Compare the summary statistics of the omitted claim distribution to the full distribution 
 -  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
@@ -344,6 +347,9 @@ par(mfrow = c(1, 2))
 hist(claims, freq = FALSE,  main = "Full Data")
 hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 ```
+
+
+
 
 
 
@@ -417,12 +423,6 @@ plot(density(-claims^(-1)))
 ```{r}
 success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
 ```
-
-
-
-
-
-
 
 
 
