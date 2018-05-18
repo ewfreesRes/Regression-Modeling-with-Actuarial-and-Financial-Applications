@@ -99,8 +99,7 @@ When both $x\_{1}$ and $y$ are in logarithmic units, then we can interpret $b\_{
 - Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
 - Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
 - For several selected values of `logincome`, determine the corresponding proportional changes.
-- Determine least square fitted values for several selected values of `logincome`, holding other explantory variables fixed.
-- Determine the corresponding proportional changes for the fitted values. 
+- Determine least square fitted values for several selected values of `logincome`, holding other explanatory variables fixed and the corresponding proportional changes for the fitted values. 
 - Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
 
 `@hint`
