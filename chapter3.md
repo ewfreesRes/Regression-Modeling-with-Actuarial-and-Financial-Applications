@@ -132,7 +132,6 @@ lsfits2 <- predict(model_mlr, newdata2)
 pchange_fits2 <- 100*(exp(lsfits2[2:4])/exp(lsfits2[1:3])-1)
 pchange_fits2
 pchange_fits2/pchange_income
-
 ```
 `@solution`
 ```{r}
