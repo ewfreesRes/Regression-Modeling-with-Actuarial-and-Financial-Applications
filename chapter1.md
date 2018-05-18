@@ -18,22 +18,22 @@ key: cc4b0289d5
 `@projector_key`
 02abc0a8a3727420f7c6f719ae15a203
 
-
 ---
 ## Just to Try
 
 ```yaml
 type: VideoExercise
-key: aab497f8e6
 lang: r
 xp: 50
 skills: 1
-video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%201/What%20is%20regression.mp4
+key: aab497f8e6
 ```
 
+`@projector_key`
+undefined
 
 ---
-## Fitting child's height distribution
+## Fitting Galton's height data
 
 ```yaml
 type: NormalExercise
