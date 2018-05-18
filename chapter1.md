@@ -293,6 +293,57 @@ success_msg("Congratulations on learning about box and qq plots. You are unlikel
 ```
 
 
+---
+## Effects on distributions of removing the largest claim
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 127a1f92ec
+```
+
+In the previous exercise, we learned that the Massachusetts bodily injury `claims` distribution was not even close to approximately normal (as evidence by the box and qq- plots). Non-normality may be induced by skewness (that we will handle via transformations in the next section). But, seeming non-normality can also be induced by one or two very large observations (that we will defined as an *outlier* later in the course). So, this exercise examines the effects on the distribution of removing the largest claims.
+
+The Massachusetts bodily injury dataset `injury` has been read in; our focus is on the `claims` variable in that dataset. 
+
+So this assignment is based on claims, not the logarithmic version. You will review the `R` functions `boxplot` and ``qqnorm`` for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
+
+`@instructions`
+-  Use the `R` function `tail` to examine the `omkru` dataset and identify the largest claim
+-  Use the `R` function `subset` to create a subset omitting the largest claim
+-  Compare the summary statistics of the omitted claim distribution to the full distribution 
+-  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+claims <- injury$claims
+```
+`@sample_code`
+```{r}
+tail(injury)
+injury2 <- subset(injury, claims < 25000 )
+summary(injury2)
+sd(injury2$claim)
+par(mfrow = c(1, 2))
+hist(claims, freq = FALSE,  main = "Full Data")
+hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
+```
+`@solution`
+```{r}
+tail(injury)
+injury2 <- subset(injury, claims < 25000 )
+summary(injury2)
+sd(injury2$claim)
+par(mfrow = c(1, 2))
+hist(claims, freq = FALSE,  main = "Full Data")
+hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
+```
 
 
 
@@ -371,57 +422,6 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 
----
-## Effects on distributions of removing the largest claim
-
-```yaml
-type: NormalExercise
-
-xp: 100
-
-key: 127a1f92ec
-```
-
-In the previous exercise, we learned that the Massachusetts bodily injury `claims` distribution was not even close to approximately normal (as evidence by the box and qq- plots). Non-normality may be induced by skewness (that we will handle via transformations in the next section). But, seeming non-normality can also be induced by one or two very large observations (that we will defined as an *outlier* later in the course). So, this exercise examines the effects on the distribution of removing the largest claims.
-
-The Massachusetts bodily injury dataset `injury` has been read in; our focus is on the `claims` variable in that dataset. 
-
-So this assignment is based on claims, not the logarithmic version. You will review the `R` functions `boxplot` and ``qqnorm`` for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
-
-`@instructions`
--  Use the `R` function `tail` to examine the `omkru` dataset and identify the largest claim
--  Use the `R` function `subset` to create a subset omitting the largest claim
--  Compare the summary statistics of the omitted claim distribution to the full distribution 
--  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
-
-`@hint`
-
-
-`@pre_exercise_code`
-```{r}
-injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
-claims <- injury$claims
-```
-`@sample_code`
-```{r}
-tail(injury)
-injury2 <- subset(injury, claims < 25000 )
-summary(injury2)
-sd(injury2$claim)
-par(mfrow = c(1, 2))
-hist(claims, freq = FALSE,  main = "Full Data")
-hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
-```
-`@solution`
-```{r}
-tail(injury)
-injury2 <- subset(injury, claims < 25000 )
-summary(injury2)
-sd(injury2$claim)
-par(mfrow = c(1, 2))
-hist(claims, freq = FALSE,  main = "Full Data")
-hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
-```
 
 
 
