@@ -227,3 +227,54 @@ key: ff359ef406
 
 `@projector_key`
 a27f0e9bfd20f2e7d3c30b25a5acb7a8
+
+---
+## Binary variables and term life
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 2f0001026b
+```
+
+We have seen how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The variable is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the family in the event of unexpected death. In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`. 
+
+From a correlation table, you will see that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model is helpful. We will explore this by first fitting a model by just adding the binary variable single, examining summary statistics, and checking the significance of the variable. Then, we will explore the utility of the interaction of `single` with logarithmic income.
+
+`@instructions`
+- Calculate a table of correlation coefficients to examine pairwise linear relationships among the variables `numhh`, `education`, `logincome`, `single`, and  `logface`.
+- Fit a multiple linear regression model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`. Examine the residual standard deviation $s$, the coefficient of determination $R^2$, and the adjusted version $R_a^2$. Also note the statistical significance of the coefficient associated with `single`.
+- Repeat this but adding the interaction term  `single*logincome`.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
+Term4$single <- 1*(Term4$marstat == 0)
+```
+`@sample_code`
+```{r}
+round(cor(Term4[,c("numhh", "education", "logincome", "single", "logface")]), digits = 3)
+Term_mlr3 <- lm(logface ~ education + numhh + logincome + single, data = Term4)
+summary(Term_mlr3)
+Term_mlr4 <- lm(logface ~ education + numhh + logincome + single + single*logincome, data = Term4)
+summary(Term_mlr4)
+```
+`@solution`
+```{r}
+round(cor(Term4[,c("numhh", "education", "logincome", "single", "logface")]), digits = 3)
+Term_mlr3 <- lm(logface ~ education + numhh + logincome + single, data = Term4)
+summary(Term_mlr3)
+Term_mlr4 <- lm(logface ~ education + numhh + logincome + single + single*logincome, data = Term4)
+summary(Term_mlr4)
+```
+
+
+
+
