@@ -1,5 +1,5 @@
 ---
-title: Insert title here
+title: Binary variables
 key: a27f0e9bfd20f2e7d3c30b25a5acb7a8
 
 ---
@@ -32,7 +32,7 @@ key: 23249e5b8e
 ```
 
 `@part1`
-- We can define a new variable
+- We can define an *indicator*, or *dummy*, variable
 
 $$
 single= \left\\{ \begin{array}{ll}
@@ -40,8 +40,7 @@ single= \left\\{ \begin{array}{ll}
         1 & \text{for single respondents}
 \end{array} \right.
 $$
-- The variable *single* is said to be an *indicator*, or *dummy*, variable.
-- To interpret coefficients, we now consider the regression function
+- To interpret coefficients, consider the regression function
 
 $$\text{E }logface = \beta_0 + \beta_1 logincome + \beta_2 single$$
 - This can be expressed as two lines
@@ -52,12 +51,7 @@ $$
         \beta_0 + \beta_2 + \beta_1  logincome & \text{for single respondents}
 \end{array}\right. .
 $$
-- The least squares method of calculating the estimators, and the resulting theoretical properties, are the still valid when using
-binary variables.
-
-
-
-
+- The least squares method remains valid when using binary variables
 
 `@script`
 
