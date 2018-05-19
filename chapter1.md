@@ -319,8 +319,6 @@ So this assignment is based on claims, not the logarithmic version. You will rev
 -  Compare the summary statistics of the omitted claim distribution to the full distribution 
 -  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
