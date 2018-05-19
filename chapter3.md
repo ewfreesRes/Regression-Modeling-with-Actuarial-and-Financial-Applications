@@ -40,8 +40,6 @@ The term life dataset, consisting of only those who purchased term life insuranc
 - Using the method of least squares, fit a multiple linear regresion model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
 - With this fitted model, provide a prediction of the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -102,8 +100,6 @@ When both $x\_{1}$ and $y$ are in logarithmic units, then we can interpret $b\_{
 - Determine least square fitted values for several selected values of `logincome`, holding other explanatory variables fixed and the corresponding proportional changes for the fitted values. 
 - Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -155,3 +151,79 @@ pchange_fits2/pchange_income
 
 
 
+
+
+---
+## Statistical inference and multiple linear regression
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: cfa3072c7c
+```
+
+`@projector_key`
+c77074330c0754662a1dbb56fbca3e43
+
+---
+## Statistical inference and term life
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 81c84d6420
+```
+
+In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables `face` and `income` that are in the original units and run a regression for with these. We have already seen that rescaling by constants do not affect relationships but can be a help in interpretation, we define both  `face` and `income` to be in thousands of dollars.
+
+`@instructions`
+- Create `Term2$face` by exponentiating `logface` and dividing by 1000. For convenience, we are storing this variable in the data set `Term2`. Use the same process to create `Term2$income`.
+- Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
+- Summarize this model and identify the residual standard error as well as the coefficient of determination and the version adjusted for degrees of freedom.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
+```
+`@sample_code`
+```{r}
+Term2$face <- exp(Term2$logface)/1000
+Term2$income <- exp(Term2$logincome)/1000
+Term_mlr1 <- lm(face ~ education + numhh + income, data = Term2)
+summary(Term_mlr1)
+```
+`@solution`
+```{r}
+Term2$face <- exp(Term2$logface)/1000
+Term2$income <- exp(Term2$logincome)/1000
+Term_mlr1 <- lm(face ~ education + numhh + income, data = Term2)
+summary(Term_mlr1)
+```
+
+
+
+
+
+
+---
+## Binary variables
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: ff359ef406
+```
+
+`@projector_key`
+a27f0e9bfd20f2e7d3c30b25a5acb7a8
