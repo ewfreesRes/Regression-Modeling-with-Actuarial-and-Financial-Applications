@@ -377,3 +377,45 @@ lines(xseq,fit430, col="blue")
 
 
 
+
+
+---
+## Hypothesis testing
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 156ef40aaf
+```
+
+`@projector_key`
+df2187184761fab4d774149af7725157
+
+---
+## Hypothesis testing and Wisconsin hospital costs
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: f80245771a
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+
+
+
+
+
+
+
