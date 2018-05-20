@@ -185,8 +185,6 @@ In later chapters, we will learn how to specify a model using diagnostics techni
 - Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
 - Summarize this model and identify the residual standard error as well as the coefficient of determination and the version adjusted for degrees of freedom.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -248,8 +246,6 @@ From a correlation table, you will see that there are relationships with among e
 - Fit a multiple linear regression model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`. Examine the residual standard deviation $s$, the coefficient of determination $R^2$, and the adjusted version $R_a^2$. Also note the statistical significance of the coefficient associated with `single`.
 - Repeat this but adding the interaction term  `single*logincome`.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -278,3 +274,18 @@ summary(Term_mlr4)
 
 
 
+
+
+---
+## Categorical variables
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: ec71e48d7d
+```
+
+`@projector_key`
+a96ac5c8eed3af533c4c8897c2b57542
