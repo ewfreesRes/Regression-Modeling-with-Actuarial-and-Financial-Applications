@@ -289,3 +289,91 @@ key: ec71e48d7d
 
 `@projector_key`
 a96ac5c8eed3af533c4c8897c2b57542
+
+---
+## Wisconsin hospital costs
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 29d2203fad
+```
+
+This exercise examines the impact of various predictors on hospital charges. Identifying predictors of hospital charges can provide direction for hospitals, government, insurers and consumers in controlling these variables that in turn leads to better control of hospital costs. The data, from 1989, are aggregated by: 
+
+- `drg`, diagnostic related groups of costs, 
+- `payer`, type of health care provider (Fee for service, HMO, and other), and 
+- `hsa`, nine major geographic areas.
+
+Some preliminary analysis of the data has already been done. In this exercise, we will analyze `logcharge`, the logarithm of total hospital charges per number of discharges, in terms of `log_numdschg`, the logarithm of the number of discharges. In the dataset `Hcost` which has been loaded in advance, we restrict consideration to three types of drgs, numbers 209, 391, and 431.
+
+`@instructions`
+- Fit a basic linear regression model using logarithmic number of discharges to predict logarithmic hospital costs and superimposed the fitted regression line on the scatter plot.
+- Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.
+- Fit a multiple linear regression using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.
+- Superimposed the fits from the multiple linear regression model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Note how slopes differ dramatically from the slope from the basic linear regression model.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Hcost <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv", header = TRUE)
+Hcost1 <- subset(Hcost, drg == 209|drg == 391|drg == 430)
+```
+`@sample_code`
+```{r}
+hosp_blr <- lm(logcharge~log_numdschg, data=Hcost1)
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge")
+abline(hosp_blr, col="red")
+
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+    pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+legend("left", legend=c("drg 209","drg 391", "drg 430"), col=c("red", "black", "blue"), pch = c(1,2,3))
+
+hosp_mlr <- lm(logcharge~log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+#summary(hosp_mlr)$coefficients[,1]
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+         pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+xseq <- seq(0,10,length.out=100)
+coef <- summary(hosp_mlr)$coefficients[,1]
+fit209 <- coef[1] + coef[2]*xseq
+lines(xseq,fit209, col="red")
+fit391 <- coef[1] + coef[3] + (coef[2] + coef[5])*xseq
+lines(xseq,fit391, col="black")
+fit430 <- coef[1] + coef[4] + (coef[2] + coef[6])*xseq
+lines(xseq,fit430, col="blue")
+```
+`@solution`
+```{r}
+hosp_blr <- lm(logcharge~log_numdschg, data=Hcost1)
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge")
+abline(hosp_blr, col="red")
+
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+    pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+legend("left", legend=c("drg 209","drg 391", "drg 430"), col=c("red", "black", "blue"), pch = c(1,2,3))
+
+hosp_mlr <- lm(logcharge~log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+#summary(hosp_mlr)$coefficients[,1]
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+         pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+xseq <- seq(0,10,length.out=100)
+coef <- summary(hosp_mlr)$coefficients[,1]
+fit209 <- coef[1] + coef[2]*xseq
+lines(xseq,fit209, col="red")
+fit391 <- coef[1] + coef[3] + (coef[2] + coef[5])*xseq
+lines(xseq,fit391, col="black")
+fit430 <- coef[1] + coef[4] + (coef[2] + coef[6])*xseq
+lines(xseq,fit430, col="blue")
+```
+
+
+
+
