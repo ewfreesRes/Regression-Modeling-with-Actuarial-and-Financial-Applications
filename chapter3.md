@@ -1,7 +1,7 @@
 ---
 title: Chapter 3. Multiple Linear Regression
 description: >-
-  This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression. Many basic linear regression concepts extend directly, including goodness of fit measures such as $R^2$ and inference using *t*-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications.
+  This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression. Many basic linear regression concepts extend directly, including goodness of fit measures such as the coefficient of determination and inference using t-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications.
 
 
 ---
