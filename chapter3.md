@@ -5,7 +5,7 @@ description: >-
 
 
 ---
-## Method of Least Squares
+## Method of least squares
 
 ```yaml
 type: VideoExercise
@@ -19,7 +19,7 @@ key: 607ecb673f
 dd5d704d841ca6fae0df18c9b9e020c0
 
 ---
-## Multiple linear regression and term life
+## Least squares and term life data
 
 ```yaml
 type: NormalExercise
@@ -34,7 +34,7 @@ Suppose that you wish to predict the amount of term life insurance that someone 
 The term life dataset, consisting of only those who purchased term life insurance, has already been read into a dataset `Term2`.
 
 `@instructions`
-- Use the `pmin` function to create the `education` variable as part of the `Term2` dataset.
+- Use the [pmin()](https://www.rdocumentation.org/packages/mc2d/versions/0.1-17/topics/pmin) function to create the `education` variable as part of the `Term2` dataset.
 - Check your work be examining summary statistics for the revised `Term2` dataset.
 - Examine correlations for the revised dataset.
 - Using the method of least squares, fit a multiple linear regresion model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
@@ -89,7 +89,7 @@ key: 9d20cb1de4
 
 In the previous exercise, you fit a multiple linear regresion model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables. It turned out that the coefficient associated with `education` was 0.2064 and the coefficient associated with `logincome` was 0.4935. We now wish to interpret these regression coefficients.
 
-The typical interpretation of coefficients in a regression model is as a partial slope. That is, for the coefficient $b\_{1}$ associated with $x\_{1}$, we interpret $b\_{1}$ to be amount that the expected outcome changes per unit change in $x\_{1}$, holding the other explanatory variables fixed. For the term life example, the units of the outcome are in logarithmic dollars. So, for small values of $b\_{1}$, we can interpret this to be a proportional change in dollars (this is the reason for using natural logarithms).
+The typical interpretation of coefficients in a regression model is as a partial slope. That is, for the coefficient $b\_{1}$ associated with $x\_{1}$, we interpret $b\_{1}$ to be amount that the expected outcome changes per unit change in $x\_{1}$, holding the other explanatory variables fixed. For the term life example, the units of the outcome are in logarithmic dollars. So, for small values of $b\_{1}$, we can interpret this to be a *proportional* change in dollars (this is the reason for using natural logarithms).
 
 When both $x\_{1}$ and $y$ are in logarithmic units, then we can interpret $b\_{1}$ to be ratio of two percentage changes, known as an *elasticity* in economics.
 
@@ -178,14 +178,12 @@ xp: 100
 key: 81c84d6420
 ```
 
-In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables `face` and `income` that are in the original units and run a regression for with these. We have already seen that rescaling by constants do not affect relationships but can be a help in interpretation, we define both  `face` and `income` to be in thousands of dollars.
+In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables `face` and `income` that are in the original units and run a regression for with these. We have already seen that rescaling by constants do not affect relationships but can be helpful with interpretations, so we define both  `face` and `income` to be in thousands of dollars.
 
 `@instructions`
 - Create `Term2$face` by exponentiating `logface` and dividing by 1000. For convenience, we are storing this variable in the data set `Term2`. Use the same process to create `Term2$income`.
 - Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
-- Summarize this model and identify the residual standard error as well as the coefficient of determination and the version adjusted for degrees of freedom.
-
-
+- Summarize this model and identify the residual standard error ($s$) as well as the coefficient of determination ($R^2$) and the version adjusted for degrees of freedom ($R_a^2$).
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -206,10 +204,6 @@ Term2$income <- exp(Term2$logincome)/1000
 Term_mlr1 <- lm(face ~ education + numhh + income, data = Term2)
 summary(Term_mlr1)
 ```
-
-
-
-
 
 
 ---
@@ -237,7 +231,7 @@ xp: 100
 key: 2f0001026b
 ```
 
-We have seen how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The variable is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the family in the event of unexpected death. In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`. 
+We have seen how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the family in the event of unexpected death. In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`. 
 
 From a correlation table, you will see that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model is helpful. We will explore this by first fitting a model by just adding the binary variable single, examining summary statistics, and checking the significance of the variable. Then, we will explore the utility of the interaction of `single` with logarithmic income.
 
@@ -291,7 +285,7 @@ key: ec71e48d7d
 a96ac5c8eed3af533c4c8897c2b57542
 
 ---
-## Wisconsin hospital costs
+## Categorical variables and Wisconsin hospital costs
 
 ```yaml
 type: NormalExercise
