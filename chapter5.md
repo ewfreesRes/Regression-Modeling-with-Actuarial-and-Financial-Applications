@@ -51,10 +51,465 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 `@hint`
 
 
+`@pre_exercise_code`
+```{r}
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```
+`@sample_code`
+```{r}
+str(meps)
+summary(meps)
+table(meps$race)
+par(mfrow = c(1, 2))
+hist(meps$expendop, main = "", xlab = "outpatient expenditures")
+hist(log(meps$expendop), main = "", xlab = "log expenditures")
+par(mfrow = c(1, 1))
+meps$logexpend <- log(meps$expendop)
+boxplot(logexpend ~ phstat, data = meps, main = "boxplot of log expend")
+plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
+lines(lowess(meps$age, meps$logexpend), col="red")
+```
+`@solution`
+```{r}
+str(meps)
+summary(meps)
+table(meps$race)
+par(mfrow = c(1, 2))
+hist(meps$expendop, main = "", xlab = "outpatient expenditures")
+hist(log(meps$expendop), main = "", xlab = "log expenditures")
+par(mfrow = c(1, 1))
+meps$logexpend <- log(meps$expendop)
+boxplot(logexpend ~ phstat, data = meps, main = "boxplot of log expend")
+plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
+lines(lowess(meps$age, meps$logexpend), col="red")
+```
 
 
 
 
 
 
+---
+## Fit a benchmark multiple linear regression model
 
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: d8f858af77
+
+
+
+```
+
+As part of the pre-processing for the model fitting, we will split the data into training and test subsamples. For this exercise, we use a 75/25 split although other choices are certainly suitable. Some analysts prefer to do this splitting before looking at the data. Another approach, adopted here, is that the final report typically contains summary statistcs of the entire data set and so it makes sense to do so when examining summary statistics.
+
+We start by fitting a benchmark model. It is common to use all available explanatory variables with the outcome on the original scale and so we use this as our benchmark model. This exercise shows that when you [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) a fitted linear regression model it `R`, the result provides four graphs that you have seen before. These are very useful for identifying an appropriate model.
+
+You will compare these graphs to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling, a common feature of actuarial applications.
+
+
+`@instructions`
+- Randomly split the data into a training and a testing data sets. Use 75\% for the training, 25\% for the testing.
+- Fit a full model using `expendop` as the outcome and all explanatory variables. Summarize the results of this model fitting.
+- You can [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) the fitted model to view several diagnostic plots. These plots provide evidence that expenditures may not be the best scale for linear regression.
+- Fit a full model using `logexpend` as the outcome and all explanatory variables. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+```
+`@sample_code`
+```{r}
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+
+meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+summary(meps_mlr1)
+par(mfrow = c(2, 2))
+plot(meps_mlr1)
+
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+plot(meps_mlr2)
+summary(meps_mlr2)
+par(mfrow = c(1, 1))
+```
+`@solution`
+```{r}
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+
+meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+summary(meps_mlr1)
+par(mfrow = c(2, 2))
+plot(meps_mlr1)
+
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+plot(meps_mlr2)
+summary(meps_mlr2)
+par(mfrow = c(1, 1))
+```
+
+
+
+
+
+
+---
+## Variable selection
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: a41d08acf3
+
+
+
+```
+
+Modeling building can be approached using a "ground-up" strategy, where the analyst introduces a variable, examines residuls from a regression fit, and then seeks to understand the relationship between these residuals and other available variables so that these variables might be added to the model.
+
+Another approach is a "top-down" strategy where all available variables are entered into a model and unnecessary variables are pruned from the model. Both approaches are helpful when using data to specify models. This exercise illustrates the latter approach, using the stepwise function in `R` to help narrow our search for the best fitting model.
+
+`@instructions`
+From our prior work, the training dataset `train_meps` has already been loaded in. A multiple linear regression model fit object `meps_mlr2` is available that summarizes a fit of `logexpend` as the outcome variable using all 13 explanatory variables.
+
+- Use the [Rcmdr::stepwise()](https://www.rdocumentation.org/packages/RcmdrMisc/versions/1.0-10/topics/stepwise) function to drop unnecessary variables from the full fitted model summarized in the object `meps_mlr2`.
+- Refit the recommended model.
+- As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit using the [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/anova) function and note that statistical significance of the new variable.
+- You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+```
+`@sample_code`
+```{r}
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+#library(Rcmdr)
+#temp <- stepwise(meps_mlr2, direction = 'backward/forward')
+#summary(temp)
+
+meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc , data = train_meps)
+summary(meps_mlr3)
+
+par(mfrow = c(2, 2))
+plot(meps_mlr3)
+
+meps_mlr4 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc  + phstat, data = train_meps)
+summary(meps_mlr4)
+anova(meps_mlr4)
+
+meps_mlr5 <- lm(logexpend ~ age  + anylimit + mpoor + insure  + usc  + phstat, data = train_meps)
+summary(meps_mlr5)
+anova(meps_mlr4, meps_mlr5)
+```
+`@solution`
+```{r}
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+#library(Rcmdr)
+#temp <- stepwise(meps_mlr2, direction = 'backward/forward')
+#summary(temp)
+
+meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc , data = train_meps)
+summary(meps_mlr3)
+
+par(mfrow = c(2, 2))
+plot(meps_mlr3)
+
+meps_mlr4 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc  + phstat, data = train_meps)
+summary(meps_mlr4)
+anova(meps_mlr4)
+
+meps_mlr5 <- lm(logexpend ~ age  + anylimit + mpoor + insure  + usc  + phstat, data = train_meps)
+summary(meps_mlr5)
+anova(meps_mlr4, meps_mlr5)
+```
+
+
+
+
+
+
+---
+## Model comparisons using cross-validation
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 587248a912
+
+
+
+```
+
+To compare alternative models, you decide to experiment with cross-validation. For this exercise, you split the training sample into six subsamples of approximately equal size.
+
+In the sample code, the cross-validation procedure has been summarized into a function that you can call. The input to the function is a list of variables that you select as your model explanatory variables. With this function, you can readily test several candidate models.
+
+```
+crossvalfct <- function(explvars){
+  cvdata   <- train_meps[, c("logexpend", explvars)]
+  crossval <- 0
+  for (i in 1:6) {
+    indices <- (((i-1) * round((1/6)*nrow(cvdata))) + 1):((i*round((1/6) * nrow(cvdata))))
+    # Exclude them from the train set
+    train_mlr <- lm(logexpend ~ ., data = cvdata[-indices,])
+    # Include them in the test set
+    test  <- data.frame(cvdata[indices, explvars])
+    names(test)  <- explvars
+    predict_test <- exp(predict(train_mlr, test))
+    # Compare predicted to held-out and summarize
+    predict_err  <- exp(cvdata[indices, "logexpend"]) - predict_test
+    crossval <- crossval + sum(abs(predict_err))
+  }
+```
+
+`@instructions`
+- Run the cross validation (`crossvalfct`) function using the explanatory variables suggested by the stepwise function.
+- Run the function again but adding the `phstat` variable
+- Run the function again but omitting the `gender` variable
+- Note which model is suggested by the cross validation function.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+
+crossvalfct <- function(explvars){
+  cvdata   <- train_meps[, c("logexpend", explvars)]
+  crossval <- 0
+  for (i in 1:6) {
+    indices <- (((i-1) * round((1/6)*nrow(cvdata))) + 1):((i*round((1/6) * nrow(cvdata))))
+    # Exclude them from the train set
+    train_mlr <- lm(logexpend ~ ., data = cvdata[-indices,])
+    # Include them in the test set
+    test  <- data.frame(cvdata[indices, explvars])
+    names(test)  <- explvars
+    predict_test <- exp(predict(train_mlr, test))
+    # Compare predicted to held-out and summarize
+    predict_err  <- exp(cvdata[indices, "logexpend"]) - predict_test
+    crossval <- crossval + sum(abs(predict_err))
+  }
+  crossval/1000000
+}
+```
+`@sample_code`
+```{r}
+explvars <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
+crossvalfct(explvars)
+explvars <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
+crossvalfct(explvars)
+explvars <- c("gender", "age", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
+crossvalfct(explvars)
+```
+`@solution`
+```{r}
+explvars <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
+crossvalfct(explvars)
+explvars <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
+crossvalfct(explvars)
+explvars <- c("gender", "age", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
+crossvalfct(explvars)
+```
+
+
+
+
+
+
+---
+##  Model selection using out of sample validation
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: f86e97aa0f
+
+
+
+```
+
+Placeholder
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+```
+`@sample_code`
+```{r}
+n_out <- length(test_meps$expendop)
+meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc , data = train_meps)
+predict_meps3 <- test_meps[,c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")]
+predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
+predict_err_mlr3 <- test_meps$expendop - predict_mlr3
+sum_abs_pe_mlr3     <- sum(abs(predict_err_mlr3))/(1000*n_out)
+
+meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+predict_meps1 <- subset(test_meps, select = -c(expendop,logexpend))
+predict_mlr1  <- predict(meps_mlr1, predict_meps1)
+predict_err_mlr1 <- test_meps$expendop - predict_mlr1
+sum_abs_pe_mlr1     <- sum(abs(predict_err_mlr1))/(1000*n_out)
+
+sum_abs_pe_mlr1;sum_abs_pe_mlr3
+
+par(mfrow = c(1, 2))
+plot(predict_err_mlr1, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
+plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
+```
+`@solution`
+```{r}
+n_out <- length(test_meps$expendop)
+meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc , data = train_meps)
+predict_meps3 <- test_meps[,c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")]
+predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
+predict_err_mlr3 <- test_meps$expendop - predict_mlr3
+sum_abs_pe_mlr3     <- sum(abs(predict_err_mlr3))/(1000*n_out)
+
+meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+predict_meps1 <- subset(test_meps, select = -c(expendop,logexpend))
+predict_mlr1  <- predict(meps_mlr1, predict_meps1)
+predict_err_mlr1 <- test_meps$expendop - predict_mlr1
+sum_abs_pe_mlr1     <- sum(abs(predict_err_mlr1))/(1000*n_out)
+
+sum_abs_pe_mlr1;sum_abs_pe_mlr3
+
+par(mfrow = c(1, 2))
+plot(predict_err_mlr1, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
+plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
+```
+
+
+
+
+
+
+---
+## What the modeling procedure tells us
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 19a5897edf
+
+
+
+```
+
+`@projector_key`
+a4e48282b4a5c9b11a4ff473d05854dc
+
+---
+## What the modeling procedure tells us
+
+```yaml
+type: PureMultipleChoiceExercise
+
+xp: 50
+
+key: b2c9c6ef17
+
+
+
+```
+
+Which of the following are not important when interpreting the effects of individual variables?
+
+
+`@hint`
+
+
+
+
+
+
+`@possible_answers`
+- A. Substantive significance
+- B. Statistical significance
+- C. The amount of effort that it took to gather the data and do the analysis
+- D. Role of causality
+
+`@feedbacks`
+
+
+
+
+
+---
+## The importance of variable selection
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 7760de33f6
+
+
+
+```
+
+`@projector_key`
+7fc546268773edf723925445e44365cb
