@@ -1,8 +1,7 @@
 ---
-title: Chapter 3. Multiple Linear Regression
-description: >-
-  This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression. Many basic linear regression concepts extend directly, including goodness of fit measures such as the coefficient of determination and inference using t-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications.
-
+  title: "Chapter 3. Multiple Linear Regression"
+  description: "This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression. Many basic linear regression concepts extend directly, including goodness of fit measures such as the coefficient of determination and inference using t-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications."
+  v2: true
 
 ---
 ## Method of least squares
@@ -13,6 +12,9 @@ type: VideoExercise
 xp: 50
 
 key: 607ecb673f
+
+
+
 ```
 
 `@projector_key`
@@ -27,6 +29,9 @@ type: NormalExercise
 xp: 100
 
 key: 7e6008b3b9
+
+
+
 ```
 
 Suppose that you wish to predict the amount of term life insurance that someone will purchase but are uneasy about the `education` variable. Your sense is that, for purposes of purchasing life insurance, high school graduates and those that attend college should be treated the same. So, in this exercise, your will create a new variable, say `education1` that is equal to years of education for those with education less than or equal to 12 and is equal to 12 otherwise. The *Survey of Consumer Finances* `education` variable is the number of completed years of schooling and so 12 corresponds to completing high school in the US.
@@ -85,6 +90,9 @@ type: NormalExercise
 xp: 100
 
 key: 9d20cb1de4
+
+
+
 ```
 
 In the previous exercise, you fit a multiple linear regresion model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables. It turned out that the coefficient associated with `education` was 0.2064 and the coefficient associated with `logincome` was 0.4935. We now wish to interpret these regression coefficients.
@@ -162,6 +170,9 @@ type: VideoExercise
 xp: 50
 
 key: cfa3072c7c
+
+
+
 ```
 
 `@projector_key`
@@ -176,6 +187,9 @@ type: NormalExercise
 xp: 100
 
 key: 81c84d6420
+
+
+
 ```
 
 In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables `face` and `income` that are in the original units and run a regression for with these. We have already seen that rescaling by constants do not affect relationships but can be helpful with interpretations, so we define both  `face` and `income` to be in thousands of dollars.
@@ -184,6 +198,8 @@ In later chapters, we will learn how to specify a model using diagnostics techni
 - Create `Term2$face` by exponentiating `logface` and dividing by 1000. For convenience, we are storing this variable in the data set `Term2`. Use the same process to create `Term2$income`.
 - Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
 - Summarize this model and identify the residual standard error ($s$) as well as the coefficient of determination ($R^2$) and the version adjusted for degrees of freedom ($R_a^2$).
+
+
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -206,6 +222,10 @@ summary(Term_mlr1)
 ```
 
 
+
+
+
+
 ---
 ## Binary variables
 
@@ -215,6 +235,9 @@ type: VideoExercise
 xp: 50
 
 key: ff359ef406
+
+
+
 ```
 
 `@projector_key`
@@ -229,6 +252,9 @@ type: NormalExercise
 xp: 100
 
 key: 2f0001026b
+
+
+
 ```
 
 We have seen how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the family in the event of unexpected death. In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`. 
@@ -279,6 +305,9 @@ type: VideoExercise
 xp: 50
 
 key: ec71e48d7d
+
+
+
 ```
 
 `@projector_key`
@@ -293,6 +322,9 @@ type: NormalExercise
 xp: 100
 
 key: 29d2203fad
+
+
+
 ```
 
 This exercise examines the impact of various predictors on hospital charges. Identifying predictors of hospital charges can provide direction for hospitals, government, insurers and consumers in controlling these variables that in turn leads to better control of hospital costs. The data, from 1989, are aggregated by: 
@@ -308,8 +340,6 @@ Some preliminary analysis of the data has already been done. In this exercise, w
 - Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.
 - Fit a multiple linear regression using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.
 - Superimposed the fits from the multiple linear regression model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Note how slopes differ dramatically from the slope from the basic linear regression model.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -382,10 +412,84 @@ type: VideoExercise
 xp: 50
 
 key: 156ef40aaf
+
+
+
 ```
 
 `@projector_key`
 df2187184761fab4d774149af7725157
+
+---
+## Hypothesis testing and term life
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: f80245771a
+
+
+
+```
+
+Hypothesis testing is a type of *statistical inference* in that it is one of the main ways in which we can summarize what a model is "inferring" about the real world (in contrast to mathematical "deduction".) Moreover, as we will see in the next chapter, it can also be used as a tool to develop a model. In the context of our `Term life` data, let us compare model based on the binary variable that indicates whether a survey respondent is single versus the more complex marital status, `marstat`. In principle, the more detailed information the better but it may be that the additional information in `marstat`, compared to `single`, does not help fit the data in a significantly better way. 
+
+As part of the preparatory work, the dataset `Term4` is available that includes the binary variable `single` and the factor `marstat`. Moreover, the object `Term_mlr` contains information in a multiple linear regression fit of `logface` on the base explanatory variables 'logincome`, `education`, and `numhh`.
+
+`@instructions`
+- Fit a multiple linear regression model using the base explanatory variables plus `single` and another model using the base variables plus `marstat`.
+- Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+- Fit a multiple linear regression model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
+- Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
+Term4$single <- 1*(Term4$marstat == 0)
+Term4$marstat <- as.factor(Term4$marstat)
+Term_mlr <- lm(logface ~ logincome + education + numhh , data = Term4)
+anova(Term_mlr)
+```
+`@sample_code`
+```{r}
+Term_mlr3 <- lm(logface ~ logincome + education + numhh + single*logincome, data = Term4)
+anova(Term_mlr3)
+Fstat <- (anova(Term_mlr)$`Sum Sq`[4] - anova(Term_mlr3)$`Sum Sq`[6])/(2*anova(Term_mlr3)$`Mean Sq`[6])
+Fstat
+cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr3)$Df[6]))
+
+Term_mlr4 <- lm(logface ~ logincome + education + numhh +marstat*logincome, data = Term4)
+anova(Term_mlr4)
+Fstat <- (anova(Term_mlr3)$`Sum Sq`[6] - anova(Term_mlr4)$`Sum Sq`[6])/(2*anova(Term_mlr4)$`Mean Sq`[6])
+Fstat
+cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr4)$Df[6]))
+```
+`@solution`
+```{r}
+Term_mlr3 <- lm(logface ~ logincome + education + numhh + single*logincome, data = Term4)
+anova(Term_mlr3)
+Fstat <- (anova(Term_mlr)$`Sum Sq`[4] - anova(Term_mlr3)$`Sum Sq`[6])/(2*anova(Term_mlr3)$`Mean Sq`[6])
+Fstat
+cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr3)$Df[6]))
+
+Term_mlr4 <- lm(logface ~ logincome + education + numhh +marstat*logincome, data = Term4)
+anova(Term_mlr4)
+Fstat <- (anova(Term_mlr3)$`Sum Sq`[6] - anova(Term_mlr4)$`Sum Sq`[6])/(2*anova(Term_mlr4)$`Mean Sq`[6])
+Fstat
+cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr4)$Df[6]))
+```
+
+
+
+
+
 
 ---
 ## Hypothesis testing and Wisconsin hospital costs
@@ -395,18 +499,122 @@ type: NormalExercise
 
 xp: 100
 
-key: f80245771a
+key: 25140024df
+
+
+
 ```
 
+Earlier, you were introduced to a dataset  that provided hospital charges aggregated by:
 
+- `drg`, diagnostic related groups of costs, 
+- `payer`, type of health care provider (Fee for service, HMO, and other), and 
+- `hsa`, nine major geographic areas.
+
+We continue our analysis of the outcome variable  `logcharge`, the logarithm of total hospital charges per number of discharges, in terms of `log_numdschg`, the logarithm of the number of discharges, as well as the three categorical variables used in the aggregation. As before, we restrict consideration to three types of drgs, numbers 209, 391, and 431 that has been preloaded in the dataset `Hcost1`.
 
 `@instructions`
-
+- Fit a basic linear regression model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges.
+- Fit a multiple linear regression using logarithmic hospital costs as the outcome variable and explanatory variables logarithmic number of discharges and the categorical variable diagnostic related group. Identify the *F* statistic and *p* value that tests the importance of diagnostic related group. 
+- Fit a multiple linear regression using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the *F* statistic and *p* value that tests the importance of diagnostic related group interaction with logarithmic number of discharges.
+- Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors. You see that this provides one piece of evidence that the `hsa` is a far poorer predictor of costs than `drg`.
 
 `@hint`
 
 
+`@pre_exercise_code`
+```{r}
+Hcost <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv", header = TRUE)
+Hcost1 <- subset(Hcost, drg == 209|drg == 391|drg == 430)
+```
+`@sample_code`
+```{r}
+hosp_blr <- lm(logcharge ~ log_numdschg , data=Hcost1)
+anova(hosp_blr)
+hosp_mlr1 <- lm(logcharge ~ log_numdschg + as.factor(drg), data=Hcost1)
+anova(hosp_mlr1)
+hosp_mlr2 <- lm(logcharge ~ log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+anova(hosp_mlr2)
+summary(hosp_blr)$r.squared
+summary(hosp_mlr1)$r.squared
+summary(hosp_mlr2)$r.squared
 
+hosp_mlr3 <- lm(logcharge ~ log_numdschg + as.factor(hsa)*log_numdschg, data=Hcost1)
+summary(hosp_mlr3)$r.squared
+```
+`@solution`
+```{r}
+hosp_blr <- lm(logcharge ~ log_numdschg , data=Hcost1)
+anova(hosp_blr)
+hosp_mlr1 <- lm(logcharge ~ log_numdschg + as.factor(drg), data=Hcost1)
+anova(hosp_mlr1)
+hosp_mlr2 <- lm(logcharge ~ log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+anova(hosp_mlr2)
+summary(hosp_blr)$r.squared
+summary(hosp_mlr1)$r.squared
+summary(hosp_mlr2)$r.squared
+
+hosp_mlr3 <- lm(logcharge ~ log_numdschg + as.factor(hsa)*log_numdschg, data=Hcost1)
+summary(hosp_mlr3)$r.squared
+```
+
+
+
+
+
+
+---
+## Hypothesis testing and auto claims
+
+```yaml
+type: NormalExercise
+
+xp: 100
+
+key: 92b61ebeba
+
+
+
+```
+
+As an actuarial analyst, you are working with a large insurance company to help them understand their claims distribution for their private passenger automobile policies. You have available claims data for a recent year, consisting of:
+
+- `state`: codes 01 through 17 used, with each code randomly assigned to an actual individual state
+- `class`: rating class of operator, based on age, gender, marital status, use of vehicle, as coded in a separate PDF file
+- `gender`: operator gender 
+- `age`: operator age
+- `paid`: amount paid to settle and close a claim.
+
+You are focusing on older drivers, 50 and higher, for which there are *n* = 6,773 claims available.
+
+`@instructions`
+a. Run a regression of `logpaid` on `age`. Is `age` a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule. Also comment on the goodness of fit of this variable.
+
+b. Consider using class as a single explanatory variable. Use the one factor to estimate the model and respond to the following questions.
+
+    b (i). What is the point estimate of claims in class C7, drivers 50-69, driving to work or school, less than 30 miles per week with annual mileage under 7500, in natural logarithmic units?
+
+    b (ii). Determine the corresponding 95\% confidence interval of expected claims, in natural logarithmic units.
+
+    b (iii). Convert the 95\% confidence interval of expected claims that you determined in part b(ii) to dollars.
+
+c. Run a regression of `logpaid` on `age`, `gender` and the categorical variables `state` and `class`.
+
+    c (i). Is `gender` a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule.
+
+    c (ii). Is `class` a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule.
+
+    c (iii). Use the model to provide a point estimate of claims in dollars (not log dollars) for a male age 60 in STATE 2 in `class` C7.
+
+    c (iv). Write down the coefficient associated with `class` C7 and interpret this coefficient.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+#AutoC <- read.csv("CSVData\\Auto_claims.csv", header = TRUE)
+```
 
 
 
