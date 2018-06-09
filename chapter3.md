@@ -74,14 +74,12 @@ model_mlr1 <- lm(logface ~ education1 + numhh + logincome, data = Term2)
 newdata <- data.frame(logincome = log(40000), education1 = 11, numhh = 4)
 exp(predict(model_mlr1, newdata))
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Excellent! You now have experience fitting a regression plane and using this plane for predictions, extending what Galton did when he used parents' heights to predict the height of an adult child. Well done!")
-
 ```
+
+
 
 
 
@@ -108,13 +106,15 @@ The typical interpretation of coefficients in a regression model is as a partial
 - Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
 - Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
 Term1 <- subset(Term, subset = face > 0)
 Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
-model_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
 #summary(model_mlr)$coefficients[,1]
 ```
 `@sample_code`
@@ -126,27 +126,25 @@ lsfits1
 lsfits1[2:4] - lsfits1[1:3]
 pchange_fits1 <- exp(lsfits1[2:4] - lsfits1[1:3])
 pchange_fits1
-
 ```
 `@solution`
 ```{r}
 educ_predict <- c(14,14.1,14.2,14.3)
 newdata1 <- data.frame(logincome=mean(Term2$logincome), education=educ_predict, numhh=mean(Term2$numhh))
-lsfits1 <- predict(model_mlr, newdata1)
+lsfits1 <- predict(Term_mlr, newdata1)
 lsfits1
 lsfits1[2:4] - lsfits1[1:3]
 pchange_fits1 <- exp(lsfits1[2:4] - lsfits1[1:3])
 pchange_fits1
-
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Congratulations! From calculus, small changes in logarithmic values can be interpreted as proportional changes. This is the reason for using natural logarithms.")
-
 ```
+
+
+
+
 
 
 ---
@@ -154,10 +152,13 @@ success_msg("Congratulations! From calculus, small changes in logarithmic values
 
 ```yaml
 type: NormalExercise
-key: 13219eeb75
 lang: r
 xp: 100
 skills: 1
+key: 13219eeb75
+
+
+
 ```
 
 In a previous exercise, you fit a MLR model using `logface` as the outcome variable and using `education`, `numhh`, and `logincome` as explanatory variables; the resulting fit is in the object `Term_mlr`. It turned out that the coefficient associated with `logincome` was 0.4935. We now wish to interpret this regression coefficient. 
@@ -175,14 +176,14 @@ $$
 
 `@hint`
 
+
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
 Term1 <- subset(Term, subset = face > 0)
 Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
-model_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
 ```
-
 `@sample_code`
 ```{r}
 logincome_pred <- c(11,11.1,11.2,11.3)
@@ -194,7 +195,6 @@ pchange_fits2 <- 100*(exp(lsfits2[2:4])/exp(lsfits2[1:3])-1)
 pchange_fits2
 pchange_fits2/pchange_income
 ```
-
 `@solution`
 ```{r}
 logincome_pred <- c(11,11.1,11.2,11.3)
@@ -206,11 +206,14 @@ pchange_fits2 <- 100*(exp(lsfits2[2:4])/exp(lsfits2[1:3])-1)
 pchange_fits2
 pchange_fits2/pchange_income
 ```
-
 `@sct`
 ```{r}
 success_msg("Congratulations! When both $x_1$ and $y$ are in logarithmic units, then we can interpret $b_1$ to be ratio of two percentage changes, known as an *elasticity* in economics.")
 ```
+
+
+
+
 
 
 ---
@@ -272,14 +275,12 @@ Term2$income <- exp(Term2$logincome)/1000
 Term_mlr1 <- lm(face ~ education + numhh + income, data = Term2)
 summary(Term_mlr1)
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Congratulations! Compare these goodness of fit measures to those where income and face are in logarithmic units. Although not the only indicators, you will see that the proportion of variability explained (R square) and the statistical significance of coefficients are strikingly higher in the model with variables in logged units.")
-
 ```
+
+
 
 
 
@@ -315,7 +316,7 @@ key: 2f0001026b
 
 ```
 
-In the prior video, we saw how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative which is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the event of unexpected death. In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`. 
+In the prior video, we saw how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative which is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the event of unexpected death. In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`.
 
 `@instructions`
 - Calculate a table of correlation coefficients to examine pairwise linear relationships among the variables `numhh`, `education`, `logincome`, `single`, and  `logface`.
@@ -346,14 +347,12 @@ summary(Term_mlr3)
 Term_mlr4 <- lm(logface ~ education + numhh + logincome + single + single*logincome, data = Term4)
 summary(Term_mlr4)
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Excellent! From a correlation table, you saw that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model would be helpful. You explored this by first fitting a model by just adding the binary variable single, examined summary statistics, and checked the significance of the variable. Then, you explored the utility of the interaction of `single` with logarithmic income. Well done!")
-
 ```
+
+
 
 
 
@@ -459,14 +458,12 @@ lines(xseq,fit391, col="black")
 fit430 <- coef[1] + coef[4] + (coef[2] + coef[6])*xseq
 lines(xseq,fit430, col="blue")
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Congratulations! When you superimposed the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs, note how slopes differ dramatically from the slope from the basic linear regression model.")
-
 ```
+
+
 
 
 
@@ -504,15 +501,13 @@ key: f80245771a
 
 In the context of our `Term life` data, let us compare model based on the binary variable that indicates whether a survey respondent is single versus the more complex marital status, `marstat`. In principle, the more detailed information the better but it may be that the additional information in `marstat`, compared to `single`, does not help fit the data in a significantly better way. 
 
-As part of the preparatory work, the dataset `Term4` is available that includes the binary variable `single` and the factor `marstat`. Moreover, the object `Term_mlr` contains information in a multiple linear regression fit of `logface` on the base explanatory variables 'logincome`, `education`, and `numhh`. 
+As part of the preparatory work, the dataset `Term4` is available that includes the binary variable `single` and the factor `marstat`. Moreover, the object `Term_mlr` contains information in a multiple linear regression fit of `logface` on the base explanatory variables 'logincome`, `education`, and `numhh`.
 
 `@instructions`
 - Fit a MLR model using the base explanatory variables plus `single` and another model using the base variables plus `marstat`.
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
 - Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -553,14 +548,12 @@ Fstat <- (anova(Term_mlr3)$`Sum Sq`[6] - anova(Term_mlr4)$`Sum Sq`[6])/(2*anova(
 Fstat
 cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr4)$Df[6]))
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Congratulations! Hypothesis testing is a type of 'statistical inference' in that it is one of the main ways in which we can summarize what a model is "inferring" about the real world (in contrast to mathematical "deduction".) Moreover, as we will see in the next chapter, it can also be used as a tool to develop a model.")
-
 ```
+
+
 
 
 
@@ -592,8 +585,6 @@ We continue our analysis of the outcome variable  `logcharge`, the logarithm of 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variables logarithmic number of discharges and the categorical variable diagnostic related group. Identify the *F* statistic and *p* value that tests the importance of diagnostic related group. 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the *F* statistic and *p* value that tests the importance of diagnostic related group interaction with logarithmic number of discharges.
 - Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -631,14 +622,12 @@ summary(hosp_mlr2)$r.squared
 hosp_mlr3 <- lm(logcharge ~ log_numdschg + as.factor(hsa)*log_numdschg, data=Hcost1)
 summary(hosp_mlr3)$r.squared
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Congratulations! By examining the coefficients of determination, $R^2$, for each of these models, you see that this provides one piece of evidence that the `hsa` is a far poorer predictor of costs than `drg`.")
-
 ```
+
+
 
 
 
@@ -688,20 +677,16 @@ c. Run a regression of `logpaid` on `age`, `gender` and the categorical variable
 
     c (iv). Write down the coefficient associated with `class` C7 and interpret this coefficient.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
 #AutoC <- read.csv("CSVData\\Auto_claims.csv", header = TRUE)
 ```
 
+
 `@sct`
-
 ```{r}
-
 success_msg("Excellent! ")
-
 ```
 
 
