@@ -1,6 +1,7 @@
 ---
   title: "Chapter 4. Variable Selection"
   description: "This chapter describes tools and techniques to help you select variables to enter into a linear regression model, beginning with an iterative model selection process. In applications with many potential explanatory variables, automatic variable selection procedures are available that will help you quickly evaluate many models. Nonetheless, automatic procedures have serious limitations including the inability to account properly for nonlinearities such as the impact of unusual points; this chapter expands upon the Chapter 2 discussion of unusual points. It also describes collinearity, a common feature of regression data where explanatory variables are linearly related to one another. Other topics that impact variable selection, including out-of-sample validation, are also introduced."
+  v2: true
 
 ---
 ## An iterative approach to data analysis and modeling
@@ -20,7 +21,7 @@ key: 9da28ad7dd
 9362f318b5a48b39912dd30a85aa2f41
 
 ---
-## An iterative approach to data analysis and modeling
+## An iterative approach to data modeling
 
 ```yaml
 type: MultipleChoiceExercise
@@ -42,6 +43,7 @@ Which of the following is not true?
 - D. Understanding theoretical model properties is not really helpful when matching a model to data or inferring general relationships based on the data.
 
 `@hint`
+
 
 
 
@@ -95,8 +97,6 @@ As part of the code set-up, we have *n* = 100 observations generated of the outc
 - Fit a multiple linear regression model with all fifty explanatory variables. Compare this model to the one with ten variables via an *F* test.
 - Use the `stepwise` function to find the best model starting with the fitted model containing all fifty explanatory variables.
 - Fit the model identified by the stepwise regression algorithm and summarize the fit.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -170,6 +170,7 @@ summary(modelStep5)
 
 
 
+
 ---
 ## Residual analysis
 
@@ -203,10 +204,7 @@ key: d62cb0bd86
 
 nothing yet
 
-`@instructions`
 
-
-`@hint`
 
 
 
@@ -245,7 +243,6 @@ The table provides the basic summary statistics for the response variable price 
 `@instructions`
 Nothing yet
 
-`@hint`
 
 
 
@@ -290,10 +287,7 @@ key: a61e86392e
 
 Nothing yet
 
-`@instructions`
 
-
-`@hint`
 
 
 
@@ -321,10 +315,7 @@ key: e072807cbe
 
 placeholder
 
-`@instructions`
 
-
-`@hint`
 
 
 
@@ -369,10 +360,7 @@ key: 4d112f601d
 
 
 
-`@instructions`
 
-
-`@hint`
 
 
 
@@ -417,10 +405,7 @@ key: 40e9eec496
 
 Placeholder
 
-`@instructions`
 
-
-`@hint`
 
 
 
