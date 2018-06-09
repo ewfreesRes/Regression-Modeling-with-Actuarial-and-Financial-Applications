@@ -1,7 +1,7 @@
 ---
 title: Chapter 1. Regression and the Normal Distribution
 description: >-
-  Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter provides an introduction to the role of the normal distribution in regression, the use of logarithmic transformations in specifying regression relationships and the sampling basis that is critical for inferring regression results to broad populations of interest.
+  Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.
 
 
 ---
@@ -106,7 +106,7 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 
 `@instructions`
 -  To visualize the distribution, use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) to calculate the histogram. Use the `freq = FALSE` option to give a histogram with proportions instead of counts.
--  Determine a sequence. Then, function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/) to superimpose a normal curve on the histogram
+-  Use the function [seq()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq) to determine a sequence that can be used for plotting. Then, function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/) to superimpose a normal curve on the histogram
 -  Determine the probability that a son's height is greater than 72 inches
 
 `@hint`
@@ -289,7 +289,7 @@ qqline(claims)
 ```
 `@sct`
 ```{r}
-success_msg("Congratulations on learning about box and qq plots. You are unlikely to show these plots to consumers of your analysis but you will find them useful tools as we explore multivariate aspects of the data.")
+success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools as we explore multivariate aspects of data.")
 ```
 
 
@@ -307,16 +307,14 @@ xp: 100
 key: 127a1f92ec
 ```
 
-In the previous exercise, we learned that the Massachusetts bodily injury `claims` distribution was not even close to approximately normal (as evidence by the box and qq- plots). Non-normality may be induced by skewness (that we will handle via transformations in the next section). But, seeming non-normality can also be induced by one or two very large observations (that we will defined as an *outlier* later in the course). So, this exercise examines the effects on the distribution of removing the largest claims.
-
 The Massachusetts bodily injury dataset `injury` has been read in; our focus is on the `claims` variable in that dataset. 
 
-So this assignment is based on claims, not the logarithmic version. You will review the `R` functions `boxplot` and ``qqnorm`` for visualizing the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret results readily.
+In the previous exercise, we learned that the Massachusetts bodily injury `claims` distribution was not even close to approximately normal (as evidence by the box and qq- plots). Non-normality may be induced by skewness (that we will handle via transformations in the next section). But, seeming non-normality can also be induced by one or two very large observations (that we will defined as an *outlier* later in the course). So, this exercise examines the effects on the distribution of removing the largest claims.
 
 `@instructions`
--  Use the `R` function `tail` to examine the `injury` dataset and identify the largest claim
--  Use the `R` function `subset` to create a subset omitting the largest claim
--  Compare the summary statistics of the omitted claim distribution to the full distribution 
+-  Use the function [tail()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head) to examine the `injury` dataset and identify the largest claim
+-  Use the function  [subset()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/subset) to create a subset omitting the largest claim
+-  Compare the summary statistics of the omitted claim distribution to the full distribution
 -  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
 
 
@@ -346,7 +344,13 @@ hist(claims, freq = FALSE,  main = "Full Data")
 hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
+
+```
 
 
 
