@@ -1,7 +1,7 @@
 ---
 title: Chapter 2. Basic Linear Regression
 description: >-
-  This chapter considers regression in the case of only one explanatory variable. Despite this seeming simplicity, most of the deep ideas of regression can be developed in this framework. By limiting ourselves to the one variable case, we can illustrate the relationships between two variables graphically. Graphical tools prove to be important for developing a link between the data and a model.
+  This chapter considers regression in the case of only one explanatory variable. Despite this seeming simplicity, many deep ideas of regression can be developed in this framework. By limiting ourselves to the one variable case, we can illustrate the relationships between two variables graphically. Graphical tools prove to be important for developing a link between the data and a predictive model.
 
 
 ---
@@ -31,13 +31,13 @@ key: a485262f71
 
 The Wisconsin lottery dataset has already been read into a dataset `Wisc_lottery`.
 
-Like insurance claims, lotteries are uncertain events and so you want to be able to work and interpret with lottery data readily. Much of the reports that you read have sales and population in thousands of units, so this exercise gives you practice in rescaling data via linear transformations.
+Like insurance, lotteries are uncertain events and so the skills to work with and interpret lottery data are readily applicable to insurance. It is common to report sales and population in thousands of units, so this exercise gives you practice in rescaling data via linear transformations.
 
 `@instructions`
 - From the available population and sales variables, create new variables, say, `pop_1000` and `sales_1000` that are in thousands (of people and of dollars, respectively).
 - Create summary statistics for the new variables.
 - Plot `pop_1000` versus `sales_1000`.
-- Calculation the correlation between `pop_1000` versus `sales_1000`. How does this differ between the correlation between population and sales in the original units?
+- Calculate the correlation between `pop_1000` versus `sales_1000` using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor). How does this differ between the correlation between population and sales in the original units?
 
 
 `@pre_exercise_code`
@@ -61,7 +61,13 @@ plot(Lot$pop_1000, Lot$sales_1000)
 cor(Lot$pop_1000, Lot$sales_1000)
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Congratulations! We will rescale data using 'linear' transformations regularly. In part we do this for communicating our analysis to others. Also in part, this is for our own convenience as it can allow us to see patterns more readily.")
+
+```
 
 
 
@@ -91,14 +97,13 @@ xp: 100
 key: 97ec81af2a
 ```
 
-Instead of population, suppose that you wish to understand the effect that housing prices have on the sale of lottery tickets. In the Wisconsin lottery dataset  `Wisc_lottery` is the variable `medhome` which is the median house price for each zip code, in thousands of dollars. In this exercise, we will give feel for the distribution of this variable by examining summary statistics, examine its relationship with sales graphically and via correlations, fit a basic linear regression model and use this model to predict sales.
+The prior video analyzed the effect that a zip code's population has on lottery sales. Instead of population, suppose that you wish to understand the effect that housing prices have on the sale of lottery tickets. In the Wisconsin lottery dataset  `Wisc_lottery` is the variable `medhome` which is the median house price for each zip code, in thousands of dollars. In this exercise, you will get a feel for the distribution of this variable by examining summary statistics, examining its relationship with sales graphically and via correlations, fitting a basic linear regression model and using this model to predict sales.
 
 `@instructions`
-- Create a table summarizing the distributions of `medhome` and `sales`.
-- Plot `medhome` versus `sales` and calculate the corresponding correlation coefficient.
-- Regress `medhome`, the explanatory variable, on `sales`, the dependent variable.
-- Use the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
-
+- Summarize the distributions of `medhome` and `sales`.
+- Plot `medhome` versus `sales`. Summarize this relationship by calculating the corresponding correlation coefficient using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor).
+- Using the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), regress `medhome`, the explanatory variable, on `sales`, the dependent variable.
+- Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) and the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
 
 `@pre_exercise_code`
 ```{r}
@@ -125,7 +130,13 @@ newdata <- data.frame(medhome = 50)
 predict(model_blr1, newdata)
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Congratulations! You now have experience fitting a regression line and using this line for predictions, just as Galton did when he used parents' heights to predict the height of an adult child. Well done!")
+
+```
 
 
 
@@ -155,10 +166,12 @@ xp: 100
 key: e97a0cfbd0
 ```
 
-Instead of population, in this exercise we will consider the variable `medhome` which is the median house price for each zip code, in thousands of dollars, available in the Wisconsin lottery dataset  `Wisc_lottery`. We will run a regression of `medhome` on `sales`. It will be helpful if you compare the results to the regression of `pop` on `sales`. We have seen that `pop` is more highly correlated with `sales` than `medhome`, so we are expecting greater uncertainty in this regression fit.
+In a previous exercise, you developed a regression line to fit the variable `medhome`, the median house price for each zip code, as a predictor of lottery sales. The regression of `medhome` on `sales` has been summarized in the `R` object `model_blr`.
+
+How reliable is the regression line? In this excercise, you will compute some of the standard measures that are used to summarize the goodness of this fit.
 
 `@instructions`
-- Run a regression of `medhome` on `sales`.
+
 - Summarize the fitted regression model in an ANOVA table.
 - Determine the size of the typical residual, $s$.
 - Determine the coefficient of determination, $R^2$.
@@ -183,7 +196,13 @@ sqrt(anova(model_blr)$Mean[2])
 summary(model_blr)$r.squared
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Congratulations! It will be helpful if you compare the results of this exercise to the regression of `pop` on `sales` from the prior video. We have seen that `pop` is more highly correlated with `sales` than `medhome`, so we are expecting greater uncertainty in this regression fit.")
+
+```
 
 
 
@@ -199,7 +218,7 @@ xp: 100
 key: 1f57405e27
 ```
 
-Let us see how rescaling, a special kind of linear transformation, affects our measures of uncertainty. As before, the Wisconsin lottery dataset  `Wisc_lottery` is available and this dataset contains `sales_1000`, sales in thousands of dollars, and `pop_1000`, zip code population in thousands. How do measures of uncertainty change when going from the original units to thousands of those units?
+Let us see how rescaling, a linear transformation, affects our measures of uncertainty. As before, the Wisconsin lottery dataset  `Wisc_lottery` is available and this dataset contains `sales_1000`, sales in thousands of dollars, and `pop_1000`, zip code population in thousands. How do measures of uncertainty change when going from the original units to thousands of those units?
 
 `@instructions`
 - Run a regression of `pop` on `sales_1000` and summarize this in an ANOVA table.
@@ -237,7 +256,13 @@ sqrt(anova(model_blr2)$Mean[2])
 summary(model_blr2)$r.squared
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Congratulations! In this exercise, you have seen that rescaling does not affect our measures of goodness of fit in any meaningful way. For example, coeffcient of determinations are completely unaffected. This is helpful because we will rescale variables extensively in our search for patterns in the data.")
+
+```
 
 
 
@@ -267,12 +292,14 @@ xp: 100
 key: 7f691f8ace
 ```
 
-As an alternative to population, in this exercise we will summarize the effect that `medhome` has on `sales`. For interpretation, recall that `medhome` is in thousands of dollars whereas sales is in dollars. These variables are available in the dataset `Wisc_lottery` which has already been read in. This exercise will give you practice i the standard inferential tasks: hypothesis testing, confidence intervals, and prediction.
+In a previous exercise, you developed a regression line to fit the variable `medhome`, the median house price for each zip code, as a predictor of lottery sales. The regression of `medhome` on `sales` has been summarized in the `R` object `model_blr`.
+  
+This exercise will give you practice in the standard inferential tasks: hypothesis testing, confidence intervals, and prediction.
 
 `@instructions`
 - Summarize the regression model and identify the $t$-statistic for testing the importance of the regression coefficient associated with `medhome`.
-- Provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
-- Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Provide a point prediction and a 95\% prediction interval for sales.
+- Use the function [confint()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint) to provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
+- Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) to provide a point prediction and a 95\% prediction interval for sales.
 
 
 `@pre_exercise_code`
@@ -298,7 +325,13 @@ NewData1 <- data.frame(medhome = 50)
 predict(model_blr1, NewData1, interval = "prediction", level = .95)
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Congratulations! Much of what we learn from a data modeling exercise can be summarized using standard inferential tools: hypothesis testing, confidence intervals, and prediction.")
+
+```
 
 
 
@@ -328,11 +361,13 @@ xp: 100
 key: 496a3a7c29
 ```
 
-The scatter plot of population versus sales exhibits an outlier; the point in the upper left-hand side of the plot represents a zip code that includes Kenosha, Wisconsin. Sales for this zip code are unusually high given its population. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. This exercise summarizes the regression fit both with and without this zip code. 
+In an earlier video, we made a scatter plot of population versus sales. This plot exhibits an outlier; the point in the upper left-hand side of the plot represents a zip code that includes Kenosha, Wisconsin. Sales for this zip code are unusually high given its population.  
+
+This exercise summarizes the regression fit both with and without this zip code in order to see how robust our results are to the inclusion of this unusual observation. 
 
 `@instructions`
-- A basic linear regression fit of population on sales has already been fit. Fit this same model to the data, omiting Kenosha (observation number 9).
-- Plot these two least square fitted lines superimposed on the full data set.
+- A basic linear regression fit of population on sales has already been fit in the object `model_blr`. Fit this same model to the data, omiting Kenosha (observation number 9).
+- Plot these two least squares fitted lines superimposed on the full data set.
 -  What is the effect on the distribution  of residuals by removing this point? Calculate a qq plot with and without Kenosha.
 
 `@hint`
@@ -379,6 +414,12 @@ qqnorm(residuals(model_Kenosha), main = "")
 qqline(residuals(model_Kenosha))
 ```
 
+`@sct`
 
+```{r}
+
+success_msg("Excellent! Just because an observation is unusual does not make it bad or noninformative. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. Although unusual, there is interesting information to be learned from this observation.")
+
+```
 
 
