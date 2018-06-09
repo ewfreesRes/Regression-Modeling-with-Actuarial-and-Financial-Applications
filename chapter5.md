@@ -4,7 +4,7 @@
   v2: true
 
 ---
-## Case study: MEPS health expenditures
+## Actuarial Regression Modeling with R
 
 ```yaml
 type: VideoExercise
