@@ -509,6 +509,8 @@ As part of the preparatory work, the dataset `Term4` is available that includes 
 - Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -550,7 +552,7 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr4)$Df[6]))
 ```
 `@sct`
 ```{r}
-success_msg("Congratulations! Hypothesis testing is a type of 'statistical inference' in that it is one of the main ways in which we can summarize what a model is "inferring" about the real world (in contrast to mathematical "deduction".) Moreover, as we will see in the next chapter, it can also be used as a tool to develop a model.")
+success_msg("Congratulations! Hypothesis testing is a type of 'statistical inference' in that it is one of the main ways in which we can summarize what a model is 'inferring' about the real world (in contrast to mathematical 'deduction'.) Moreover, as we will see in the next chapter, it can also be used as a tool to develop a model.")
 ```
 
 
