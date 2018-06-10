@@ -49,6 +49,8 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -82,7 +84,10 @@ boxplot(logexpend ~ phstat, data = meps, main = "boxplot of log expend")
 plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
 lines(lowess(meps$age, meps$logexpend), col="red")
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! Summarizing data, without reference to a model, is probably the most time-consuming part of any predictive modeling exercise. Summary statistics are also a key part of any report as the illustrate features of the data that are accessible to a broad audience.")
+```
 
 
 
@@ -105,15 +110,15 @@ key: d8f858af77
 
 As part of the pre-processing for the model fitting, we will split the data into training and test subsamples. For this exercise, we use a 75/25 split although other choices are certainly suitable. Some analysts prefer to do this splitting before looking at the data. Another approach, adopted here, is that the final report typically contains summary statistcs of the entire data set and so it makes sense to do so when examining summary statistics.
 
-We start by fitting a benchmark model. It is common to use all available explanatory variables with the outcome on the original scale and so we use this as our benchmark model. This exercise shows that when you [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) a fitted linear regression model it `R`, the result provides four graphs that you have seen before. These are very useful for identifying an appropriate model.
-
-You will compare these graphs to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling, a common feature of actuarial applications.
+We start by fitting a benchmark model. It is common to use all available explanatory variables with the outcome on the original scale and so we use this as our benchmark model. This exercise shows that when you [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) a fitted linear regression model in `R`, the result provides four graphs that you have seen before. These can be useful for identifying an appropriate model.
 
 `@instructions`
 - Randomly split the data into a training and a testing data sets. Use 75\% for the training, 25\% for the testing.
 - Fit a full model using `expendop` as the outcome and all explanatory variables. Summarize the results of this model fitting.
 - You can [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) the fitted model to view several diagnostic plots. These plots provide evidence that expenditures may not be the best scale for linear regression.
 - Fit a full model using `logexpend` as the outcome and all explanatory variables. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -163,7 +168,10 @@ plot(meps_mlr2)
 summary(meps_mlr2)
 par(mfrow = c(1, 1))
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! You may have compared the four diagnostic graphs from the MLR model fit of 'expend' to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling. Using logarithmic outcomes is a common feature of actuarial applications but can be difficult to diagnose and interpret without practice.")
+```
 
 
 
@@ -196,6 +204,8 @@ From our prior work, the training dataset `train_meps` has already been loaded i
 - As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit using the [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/anova) function and note that statistical significance of the new variable.
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -251,7 +261,10 @@ meps_mlr5 <- lm(logexpend ~ age  + anylimit + mpoor + insure  + usc  + phstat, d
 summary(meps_mlr5)
 anova(meps_mlr4, meps_mlr5)
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! Sometimes variables may have good predictive power but are unacceptable for public policy purposes - in insurance, ethnicity and sometimes sex are good examples. This implies that model interpretation can be just as important as the ability to predict.")
+```
 
 
 
@@ -299,6 +312,8 @@ crossvalfct <- function(explvars){
 - Run the function again but adding the `phstat` variable
 - Run the function again but omitting the `gender` variable
 - Note which model is suggested by the cross validation function.
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -350,7 +365,10 @@ crossvalfct(explvars)
 explvars <- c("gender", "age", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
 crossvalfct(explvars)
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! ")
+```
 
 
 
@@ -373,6 +391,10 @@ key: f86e97aa0f
 
 Placeholder
 
+`@instructions`
+
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -430,7 +452,10 @@ par(mfrow = c(1, 2))
 plot(predict_err_mlr1, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
 plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
 ```
-
+`@sct`
+```{r}
+success_msg("Excellent! ")
+```
 
 
 
@@ -471,8 +496,6 @@ key: b2c9c6ef17
 Which of the following are not important when interpreting the effects of individual variables?
 
 
-`@hint`
-
 
 
 
@@ -483,8 +506,6 @@ Which of the following are not important when interpreting the effects of indivi
 - B. Statistical significance
 - C. The amount of effort that it took to gather the data and do the analysis
 - D. Role of causality
-
-`@feedbacks`
 
 
 
