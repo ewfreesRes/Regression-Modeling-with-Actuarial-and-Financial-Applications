@@ -42,8 +42,6 @@ Which of the following is not true?
 - C. Model formulation is accomplished by using prior knowledge of relationships.
 - D. Understanding theoretical model properties is not really helpful when matching a model to data or inferring general relationships based on the data.
 
-`@hint`
-
 
 
 
@@ -97,8 +95,6 @@ As part of the code set-up, we have *n* = 100 observations generated of the outc
 - Fit a multiple linear regression model with all fifty explanatory variables. Compare this model to the one with ten variables via an *F* test.
 - Use the `stepwise` function to find the best model starting with the fitted model containing all fifty explanatory variables.
 - Fit the model identified by the stepwise regression algorithm and summarize the fit.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -166,15 +162,10 @@ anova(modelStep3,modelStep4)
 modelStep5 <- lm(y ~ xvar27 + xvar29 + xvar32, data = X)
 summary(modelStep5)
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Excellent! The step procedure repeatedly fits many models to a data set. We summarize each fit with hypothesis testing statistics like t-statistics and p-values. But, remember that hypothesis tests are designed to falsely detect a relationship a fraction of the time (typically 5%). For example, if you run a t-test 50 times (for each explanatory variable), you can expect to get two or three statistically significant explanatory variables even for unrelated variables (because 50 times 0.05 = 2.5).")
-
 ```
-
 
 
 
@@ -212,14 +203,56 @@ key: d62cb0bd86
 
 ```
 
-nothing yet
+This exercise examines data, pre-loaded in the object `survey`, from a survey on the cost effectiveness of risk management practices. Risk management practices are activities undertaken by a firm to minimize the potential cost of future losses, such as the event of a fire in a warehouse or an accident that injures employees. This exercise develops a model that can be used to make statements about cost of managing risks.
+
+A measure of risk management cost effectiveness, `logcost`, is the outcome variable. This variable is defined as total property and casualty premiums and uninsured losses as a proportion of total assets, in logarithmic units. It is a proxy for annual expenditures associated with insurable events, standardized by company size. Explanatory variables include `logsize`, the logarithm of total firm assets, and `indcost`, a measure of the firm's industry risk.
+
+`@instructions`
+- Fit and summarize a MLR model using `logcost` as the outcome variable and `logsize` and `indcost` as explanatory variables.
+- Plot residuals of the fitted model versus `indcost` and superimpose a locally fitted line using the `R` function [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess).
+- Fit and summarize a MLR model of `logcost` on `logsize`, `indcost` and a squared version of `indcost`.
+- Plot residuals of the fitted model versus `indcost' and superimpose a locally fitted line using [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess).
+
+`@hint`
 
 
+`@pre_exercise_code`
+```{r}
+survey <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv", header=TRUE)
+survey$logcost <- log(survey$firmcost)
+```
+`@sample_code`
+```{r}
+mlr.survey1 <- lm(logcost ~ logsize + indcost, data = survey)
+summary(mlr.survey1)
 
+plot(survey$indcost, mlr.survey1$residuals)
+lines(lowess(survey$indcost,mlr.survey1$residuals))
 
+mlr.survey2 <- lm(logcost ~ logsize + poly(indcost,2), data = survey)
+summary(mlr.survey2)
 
+plot(survey$indcost, mlr.survey2$residuals)
+lines(lowess(survey$indcost,mlr.survey2$residuals))
+```
+`@solution`
+```{r}
+mlr.survey1 <- lm(logcost ~ logsize + indcost, data = survey)
+summary(mlr.survey1)
 
+plot(survey$indcost, mlr.survey1$residuals)
+lines(lowess(survey$indcost,mlr.survey1$residuals))
 
+mlr.survey2 <- lm(logcost ~ logsize + poly(indcost,2), data = survey)
+summary(mlr.survey2)
+
+plot(survey$indcost, mlr.survey2$residuals)
+lines(lowess(survey$indcost,mlr.survey2$residuals))
+```
+`@sct`
+```{r}
+success_msg("Excellent! In this exercise, you examined residuals from a preliminary model fit and detected a mild quadratic pattern in a variable. This suggested entering the squared term of that variable into the model specification. The refit of this new model suggests that the squared term has important explanatory information. The squared term is a nonlinear alternative that is not available in many automatic variable selection procedures.")
+```
 
 
 
@@ -248,10 +281,10 @@ prices for refrigerators on the market provides some insight to this question.
 
 To this end, we analyze data from *n* = 37 refrigerators. 
 
-The table provides the basic summary statistics for the response variable price and the five explanatory variables. From this table, we see that the average refrigerator price is $\overline{y}$= \$626.40, with standard deviation $s_{y}$ = \$139.80. Similarly, the average annual amount to operate a refrigerator, or average ecost, is \$70.51.
-
 `@instructions`
 Nothing yet
+
+`@hint`
 
 
 
@@ -295,14 +328,46 @@ key: a61e86392e
 
 ```
 
-Nothing yet
+In chapter 2, we consider a fictitious data set of 19 "base" points plus three different types of unusual points. In this exercise, we consider the effect of one unusal point, "C", this both an outlier (unusual in the "y" direction) and an influential point (usual in the x-space). The data have been pre-loaded in the dataframe `outlrC`.
+
+`@instructions`
+- Fit a basic linear regression model of `y` on `x` and store the result in an object.
+- Use the function [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals from the fitted regression model object and summarize them. 
+- Use the function [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the leverages from the model fitted and summarize them. 
+- Plot the standardized residuals versus the leverages to see the relationship between these two measures that calibrate how unusual an observation is.
+
+`@hint`
 
 
-
-
-
-
-
+`@pre_exercise_code`
+```{r}
+outlr <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7a38912e544c31fc6f5fca12b9a2eb645f2bcd32/Outlier.csv", header = TRUE)
+outlrC <-outlr[-c(20,21),c("x","y")]
+```
+`@sample_code`
+```{r}
+plot(outlrC)
+model_outlrC <- lm(y ~ x, data = outlrC)
+ri <- rstandard(model_outlrC)
+summary(ri)
+hii <- hatvalues(model_outlrC)
+summary(hii)
+plot(hii,ri)
+```
+`@solution`
+```{r}
+plot(outlrC)
+model_outlrC <- lm(y ~ x, data = outlrC)
+ri <- rstandard(model_outlrC)
+summary(ri)
+hii <- hatvalues(model_outlrC)
+summary(hii)
+plot(hii,ri)
+```
+`@sct`
+```{r}
+success_msg("Excellent! With only two variables, we could argue graphically that observations were unusual. In this exercise, we showed how certain statistics could be used to identify usual observations. Although not really necessary in basic linear regression, the main advantage of the statistics is that they work readily in a multivariate setting.")
+```
 
 
 
@@ -310,7 +375,7 @@ Nothing yet
 
 
 ---
-## High leverage and stock liquidity
+## High leverage and risk manager survey
 
 ```yaml
 type: NormalExercise
@@ -323,14 +388,56 @@ key: e072807cbe
 
 ```
 
-placeholder
+In a prior exercise, we fit a regression model of `logcost` on `logsize`, `indcost` and a squared version of `indcost`. This model is summarized in the object `mlr_survey2`. In this exercise, we examine the robustness of the model to unusual observations. 
+
+`@instructions`
+- Use the `R` functions [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) and [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.
+- You will see that there are two observations where the leverages are high, numbers 10 and 16. On looking at the dataset, these turn out to be observations in a high risk industry. Create a histogram of the variable `indcost` to corroborate this.
+- Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object  `mlr_survey2`, noting differences in the coefficients.
+
+`@hint`
 
 
+`@pre_exercise_code`
+```{r}
+survey <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv", header=TRUE)
+survey$logcost <- log(survey$firmcost)
+mlr.survey2 <- lm(logcost ~ logsize + poly(indcost,2), data = survey)
+```
+`@sample_code`
+```{r}
+#summary(mlr.survey2)
+ri <- rstandard(mlr.survey2)
+hii <- hatvalues(mlr.survey2)
+mean(hii)
 
+par(mfrow=c(1, 2))
+hist(ri, nclass=16, main="", xlab="Standardized Residuals")
+hist(hii, nclass=16, main="", xlab="Leverages")
+par(mfrow=c(1, 1))
+hist(survey$indcost, nclass=16)
+mlr.survey3 <- lm(logcost ~ logsize + poly(indcost,2), data =  survey, subset =-c(10,16))
+summary(mlr.survey3)
+```
+`@solution`
+```{r}
+#summary(mlr.survey2)
+ri <- rstandard(mlr.survey2)
+hii <- hatvalues(mlr.survey2)
+mean(hii)
 
-
-
-
+par(mfrow=c(1, 2))
+hist(ri, nclass=16, main="", xlab="Standardized Residuals")
+hist(hii, nclass=16, main="", xlab="Leverages")
+par(mfrow=c(1, 1))
+hist(survey$indcost, nclass=16)
+mlr.survey3 <- lm(logcost ~ logsize + poly(indcost,2), data =  survey, subset =-c(10,16))
+summary(mlr.survey3)
+```
+`@sct`
+```{r}
+success_msg("Excellent! You will have noted that after removing these two influential observations from a high risk industry, the variable associated with the `indcost` squared became less statistically significant. This illustrates a general phenomena; sometimes, the 'signicance' of a variable may actually due to a few unusual observations, not the entire variable.")
+```
 
 
 
@@ -355,7 +462,7 @@ key: 1e651c4018
 3f319d9bce5db7f2d39df9e2e14f3c46
 
 ---
-## Collinearity and data
+## Collinearity and term life
 
 ```yaml
 type: NormalExercise
@@ -368,14 +475,49 @@ key: 4d112f601d
 
 ```
 
+We have seen that adding an explanatory variable $x^2$ to a model is sometimes helpful even though it is perfectly related to $x$ (such as through the function $f(x)=x^2$). But, for some data sets, higher order polynomials and interactions can be approximately linearly related (depending on the range of the data). 
+
+This exercise returns to our term life data set `Term1` (preloaded) and demonstrates that collinearity can be severe when introducing interaction terms.
+
+`@instructions`
+- Fit a MLR model of `logface` on explantory variables `education`, `numhh` and `logincome`
+- Use the function [vif()](https://www.rdocumentation.org/packages/car/versions/3.0-0/topics/vif) from the `car` package (preloaded) to calculation variance inflation factors.
+- Fit a MLR model of `logface` on explantory variables `education` , `numhh` and `logincome` with an interaction between `numhh` and `logincome` and extract variance inflation factors.
+
+`@hint`
 
 
+`@pre_exercise_code`
+```{r}
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+```
+`@sample_code`
+```{r}
+library(car)
 
+# Solution
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term1)
+vif(Term_mlr)
+Term_mlr1 <- lm(logface ~ education + numhh*logincome , data = Term1)
+summary(Term_mlr1)
+vif(Term_mlr1)
+```
+`@solution`
+```{r}
+library(car)
 
-
-
-
-
+# Solution
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term1)
+vif(Term_mlr)
+Term_mlr1 <- lm(logface ~ education + numhh*logincome , data = Term1)
+summary(Term_mlr1)
+vif(Term_mlr1)
+```
+`@sct`
+```{r}
+success_msg("Excellent! This exercise underscores that approximately colinearity among explanatory variables can be induced when introducing higher order terms such as interactions. Note that in the interation model the variable 'numhh' does not appear to be statistically effect. This is one of the big dangers of collinearity - it can mask important effects.")
+```
 
 
 
@@ -415,6 +557,10 @@ key: 40e9eec496
 
 Placeholder
 
+`@instructions`
+
+
+`@hint`
 
 
 
