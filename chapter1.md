@@ -481,3 +481,16 @@ key: b5b426b272
 
 `@projector_key`
 f76192841f2d236d191ccaf2582e94bb
+---
+## One More Try...
+
+```yaml
+type: VideoExercise
+key: 927c60efa4
+lang: r
+xp: 50
+skills: 1
+video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
+```
+
+
