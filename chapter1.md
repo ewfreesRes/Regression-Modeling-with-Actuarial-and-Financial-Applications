@@ -466,23 +466,6 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 ---
-## Try again
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: 939bb650d4
-
-
-
-```
-
-`@projector_key`
-8ac173c273476051b7ba54ac786aa5ae
-
----
 ## Insert exercise title here
 
 ```yaml
