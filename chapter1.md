@@ -20,22 +20,6 @@ key: cc4b0289d5
 `@projector_key`
 02abc0a8a3727420f7c6f719ae15a203
 
----
-## Just to Try Video Link
-
-```yaml
-type: VideoExercise
-lang: r
-xp: 50
-skills: 1
-key: aab497f8e6
-
-video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
-
-```
-
-`@projector_key`
-undefined
 
 ---
 ## Fitting Galton's height data
@@ -462,27 +446,8 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 
-
-
-
 ---
-## Try video linkkk
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: b5b426b272
-
-video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
-
-```
-
-`@projector_key`
-f76192841f2d236d191ccaf2582e94bb
----
-## One More Try...
+## Try Video Link
 
 ```yaml
 type: VideoExercise
@@ -492,8 +457,5 @@ xp: 50
 skills: 1
 video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 ```
-*** =projector_key
-49b462590aded84dc84b6f2983691e58
-
 
 
