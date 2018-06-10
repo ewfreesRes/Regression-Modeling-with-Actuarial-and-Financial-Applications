@@ -475,7 +475,7 @@ xp: 50
 
 key: b5b426b272
 
-
+video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 
 ```
 
@@ -492,8 +492,5 @@ xp: 50
 skills: 1
 video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 ```
-*** =projector_key
-587ac3ec08345cdf9f2d7336fda8c487
-
 
 
