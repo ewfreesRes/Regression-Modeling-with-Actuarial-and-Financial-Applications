@@ -93,10 +93,12 @@ This excercise illustrates this phenomenom by using simulation techniques to dra
 As part of the code set-up, we have *n* = 100 observations generated of the outcome *y* and 50 explanatory variables, `xvar1` through `xvar50`. A few steps show that collections of explanatory variables are not statistically significant. However, with the [stepwise()](https://www.rdocumentation.org/packages/Rcmdr/versions/2.0-4/topics/stepwise) command, you will find some statistically significant relationships. This is because the `stepwise` procedure is repeatedly using *t*-tests - hypothesis testing procedures that are design to falsely detect a relationship $\alpha$ fraction of the time (typically 5\%). For example, if you run a *t*-test 50 times (for each explanatory variable), you can expect to get two or three "statistically significant" explanatory variables even for unrelated variables (because $50 \times 0.05 = 2.5$).
 
 `@instructions`
-- Fit a basic linear regression model and multiple linear regression model with the first ten explanatory variables. Compare the models via an *F* test.
+- Fit a basic linear regression model and MLR model with the first ten explanatory variables. Compare the models via an *F* test.
 - Fit a multiple linear regression model with all fifty explanatory variables. Compare this model to the one with ten variables via an *F* test.
 - Use the `stepwise` function to find the best model starting with the fitted model containing all fifty explanatory variables.
 - Fit the model identified by the stepwise regression algorithm and summarize the fit.
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -165,6 +167,14 @@ modelStep5 <- lm(y ~ xvar27 + xvar29 + xvar32, data = X)
 summary(modelStep5)
 ```
 
+`@sct`
+
+```{r}
+
+success_msg("Excellent! The step procedure repeatedly fits many models to a data set. We summarize each fit with hypothesis testing statistics like t-statistics and p-values. But, remember that hypothesis tests are designed to falsely detect a relationship a fraction of the time (typically 5%). For example, if you run a t-test 50 times (for each explanatory variable), you can expect to get two or three statistically significant explanatory variables even for unrelated variables (because 50 times 0.05 = 2.5).")
+
+```
+
 
 
 
@@ -189,7 +199,7 @@ key: 37c4ebf2d6
 1a22b8308fcc14590ae2bdb95030c2a2
 
 ---
-## Residual analysis and stock liquidity
+## Residual analysis and risk manager survey
 
 ```yaml
 type: NormalExercise

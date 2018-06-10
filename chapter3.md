@@ -44,6 +44,8 @@ Suppose that you wish to predict the amount of term life insurance that someone 
 - Using the method of least squares and the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
 - With this fitted model and the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict), predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -105,8 +107,6 @@ The typical interpretation of coefficients in a regression model is as a partial
 `@instructions`
 - Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
 - Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -173,8 +173,6 @@ $$
 - Determine least square fitted values for several selected values of `logincome`, holding other explantory variables fixed.
 - Determine the corresponding proportional changes for the fitted values. 
 - Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -508,8 +506,6 @@ As part of the preparatory work, the dataset `Term4` is available that includes 
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
 - Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
-
-`@hint`
 
 
 `@pre_exercise_code`
