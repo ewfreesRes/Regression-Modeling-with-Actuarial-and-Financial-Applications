@@ -480,9 +480,9 @@ We have seen that adding an explanatory variable $x^2$ to a model is sometimes h
 This exercise returns to our term life data set `Term1` (preloaded) and demonstrates that collinearity can be severe when introducing interaction terms.
 
 `@instructions`
-- Fit a MLR model of `logface` on explantory variables `education`, `numhh` and `logincome`
+- Fit a MLR model of `logface` on explanatory variables `education`, `numhh` and `logincome`
 - Use the function [vif()](https://www.rdocumentation.org/packages/car/versions/3.0-0/topics/vif) from the `car` package (preloaded) to calculation variance inflation factors.
-- Fit a MLR model of `logface` on explantory variables `education` , `numhh` and `logincome` with an interaction between `numhh` and `logincome` and extract variance inflation factors.
+- Fit a MLR model of `logface` on explanatory variables `education` , `numhh` and `logincome` with an interaction between `numhh` and `logincome` and extract variance inflation factors.
 
 `@hint`
 
