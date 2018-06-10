@@ -1,8 +1,7 @@
 ---
-title: Chapter 1. Regression and the Normal Distribution
-description: >-
-  Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.
-
+  title: "Chapter 1. Regression and the Normal Distribution"
+  description: "Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships."
+  v2: true
 
 ---
 ## Fitting a normal distribution
@@ -13,6 +12,9 @@ type: VideoExercise
 xp: 50
 
 key: cc4b0289d5
+
+
+
 ```
 
 `@projector_key`
@@ -27,6 +29,9 @@ lang: r
 xp: 50
 skills: 1
 key: aab497f8e6
+
+
+
 ```
 
 `@projector_key`
@@ -41,6 +46,9 @@ lang: r
 xp: 100
 skills: 1
 key: 6154f289da
+
+
+
 ```
 
 The Galton data has already been read into a dataset called `heights`. These data include the heights of 928 adult children `child_ht`, together with an index of their parents' height `parent_ht`.  The video explored the distribution of the parents' height; in this assignment, we investigate the distribution of the heights of the adult children.
@@ -91,6 +99,7 @@ success_msg("Excellent! With this procedure, you can now calculate probabilities
 
 
 
+
 ---
 ## Visualizing child's height distribution
 
@@ -100,6 +109,9 @@ type: NormalExercise
 xp: 100
 
 key: 7dc98dc1ff
+
+
+
 ```
 
 As in the prior exercise, from the Galton dataset `heights`, the heights of 928 adult children have been used to create a local variable called `ht_child`. We also have basic summary statistics, the mean height `mchild` and the standard deviation of heights in `sdchild`. In this exercise, we explore the fit of the normal curve to this distribution.
@@ -147,6 +159,7 @@ success_msg("Excellent! Visualizing the distribution, especially with reference 
 
 
 
+
 ---
 ## Visualizing distributions
 
@@ -156,6 +169,9 @@ type: VideoExercise
 xp: 50
 
 key: a6c75bd534
+
+
+
 ```
 
 `@projector_key`
@@ -170,6 +186,9 @@ type: NormalExercise
 xp: 100
 
 key: 2b2ea998af
+
+
+
 ```
 
 In the prior video, you got somebackground information on the Massachusetts bodily injury dataset. This dataset, `injury`, has been read in and local variables `claims` has been created. This assignment reviews the  [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function for visualizing the distribution and allows you to explore density plotting, a smoothed version of the histogram.
@@ -221,6 +240,7 @@ success_msg("Excellent! Visualizing the distribution is important and smoothing 
 
 
 
+
 ---
 ## Summarizing distributions
 
@@ -230,6 +250,9 @@ type: VideoExercise
 xp: 50
 
 key: 210f239af2
+
+
+
 ```
 
 `@projector_key`
@@ -244,6 +267,9 @@ type: NormalExercise
 xp: 100
 
 key: 70a5a3a60b
+
+
+
 ```
 
 The Massachusetts bodily injury data has already been read and used to create the local variable `claims` representing bodily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
@@ -296,6 +322,7 @@ success_msg("Congratulations on learning about box and qq plots. Although you ar
 
 
 
+
 ---
 ## Effects on distributions of removing the largest claim
 
@@ -305,6 +332,9 @@ type: NormalExercise
 xp: 100
 
 key: 127a1f92ec
+
+
+
 ```
 
 The Massachusetts bodily injury dataset `injury` has been read in; our focus is on the `claims` variable in that dataset. 
@@ -343,14 +373,12 @@ par(mfrow = c(1, 2))
 hist(claims, freq = FALSE,  main = "Full Data")
 hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 ```
-
 `@sct`
-
 ```{r}
-
 success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
-
 ```
+
+
 
 
 
@@ -364,6 +392,9 @@ type: VideoExercise
 xp: 50
 
 key: 6efae24831
+
+
+
 ```
 
 `@projector_key`
@@ -378,6 +409,9 @@ type: NormalExercise
 xp: 100
 
 key: 2127303de1
+
+
+
 ```
 
 We have now examined the distributions of bodily injury claims and its logarithmic version. Grudgingly, we have concluded that to fit a normal curve the logarithmic version of claims is a better choice (again, we really do not like log dollars but you'll get used to it in this course). But, why logarithmic and not some other transformations?
@@ -428,3 +462,22 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 
+
+
+
+---
+## Insert exercise title here
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 939bb650d4
+
+
+
+```
+
+`@projector_key`
+8ac173c273476051b7ba54ac786aa5ae
