@@ -494,25 +494,25 @@ Term1 <- subset(Term, subset = face > 0)
 ```
 `@sample_code`
 ```{r}
-library(car)
+#library(car)
 
 # Solution
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term1)
-vif(Term_mlr)
+#vif(Term_mlr)
 Term_mlr1 <- lm(logface ~ education + numhh*logincome , data = Term1)
 summary(Term_mlr1)
-vif(Term_mlr1)
+#vif(Term_mlr1)
 ```
 `@solution`
 ```{r}
-library(car)
+#library(car)
 
 # Solution
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term1)
-vif(Term_mlr)
+#vif(Term_mlr)
 Term_mlr1 <- lm(logface ~ education + numhh*logincome , data = Term1)
 summary(Term_mlr1)
-vif(Term_mlr1)
+#vif(Term_mlr1)
 ```
 `@sct`
 ```{r}
