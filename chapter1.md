@@ -492,5 +492,8 @@ xp: 50
 skills: 1
 video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 ```
+*** =projector_key
+49b462590aded84dc84b6f2983691e58
+
 
 
