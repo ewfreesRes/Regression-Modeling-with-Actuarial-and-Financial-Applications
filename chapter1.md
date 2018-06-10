@@ -21,7 +21,7 @@ key: cc4b0289d5
 02abc0a8a3727420f7c6f719ae15a203
 
 ---
-## Just to Try
+## Just to Try Video Link
 
 ```yaml
 type: VideoExercise
@@ -30,7 +30,7 @@ xp: 50
 skills: 1
 key: aab497f8e6
 
-
+video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 
 ```
 
@@ -466,7 +466,7 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 ---
-## Insert exercise title here
+## Try video linkkk
 
 ```yaml
 type: VideoExercise
@@ -492,8 +492,5 @@ xp: 50
 skills: 1
 video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 ```
-*** =projector_key
-5edc6e3f0b9228920953195680201c5b
-
 
 
