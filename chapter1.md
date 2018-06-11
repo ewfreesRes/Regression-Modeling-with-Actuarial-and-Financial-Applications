@@ -455,7 +455,7 @@ key: 927c60efa4
 lang: r
 xp: 50
 skills: 1
-video_link: mp4: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
+video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 ```
 
 
