@@ -457,5 +457,8 @@ xp: 50
 skills: 1
 video_link: http://instruction.bus.wisc.edu/jfrees/UWCAELearn/Exam%20Problems%20and%20Solutions/ExamMFEProblems/ProbMFE003_BCL/MFE_3_BCL.mp4
 ```
+*** =projector_key
+d83ad060e1ca8f276a523c7ef17fbe7f
+
 
 
