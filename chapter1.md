@@ -455,10 +455,7 @@ key: 927c60efa4
 lang: r
 xp: 50
 skills: 1
-video_link: http://instruction.bus.wisc.edu/jfrees/UWCAELearn/Exam%20Problems%20and%20Solutions/ExamMFEProblems/ProbMFE003_BCL/MFE_3_BCL.mp4
+video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
 ```
-*** =projector_key
-d83ad060e1ca8f276a523c7ef17fbe7f
-
 
 
