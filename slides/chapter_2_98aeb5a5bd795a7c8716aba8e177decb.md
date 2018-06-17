@@ -10,9 +10,15 @@ type: TitleSlide
 key: 0901319abc
 ```
 
+
+
+
+
 `@lower_third`
 name: Frees
 title: Instructor
+
+
 
 
 ---
@@ -23,14 +29,18 @@ type: FullSlide
 key: 141ba302d2
 ```
 
+`@part1`
+- What factors affect lottery sales? Helpful to know for marketing, e.g., where to establish new retail outlets.
+- *i* unit of analysis, zip (postal) code
+- *n* = 50 randomly selected geographic areas
+- *y*= average lottery sales (sales)
+- *x* = population (pop), measure of size of the area.
 
-• What factors affect lottery sales? Helpful to know for marketing, e.g., where to establish new retail outlets.
-• i unit of analysis, zip (postal) code
-• n = 50 randomly selected geographic areas
-• y= average lottery sales (sales)
-• x = population (pop), measure of size of the area.
 
 
+
+
+`@script`
 
 
 
@@ -118,11 +128,20 @@ key: 23565d7a07
 ```
 
 `@part1`
-Correlation coefficient
+- The ordinary, or Pearson, correlation coefficient is defined as
+
+$$
+r = \frac{1}{(n-1) sd(x) sd(y)} \sum_i (x_i - mean(x))(y_i - mean(y))
+$$
+- The correlation coefficient is said to be a “unitless” measure.
+    - It is unaffected by scale and location changes of either, or both,
+variables.
 
 
 
 
+
+`@script`
 
 
 
