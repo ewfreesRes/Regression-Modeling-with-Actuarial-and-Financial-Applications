@@ -24,7 +24,11 @@ key: 141ba302d2
 ```
 
 
-
+• What factors affect lottery sales? Helpful to know for marketing, e.g., where to establish new retail outlets.
+• i unit of analysis, zip (postal) code
+• n = 50 randomly selected geographic areas
+• y= average lottery sales (sales)
+• x = population (pop), measure of size of the area.
 
 
 
