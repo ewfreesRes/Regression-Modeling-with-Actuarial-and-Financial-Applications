@@ -1,5 +1,5 @@
 ---
-title: Insert title here
+title: Collinearity
 key: 3f319d9bce5db7f2d39df9e2e14f3c46
 
 ---
