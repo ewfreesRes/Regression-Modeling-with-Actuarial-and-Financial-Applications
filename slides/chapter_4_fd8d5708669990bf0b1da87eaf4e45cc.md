@@ -81,7 +81,7 @@ key: e9da613a72
 - Generate `y` and `xvar1` through `xvar50` using a random number generator
 - By design, there is no relation between `y` and   `xvar1` through `xvar50`
 
-- **But**, through stepwise regression, we **"discover"** a relationship that explains 14\% of the variation!!!
+- **But**, through stepwise regression, we **"discover"** a relationship that explains 14% of the variation!!!
 
 `@part2`
 ```
