@@ -20,7 +20,6 @@ key: cc4b0289d5
 `@projector_key`
 02abc0a8a3727420f7c6f719ae15a203
 
-
 ---
 ## Fitting Galton's height data
 
@@ -446,19 +445,39 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 
+
+
+
 ---
 ## Try Video Link
 
 ```yaml
 type: VideoExercise
-key: 927c60efa4
 lang: r
 xp: 50
 skills: 1
+key: 927c60efa4
 video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
+
+
 ```
-*** =projector_key
+
+`@projector_key`
 666cb321ad1616cba79a2907b2128f0a
 
+---
+## Method of least squares
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: d402c88368
 
 
+
+```
+
+`@projector_key`
+4d539b5792fc1b92204b5933e7c51a46
