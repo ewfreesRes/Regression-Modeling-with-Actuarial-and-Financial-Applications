@@ -21,20 +21,22 @@ key: 607ecb673f
 dd5d704d841ca6fae0df18c9b9e020c0
 
 
+
+
+
+
+
 ---
 ## Method of least squares
 
 ```yaml
 type: VideoExercise
-key: 623ba39599
+key: c7b722fe2b
 lang: r
 xp: 50
 skills: 1
 video_link: player.vimeo.com/video/154783078
 ```
-*** =projector_key
-40657d7a4e55de5a7fa27aa164c2c1c7
-
 
 
 ---
@@ -703,6 +705,7 @@ c. Run a regression of `logpaid` on `age`, `gender` and the categorical variable
 ```{r}
 success_msg("Excellent! ")
 ```
+
 
 
 
