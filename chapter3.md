@@ -20,28 +20,6 @@ key: 607ecb673f
 `@projector_key`
 dd5d704d841ca6fae0df18c9b9e020c0
 
-
-
-
-
-
-
----
-## Method of least squares
-
-```yaml
-type: VideoExercise
-key: c7b722fe2b
-lang: r
-xp: 50
-skills: 1
-video_link: player.vimeo.com/video/154783078
-```
-*** =projector_key
-9f9c6f8c3da18246d78628c11566114d
-
-
-
 ---
 ## Least squares and term life data
 
@@ -65,8 +43,6 @@ Suppose that you wish to predict the amount of term life insurance that someone 
 - Examine correlations for the revised dataset.
 - Using the method of least squares and the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
 - With this fitted model and the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict), predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -713,3 +689,20 @@ success_msg("Excellent! ")
 
 
 
+
+---
+## Method of least squares
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 96d425a197
+
+
+
+```
+
+`@projector_key`
+f251f87ff6f6208b2a3baba08e275eaa

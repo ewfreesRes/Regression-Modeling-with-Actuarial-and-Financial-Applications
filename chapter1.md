@@ -464,20 +464,3 @@ video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter
 
 `@projector_key`
 666cb321ad1616cba79a2907b2128f0a
-
----
-## Method of least squares
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: d402c88368
-
-
-
-```
-
-`@projector_key`
-4d539b5792fc1b92204b5933e7c51a46
