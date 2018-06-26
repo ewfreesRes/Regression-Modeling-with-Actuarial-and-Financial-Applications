@@ -1,5 +1,5 @@
 ---
-title: Insert title here
+title: Method of least squares
 key: f251f87ff6f6208b2a3baba08e275eaa
 
 ---
@@ -15,7 +15,7 @@ key: 13ec0dc9f8
 
 
 `@lower_third`
-name: Name Surname
+name: Frees
 title: Instructor
 
 `@script`

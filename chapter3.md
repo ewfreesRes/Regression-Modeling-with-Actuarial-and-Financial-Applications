@@ -21,6 +21,22 @@ key: 607ecb673f
 dd5d704d841ca6fae0df18c9b9e020c0
 
 ---
+## Method of least squares
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: 96d425a197
+
+
+
+```
+
+`@projector_key`
+f251f87ff6f6208b2a3baba08e275eaa
+---
 ## Least squares and term life data
 
 ```yaml
@@ -690,19 +706,3 @@ success_msg("Excellent! ")
 
 
 
----
-## Method of least squares
-
-```yaml
-type: VideoExercise
-
-xp: 50
-
-key: 96d425a197
-
-
-
-```
-
-`@projector_key`
-f251f87ff6f6208b2a3baba08e275eaa
