@@ -4,7 +4,7 @@
   v2: true
 
 ---
-## Method of least squares
+## Term life data
 
 ```yaml
 type: VideoExercise
@@ -19,6 +19,20 @@ key: 607ecb673f
 
 `@projector_key`
 dd5d704d841ca6fae0df18c9b9e020c0
+
+
+---
+## Method of least squares
+
+```yaml
+type: VideoExercise
+key: 623ba39599
+lang: r
+xp: 50
+skills: 1
+video_link: player.vimeo.com/video/154783078
+```
+
 
 ---
 ## Least squares and term life data
