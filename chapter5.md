@@ -4,7 +4,7 @@
   v2: true
 
 ---
-## Actuarial Regression Modeling with R
+## Case study - MEPS health expenditures
 
 ```yaml
 type: VideoExercise
@@ -48,8 +48,6 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) function.
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -117,8 +115,6 @@ We start by fitting a benchmark model. It is common to use all available explana
 - Fit a full model using `expendop` as the outcome and all explanatory variables. Summarize the results of this model fitting.
 - You can [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) the fitted model to view several diagnostic plots. These plots provide evidence that expenditures may not be the best scale for linear regression.
 - Fit a full model using `logexpend` as the outcome and all explanatory variables. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -203,8 +199,6 @@ From our prior work, the training dataset `train_meps` has already been loaded i
 - Refit the recommended model.
 - As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit using the [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/anova) function and note that statistical significance of the new variable.
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -313,8 +307,6 @@ crossvalfct <- function(explvars){
 - Run the function again but omitting the `gender` variable
 - Note which model is suggested by the cross validation function.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -391,10 +383,6 @@ key: f86e97aa0f
 
 Placeholder
 
-`@instructions`
-
-
-`@hint`
 
 
 `@pre_exercise_code`
