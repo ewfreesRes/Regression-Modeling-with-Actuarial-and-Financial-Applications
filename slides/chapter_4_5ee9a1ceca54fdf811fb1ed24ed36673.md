@@ -140,12 +140,11 @@ key: 7b5f043603
 ```
 
 `@part1`
-- With out-of-sample validation, the statistic depends on a random split between in-sample and out-of-sample data
-    - When the size of the total sample is small, this can be a problem
+- With out-of-sample validation, the statistic depends on a random split between in-sample and out-of-sample data (a problem for data sets that are not large)
 - Alternatively, one may use *cross-validation*
     - Use a random mechanism to split the data into *k* subsets, (e.g., 5-10) 
     - Use the first *k-1* subsamples to estimate model parameters. Then, "predict" the outcomes for the *k*th subsample and use  *SAE* to summarize the fit
-    - Repeat this for each sub-sample, summarizing with a cumulative *SAE*.
+    - Repeat this by holding out each of the *k* sub-samples, summarizing with a cumulative *SAE*.
 -  Repeat these steps for several candidate models. 
     - Choose the model with the lowest cumulative *SAE* statistic.
 
