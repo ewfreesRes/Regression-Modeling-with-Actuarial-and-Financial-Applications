@@ -497,7 +497,7 @@ Which of the following is not important when interpreting the effects of individ
 - [C. The amount of effort that it took to gather the data and do the analysis]
 - D. Role of causality
 
-`@sct`
+`@feedbacks`
 ```{r}
 msg1 = "Incorrect"
 msg2 = "Incorrect"
