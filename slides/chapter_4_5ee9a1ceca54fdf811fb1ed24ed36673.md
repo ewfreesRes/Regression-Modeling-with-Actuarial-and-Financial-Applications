@@ -109,16 +109,18 @@ key: 540d0f849e
 `@part1`
 - (i) Using the model development subsample, fit a candidate model.
 - (ii) Using the  Step (ii) model and the explanatory variables from the validation subsample, "predict" the dependent variables in the validation subsample, $\hat{y}_i$, where $i=n_1 + 1,...,n_1 + n_2$.
-- (iii) Calculate the *sum of absolute errors*
+- (iii) Calculate the *sum of absolute prediction errors*
 
-$$SAE=\sum_{i=n_1+1}^{n_1+n_2} |y_i-\hat{y}_i| . $$
+$$SAPE=\sum_{i=n_1+1}^{n_1+n_2} |y_i-\hat{y}_i| . $$
 
 Repeat Steps (i) through (iii) for each candidate model. Choose the
-model with the smallest *SAE*.
+model with the smallest *SAPE*.
 
 
 
 
+
+`@script`
 
 
 
@@ -143,8 +145,6 @@ key: 7b5f043603
 
 
 
-
-`@script`
 
 
 
