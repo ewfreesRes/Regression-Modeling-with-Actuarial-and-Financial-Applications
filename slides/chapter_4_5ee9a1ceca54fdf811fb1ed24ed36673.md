@@ -108,8 +108,10 @@ key: 540d0f849e
 
 `@part1`
 - (i) Using the model development subsample, fit a candidate model.
-- (ii) Using the  Step (ii) model and the explanatory variables from the validation subsample, "predict" the dependent variables in the validation subsample, $\hat{y}_i$, where $i=n_1 + 1,...,n_1 + n_2$.
-- (iii) Calculate the *sum of absolute prediction errors*
+- (ii) Using the  Step (i) model and the explanatory variables from the validation subsample, "predict" the outcomes in the validation subsample, $\hat{y}_i$, where $i=n_1 + 1,...,n_1 + n_2$.
+- (iii) Compare the predictions to the held-out outcomes using the:
+
+*sum of absolute prediction errors*
 
 $$SAPE=\sum_{i=n_1+1}^{n_1+n_2} |y_i-\hat{y}_i| . $$
 
@@ -137,14 +139,16 @@ key: 7b5f043603
 - With out-of-sample validation, the statistic depends on a random split between in-sample and out-of-sample data (a problem for data sets that are not large)
 - Alternatively, one may use *cross-validation*
     - Use a random mechanism to split the data into *k* subsets, (e.g., 5-10) 
-    - Use the first *k-1* subsamples to estimate model parameters. Then, "predict" the outcomes for the *k*th subsample and use  *SAE* to summarize the fit
-    - Repeat this by holding out each of the *k* sub-samples, summarizing with a cumulative *SAE*.
+    - Use the first *k-1* subsamples to estimate model parameters. Then, "predict" the outcomes for the *k*th subsample and use  *SAPE* to summarize the fit
+    - Repeat this by holding out each of the *k* sub-samples, summarizing with a cumulative *SAPE*.
 -  Repeat these steps for several candidate models. 
-    - Choose the model with the lowest cumulative *SAE* statistic.
+    - Choose the model with the lowest cumulative *SAPE* statistic.
 
 
 
 
+
+`@script`
 
 
 
