@@ -368,7 +368,7 @@ success_msg("Excellent! ")
 
 
 ---
-## Model selection using out of sample validation
+## Out of sample validation and term life
 
 ```yaml
 type: NormalExercise
@@ -380,8 +380,25 @@ key: f86e97aa0f
 
 
 ```
+From our prior work, the training `train_meps` and test `test_meps` datasets have already been loaded in. We think our best model is based on logarithmic expenditures as the outcome and the following explanatory variables:
 
-Placeholder
+```
+explvars3 <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
+```
+We will compare this to a benchmark model that is based on expenditures as the outcome and all 13 explanatory variables
+
+```
+explvars4 <- c(explvars3, "region", "educ", "phstat", "unemploy", "managedcare")
+```
+
+The comparisons will be based on expenditures in dollars using the held-out validation sample.
+
+`@instructions`
+- Use the training sample to fit a linear model with `logexpend` and explanatory variables listed in `explvars3`
+- Predict expenditures (not logged) for the test data and summarize the fit using the sum of absolute prediction errors.
+- Use the training sample to fit a benchmark linear model with `expendop` and explanatory variables listed in `explvars4`
+- Predict expenditures for the test data and summarize the fit for the benchmark model using the sum of absolute prediction errors.
+- Compare the predictions of the models graphically.
 
 
 
@@ -397,48 +414,40 @@ train_indices <- 1:round(0.75 * n)
 train_meps    <- shuffled_meps[train_indices, ]
 test_indices  <- (round(0.25 * n) + 1):n
 test_meps     <- shuffled_meps[test_indices, ]
+explvars3 <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
+explvars4 <- c(explvars3, "region", "educ", "phstat", "unemploy", "managedcare")
 ```
 `@sample_code`
 ```{r}
-n_out <- length(test_meps$expendop)
-meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc , data = train_meps)
-predict_meps3 <- test_meps[,c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")]
+meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + income + insure + usc , data = train_meps)
+predict_meps3 <- test_meps[,explvars3]
 predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
 predict_err_mlr3 <- test_meps$expendop - predict_mlr3
-sum_abs_pe_mlr3     <- sum(abs(predict_err_mlr3))/(1000*n_out)
+sae3     <- sum(abs(predict_err_mlr3))/1000
 
-meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
-predict_meps1 <- subset(test_meps, select = -c(expendop,logexpend))
-predict_mlr1  <- predict(meps_mlr1, predict_meps1)
-predict_err_mlr1 <- test_meps$expendop - predict_mlr1
-sum_abs_pe_mlr1     <- sum(abs(predict_err_mlr1))/(1000*n_out)
+meps_mlr4 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+predict_meps4 <- test_meps[,explvars4]
+predict_mlr4  <- predict(meps_mlr4, predict_meps4)
+predict_err_mlr4 <- test_meps$expendop - predict_mlr4
+sae4     <- sum(abs(predict_err_mlr4))/1000
 
-sum_abs_pe_mlr1;sum_abs_pe_mlr3
-
-par(mfrow = c(1, 2))
-plot(predict_err_mlr1, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
-plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
+sae3;sae4
 ```
 `@solution`
 ```{r}
-n_out <- length(test_meps$expendop)
-meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc , data = train_meps)
-predict_meps3 <- test_meps[,c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")]
+meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + income + insure + usc , data = train_meps)
+predict_meps3 <- test_meps[,explvars3]
 predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
 predict_err_mlr3 <- test_meps$expendop - predict_mlr3
-sum_abs_pe_mlr3     <- sum(abs(predict_err_mlr3))/(1000*n_out)
+sae3     <- sum(abs(predict_err_mlr3))/1000
 
-meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
-predict_meps1 <- subset(test_meps, select = -c(expendop,logexpend))
-predict_mlr1  <- predict(meps_mlr1, predict_meps1)
-predict_err_mlr1 <- test_meps$expendop - predict_mlr1
-sum_abs_pe_mlr1     <- sum(abs(predict_err_mlr1))/(1000*n_out)
+meps_mlr4 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+predict_meps4 <- test_meps[,explvars4]
+predict_mlr4  <- predict(meps_mlr4, predict_meps4)
+predict_err_mlr4 <- test_meps$expendop - predict_mlr4
+sae4     <- sum(abs(predict_err_mlr4))/1000
 
-sum_abs_pe_mlr1;sum_abs_pe_mlr3
-
-par(mfrow = c(1, 2))
-plot(predict_err_mlr1, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
-plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
+sae3;sae4
 ```
 `@sct`
 ```{r}

@@ -40,7 +40,7 @@ Which of the following is not true?
 - A. Diagnostic checking reveals symptoms of mistakes made in previous specifications.
 - B. Diagnostic checking provides ways to correct mistakes made in previous specifications.
 - C. Model formulation is accomplished by using prior knowledge of relationships.
-- D. Understanding theoretical model properties is not really helpful when matching a model to data or inferring general relationships based on the data.
+- [D. Understanding theoretical model properties is not really helpful when matching a model to data or inferring general relationships based on the data.]
 
 
 
