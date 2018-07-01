@@ -577,8 +577,6 @@ crossvalfct <- function(explvars){
   }
   crossval/1000
 }
-
-crossvalfct(explvars)
 ```
 
 
