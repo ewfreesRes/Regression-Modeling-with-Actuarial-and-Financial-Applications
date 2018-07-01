@@ -446,21 +446,3 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 
-
-
----
-## Try Video Link
-
-```yaml
-type: VideoExercise
-lang: r
-xp: 50
-skills: 1
-key: 927c60efa4
-video_link: https://media.wsb.wisc.edu/data/act_sci/Frees/Regression2015/Chapter1/Part%203/PowerTransforms.mp4
-
-
-```
-
-`@projector_key`
-666cb321ad1616cba79a2907b2128f0a
