@@ -492,7 +492,7 @@ Which of the following is not important when interpreting the effects of individ
 
 
 `@possible_answers`
-- A. Substantive significance
+- A. Substantive effect
 - B. Statistical significance
 - C. The amount of effort that it took to gather the data and do the analysis
 - D. Role of causality
