@@ -42,8 +42,6 @@ key: 027e480888
 
 
 
-`@script`
-
 
 
 
@@ -77,8 +75,6 @@ $$
 
 
 
-`@script`
-
 
 
 
@@ -98,8 +94,6 @@ key: fe2d94bdf9
 
 
 
-
-`@script`
 
 
 
@@ -126,13 +120,11 @@ model with the smallest *SAE*.
 
 
 
-`@script`
-
 
 
 
 ---
-## Cross - validation
+## Cross-validation
 
 ```yaml
 type: FullSlide
@@ -147,7 +139,6 @@ key: 7b5f043603
     - Repeat this by holding out each of the *k* sub-samples, summarizing with a cumulative *SAE*.
 -  Repeat these steps for several candidate models. 
     - Choose the model with the lowest cumulative *SAE* statistic.
-
 
 
 
