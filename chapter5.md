@@ -503,7 +503,7 @@ msg1 = "Incorrect"
 msg2 = "Incorrect"
 msg3 = "Correct!"
 msg4 = "Incorrect"
-test_mc(3, [msg1, msg2, msg3, msg4])
+test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
