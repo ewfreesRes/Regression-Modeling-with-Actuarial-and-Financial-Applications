@@ -484,6 +484,8 @@ key: b2c9c6ef17
 Which of the following is not important when interpreting the effects of individual variables?
 
 
+`@hint`
+
 
 
 
@@ -495,6 +497,14 @@ Which of the following is not important when interpreting the effects of individ
 - C. The amount of effort that it took to gather the data and do the analysis
 - D. Role of causality
 
+`@feedbacks`
+```{r}
+msg1 = "Incorrect"
+msg2 = "Incorrect"
+msg3 = "Correct!"
+msg4 = "Incorrect"
+test_mc(3, [msg1, msg2, msg3, msg4])
+```
 
 
 
