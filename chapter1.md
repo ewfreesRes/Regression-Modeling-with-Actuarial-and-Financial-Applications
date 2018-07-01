@@ -446,3 +446,21 @@ success_msg("Excellent! Transformations of data is a tool that incredibly expand
 
 
 
+
+
+---
+## Course Introduction
+
+```yaml
+type: VideoExercise
+
+xp: 50
+
+key: b4bf7c0b88
+
+
+
+```
+
+`@projector_key`
+a08e02c39c2c57e4efa5cad532a3dae1
