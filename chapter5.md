@@ -116,6 +116,8 @@ We start by fitting a benchmark model. It is common to use all available explana
 - You can [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) the fitted model to view several diagnostic plots. These plots provide evidence that expenditures may not be the best scale for linear regression.
 - Fit a full model using `logexpend` as the outcome and all explanatory variables. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -199,6 +201,8 @@ From our prior work, the training dataset `train_meps` has already been loaded i
 - Refit the recommended model.
 - As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit using the [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/anova) function and note that statistical significance of the new variable.
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -307,6 +311,8 @@ crossvalfct <- function(explvars){
 - Run the function again but omitting the `gender` variable
 - Note which model is suggested by the cross validation function.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -368,7 +374,7 @@ success_msg("Excellent! ")
 
 
 ---
-## Out of sample validation and term life
+## Out of sample validation
 
 ```yaml
 type: NormalExercise
@@ -380,6 +386,7 @@ key: f86e97aa0f
 
 
 ```
+
 From our prior work, the training `train_meps` and test `test_meps` datasets have already been loaded in. We think our best model is based on logarithmic expenditures as the outcome and the following explanatory variables:
 
 ```
@@ -400,6 +407,7 @@ The comparisons will be based on expenditures in dollars using the held-out vali
 - Predict expenditures for the test data and summarize the fit for the benchmark model using the sum of absolute prediction errors.
 - Compare the predictions of the models graphically.
 
+`@hint`
 
 
 `@pre_exercise_code`
@@ -423,15 +431,15 @@ meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + income + insure + 
 predict_meps3 <- test_meps[,explvars3]
 predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
 predict_err_mlr3 <- test_meps$expendop - predict_mlr3
-sae3     <- sum(abs(predict_err_mlr3))/1000
+sape3     <- sum(abs(predict_err_mlr3))/1000
 
 meps_mlr4 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 predict_meps4 <- test_meps[,explvars4]
 predict_mlr4  <- predict(meps_mlr4, predict_meps4)
 predict_err_mlr4 <- test_meps$expendop - predict_mlr4
-sae4     <- sum(abs(predict_err_mlr4))/1000
+sape4     <- sum(abs(predict_err_mlr4))/1000
 
-sae3;sae4
+sape3;sape4
 ```
 `@solution`
 ```{r}
@@ -439,15 +447,15 @@ meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + income + insure + 
 predict_meps3 <- test_meps[,explvars3]
 predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
 predict_err_mlr3 <- test_meps$expendop - predict_mlr3
-sae3     <- sum(abs(predict_err_mlr3))/1000
+sape3     <- sum(abs(predict_err_mlr3))/1000
 
 meps_mlr4 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 predict_meps4 <- test_meps[,explvars4]
 predict_mlr4  <- predict(meps_mlr4, predict_meps4)
 predict_err_mlr4 <- test_meps$expendop - predict_mlr4
-sae4     <- sum(abs(predict_err_mlr4))/1000
+sape4     <- sum(abs(predict_err_mlr4))/1000
 
-sae3;sae4
+sape3;sape4
 ```
 `@sct`
 ```{r}
@@ -492,8 +500,6 @@ key: b2c9c6ef17
 
 Which of the following is not important when interpreting the effects of individual variables?
 
-
-`@hint`
 
 
 

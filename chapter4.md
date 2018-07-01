@@ -42,6 +42,8 @@ Which of the following is not true?
 - C. Model formulation is accomplished by using prior knowledge of relationships.
 - [D. Understanding theoretical model properties is not really helpful when matching a model to data or inferring general relationships based on the data.]
 
+`@hint`
+
 
 
 
@@ -282,6 +284,8 @@ To this end, we analyze data from *n* = 37 refrigerators.
 `@instructions`
 Nothing yet
 
+`@hint`
+
 
 
 
@@ -388,6 +392,8 @@ In a prior exercise, we fit a regression model of `logcost` on `logsize`, `indco
 - Use the `R` functions [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) and [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.
 - You will see that there are two observations where the leverages are high, numbers 10 and 16. On looking at the dataset, these turn out to be observations in a high risk industry. Create a histogram of the variable `indcost` to corroborate this.
 - Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object  `mlr_survey2`, noting differences in the coefficients.
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -558,7 +564,6 @@ set.seed(12347)
 shuffled_Term1 <- Term1[sample(n), ]
 explvars <- c("education", "numhh", "logincome")
 
-## Cross - Validation
 crossvalfct <- function(explvars){
   cvdata   <- shuffled_Term1[, c("logface", explvars)]
   crossval <- 0
@@ -579,15 +584,12 @@ crossvalfct <- function(explvars){
 }
 ```
 
-
 `@instructions`
 - Calculate the cross-validation statistic using only logarithmic income, `logincome`.
 - Calculate the cross-validation statistic using `logincome`, `education` and `numhh`.
 - Calculate the cross-validation statistic using `logincome`, `education`, `numhh` and `marstat`.
 
 The best model has the lowest cross-validation statistic.
-
-`@hint`
 
 
 `@pre_exercise_code`

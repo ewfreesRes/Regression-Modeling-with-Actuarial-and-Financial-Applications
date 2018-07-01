@@ -36,6 +36,7 @@ key: 96d425a197
 
 `@projector_key`
 f251f87ff6f6208b2a3baba08e275eaa
+
 ---
 ## Least squares and term life data
 
@@ -122,6 +123,8 @@ The typical interpretation of coefficients in a regression model is as a partial
 - Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
 - Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -187,6 +190,8 @@ $$
 - Determine least square fitted values for several selected values of `logincome`, holding other explantory variables fixed.
 - Determine the corresponding proportional changes for the fitted values. 
 - Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+
+`@hint`
 
 
 `@pre_exercise_code`
@@ -598,6 +603,8 @@ We continue our analysis of the outcome variable  `logcharge`, the logarithm of 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the *F* statistic and *p* value that tests the importance of diagnostic related group interaction with logarithmic number of discharges.
 - Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -689,6 +696,8 @@ c. Run a regression of `logpaid` on `age`, `gender` and the categorical variable
 
     c (iv). Write down the coefficient associated with `class` C7 and interpret this coefficient.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -700,8 +709,6 @@ c. Run a regression of `logpaid` on `age`, `gender` and the categorical variable
 ```{r}
 success_msg("Excellent! ")
 ```
-
-
 
 
 

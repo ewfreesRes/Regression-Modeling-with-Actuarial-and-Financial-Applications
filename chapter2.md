@@ -240,6 +240,8 @@ Let us see how rescaling, a linear transformation, affects our measures of uncer
 - Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.
 - For this regression, determine the $s$ and the coefficient of determination, $R^2$.
 
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -319,8 +321,6 @@ This exercise will give you practice in the standard inferential tasks: hypothes
 - Use the function [confint()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint) to provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
 - Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) to provide a point prediction and a 95\% prediction interval for sales.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -393,8 +393,6 @@ This exercise summarizes the regression fit both with and without this zip code 
 - A basic linear regression fit of population on sales has already been fit in the object `model_blr`. Fit this same model to the data, omiting Kenosha (observation number 9).
 - Plot these two least squares fitted lines superimposed on the full data set.
 -  What is the effect on the distribution  of residuals by removing this point? Calculate a qq plot with and without Kenosha.
-
-`@hint`
 
 
 `@pre_exercise_code`
