@@ -468,7 +468,7 @@ key: 19a5897edf
 a4e48282b4a5c9b11a4ff473d05854dc
 
 ---
-## What modeling procedures tells us
+## What modeling procedures tell us
 
 ```yaml
 type: PureMultipleChoiceExercise
@@ -481,7 +481,7 @@ key: b2c9c6ef17
 
 ```
 
-Which of the following are not important when interpreting the effects of individual variables?
+Which of the following is not important when interpreting the effects of individual variables?
 
 
 
