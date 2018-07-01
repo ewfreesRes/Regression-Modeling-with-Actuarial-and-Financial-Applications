@@ -213,8 +213,6 @@ A measure of risk management cost effectiveness, `logcost`, is the outcome varia
 - Fit and summarize a MLR model of `logcost` on `logsize`, `indcost` and a squared version of `indcost`.
 - Plot residuals of the fitted model versus `indcost' and superimpose a locally fitted line using [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess).
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -279,12 +277,10 @@ refrigerator in cubic feet (`rsize`), the size of the freezer compartment in cub
 Both consumers and manufacturers are interested in models of refrigerator prices. Other things equal, consumers generally prefer larger refrigerators with lower energy costs that have more features. Due to forces of supply and demand, we would expect consumers to pay more for these refrigerators. A larger refrigerator with lower energy costs that has more features at the similar price is considered a bargain to the consumer. How much extra would the consumer be willing to pay for this additional space? A model of
 prices for refrigerators on the market provides some insight to this question.
 
-To this end, we analyze data from *n* = 37 refrigerators. 
+To this end, we analyze data from *n* = 37 refrigerators.
 
 `@instructions`
 Nothing yet
-
-`@hint`
 
 
 
@@ -336,8 +332,6 @@ In chapter 2, we consider a fictitious data set of 19 "base" points plus three d
 - Use the function [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the leverages from the model fitted and summarize them. 
 - Plot the standardized residuals versus the leverages to see the relationship between these two measures that calibrate how unusual an observation is.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -388,14 +382,12 @@ key: e072807cbe
 
 ```
 
-In a prior exercise, we fit a regression model of `logcost` on `logsize`, `indcost` and a squared version of `indcost`. This model is summarized in the object `mlr_survey2`. In this exercise, we examine the robustness of the model to unusual observations. 
+In a prior exercise, we fit a regression model of `logcost` on `logsize`, `indcost` and a squared version of `indcost`. This model is summarized in the object `mlr_survey2`. In this exercise, we examine the robustness of the model to unusual observations.
 
 `@instructions`
 - Use the `R` functions [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) and [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.
 - You will see that there are two observations where the leverages are high, numbers 10 and 16. On looking at the dataset, these turn out to be observations in a high risk industry. Create a histogram of the variable `indcost` to corroborate this.
 - Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object  `mlr_survey2`, noting differences in the coefficients.
-
-`@hint`
 
 
 `@pre_exercise_code`
@@ -484,8 +476,6 @@ This exercise returns to our term life data set `Term1` (preloaded) and demonstr
 - Use the function [vif()](https://www.rdocumentation.org/packages/car/versions/3.0-0/topics/vif) from the `car` package (preloaded) to calculation variance inflation factors.
 - Fit a MLR model of `logface` on explanatory variables `education` , `numhh` and `logincome` with an interaction between `numhh` and `logincome` and extract variance inflation factors.
 
-`@hint`
-
 
 `@pre_exercise_code`
 ```{r}
@@ -542,7 +532,7 @@ key: fbe7bc54a3
 5ee9a1ceca54fdf811fb1ed24ed36673
 
 ---
-## Selection criteria and data
+## Cross-validation and term life
 
 ```yaml
 type: NormalExercise
@@ -555,17 +545,107 @@ key: 40e9eec496
 
 ```
 
-Placeholder
+Here is some sample code to give you a better feel for cross-validation.
+
+The first part of the random re-orders ("shuffles") the data. It also identifies explanatory variables `explvars`.
+
+In the function starts with pulling out only the needed data into `cvdata`. Then, for each subsample, a model is fit based on all the data except for the subsample, in `train_mlr` with the subsample in `test`. 
+
+```
+# Randomly re-order data - "shuffle it"
+n <- nrow(Term1)
+set.seed(12347)
+shuffled_Term1 <- Term1[sample(n), ]
+explvars <- c("education", "numhh", "logincome")
+
+## Cross - Validation
+crossvalfct <- function(explvars){
+  cvdata   <- shuffled_Term1[, c("logface", explvars)]
+  crossval <- 0
+  k <- 5
+  for (i in 1:k) {
+    indices <- (((i-1) * round((1/k)*nrow(cvdata))) + 1):((i*round((1/k) * nrow(cvdata))))
+    # Exclude them from the train set
+    train_mlr <- lm(logface ~ ., data = cvdata[-indices,])
+    # Include them in the test set
+    test  <- data.frame(cvdata[indices, explvars])
+    names(test)  <- explvars
+    predict_test <- exp(predict(train_mlr, test))
+    # Compare predicted to held-out and summarize
+    predict_err  <- exp(cvdata[indices, "logface"]) - predict_test
+    crossval <- crossval + sum(abs(predict_err))
+  }
+  crossval/1000
+}
+
+crossvalfct(explvars)
+```
+
 
 `@instructions`
+- Calculate the cross-validation statistic using only logarithmic income, `logincome`.
+- Calculate the cross-validation statistic using `logincome`, `education` and `numhh`.
+- Calculate the cross-validation statistic using `logincome`, `education`, `numhh` and `marstat`.
 
+The best model has the lowest cross-validation statistic.
 
 `@hint`
 
 
+`@pre_exercise_code`
+```{r}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term1$marstat <- as.factor(Term1$marstat)
 
-
-
+crossvalfct <- function(explvars){
+  cvdata   <- shuffled_Term1[, c("logface", explvars)]
+  crossval <- 0
+  k <- 5
+  for (i in 1:k) {
+    indices <- (((i-1) * round((1/k)*nrow(cvdata))) + 1):((i*round((1/k) * nrow(cvdata))))
+    # Exclude them from the train set
+    train_mlr <- lm(logface ~ ., data = cvdata[-indices,])
+    # Include them in the test set
+    test  <- data.frame(cvdata[indices, explvars])
+    names(test)  <- explvars
+    predict_test <- exp(predict(train_mlr, test))
+    # Compare predicted to held-out and summarize
+    predict_err  <- exp(cvdata[indices, "logface"]) - predict_test
+    crossval <- crossval + sum(abs(predict_err))
+  }
+  crossval/1000000
+}
+```
+`@sample_code`
+```{r}
+# Randomly re-order data - "shuffle it"
+n <- nrow(Term1)
+set.seed(12347)
+shuffled_Term1 <- Term1[sample(n), ]
+## Cross - Validation
+explvars <- c("logincome")
+crossvalfct(explvars)
+explvars <- c("education", "numhh", "logincome")
+crossvalfct(explvars)
+explvars <- c("education", "numhh", "logincome", "marstat")
+crossvalfct(explvars)
+```
+`@solution`
+```{r}
+# Randomly re-order data - "shuffle it"
+n <- nrow(Term1)
+set.seed(12347)
+shuffled_Term1 <- Term1[sample(n), ]
+## Cross - Validation
+explvars <- c("logincome")
+crossvalfct(explvars)
+explvars <- c("education", "numhh", "logincome")
+crossvalfct(explvars)
+explvars <- c("education", "numhh", "logincome", "marstat")
+crossvalfct(explvars)
+```
 
 
 
