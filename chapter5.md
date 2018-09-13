@@ -484,6 +484,8 @@ video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
 `@projector_key`
 7fc546268773edf723925445e44365cb
 
+---
+
 ## The importance of variable selection 2
 
 ```yaml
