@@ -478,10 +478,19 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 type: VideoExercise
 key: 7760de33f6
 xp: 50
+video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
 ```
 
 `@projector_key`
 7fc546268773edf723925445e44365cb
+
+## The importance of variable selection 2
+
+```yaml
+type: VideoExercise
+xp: 50
+video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
+```
 
 ---
 
