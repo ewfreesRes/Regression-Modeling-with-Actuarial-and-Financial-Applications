@@ -501,6 +501,9 @@ key: dc54a2506e
 ---
 
 ## Test Video
+*** =projector_key
+4b1ecea2ff5eee143090fa9e192fd335
+
 
 ```yaml
 type: VideoExercise
