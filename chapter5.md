@@ -495,8 +495,6 @@ video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4
 key: dc54a2506e
 ```
 
-`@projector_key`
-5cdb1fb58eaf65992b3dcfbf1d64a7ba
 
 
 ---
