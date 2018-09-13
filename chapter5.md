@@ -438,6 +438,7 @@ success_msg("Excellent! ")
 type: VideoExercise
 key: 19a5897edf
 xp: 50
+video_link: //vimeo.com/user89492724/review/289718293/dbdfafedad
 ```
 
 `@projector_key`
