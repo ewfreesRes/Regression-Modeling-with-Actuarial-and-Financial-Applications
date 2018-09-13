@@ -469,17 +469,3 @@ msg3 = "Correct!"
 msg4 = "Incorrect"
 test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
-
----
-
-## Test Video
-
-```yaml
-type: VideoExercise
-key: 645c2cb07e
-xp: 50
-video_link: //cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_6finvcp7&flashvars[streamerType]=auto&flashvars[localizationCode]=en&flashvars[leadWithHTML5]=true&flashvars[sideBarContainer.plugin]=true&flashvars[sideBarContainer.position]=left&flashvars[sideBarContainer.clickToClose]=true&flashvars[chapters.plugin]=true&flashvars[chapters.layout]=vertical&flashvars[chapters.thumbnailRotator]=false&flashvars[streamSelector.plugin]=true&flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&flashvars[dualScreen.plugin]=true&&wid=1_5pgz5f8p
-```
-
-`@projector_key`
-7b51dd43825ebab984acfd7941cb69e4
