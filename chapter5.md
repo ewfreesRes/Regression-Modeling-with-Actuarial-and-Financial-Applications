@@ -472,35 +472,6 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 
 ---
 
-## The importance of variable selection
-
-```yaml
-type: VideoExercise
-key: 7760de33f6
-xp: 50
-video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4
-```
-
-`@projector_key`
-7fc546268773edf723925445e44365cb
-
----
-
-## The importance of variable selection 2
-
-```yaml
-type: VideoExercise
-xp: 50
-video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4
-key: dc54a2506e
-```
-*** =projector_key
-74042fbe29a3927850cb8a4c258b46ed
-
-
-
-
----
 
 ## Test Video
 
