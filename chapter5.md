@@ -475,9 +475,6 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 
 ## Test Video
 
-`@projector_key`
-3b4388a444ebe05f46b6288187647bf3
-
 
 ```yaml
 type: VideoExercise
