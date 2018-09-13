@@ -494,14 +494,16 @@ xp: 50
 video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4
 key: dc54a2506e
 ```
-*** =projector_key
+
+`@projector_key`
 5cdb1fb58eaf65992b3dcfbf1d64a7ba
 
 
 ---
 
 ## Test Video
-*** =projector_key
+
+`@projector_key`
 3b4388a444ebe05f46b6288187647bf3
 
 
