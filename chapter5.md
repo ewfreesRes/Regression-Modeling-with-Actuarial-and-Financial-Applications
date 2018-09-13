@@ -478,7 +478,7 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 type: VideoExercise
 key: 7760de33f6
 xp: 50
-video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
+video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4
 ```
 
 `@projector_key`
@@ -491,7 +491,7 @@ video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
 ```yaml
 type: VideoExercise
 xp: 50
-video_link: "//mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj"
+video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4
 key: dc54a2506e
 ```
 *** =projector_key
@@ -503,7 +503,7 @@ key: dc54a2506e
 ## Test Video
 
 ```yaml
-type: BulletExercise
+type: VideoExercise
 key: 645c2cb07e
 xp: 100
 ```
