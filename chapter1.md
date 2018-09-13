@@ -1,37 +1,29 @@
 ---
-  title: "Chapter 1. Regression and the Normal Distribution"
-  description: "Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships."
-  v2: true
-
+title: 'Chapter 1. Regression and the Normal Distribution'
+description: 'Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.'
 ---
+
 ## Fitting a normal distribution
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: cc4b0289d5
-
-
-
+xp: 50
 ```
 
 `@projector_key`
 02abc0a8a3727420f7c6f719ae15a203
 
 ---
+
 ## Fitting Galton's height data
 
 ```yaml
 type: NormalExercise
+key: 6154f289da
 lang: r
 xp: 100
 skills: 1
-key: 6154f289da
-
-
-
 ```
 
 The Galton data has already been read into a dataset called `heights`. These data include the heights of 928 adult children `child_ht`, together with an index of their parents' height `parent_ht`.  The video explored the distribution of the parents' height; in this assignment, we investigate the distribution of the heights of the adult children.
@@ -48,6 +40,7 @@ Remember that we can reference a variable, say `var`, from a data set such as `h
 ```{r}
 heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ```
+
 `@sample_code`
 ```{r}
 #Define the variable
@@ -64,6 +57,7 @@ sdchild
 #Determine the probability that a child's height is less than 72 inches
 ___(72, mean=mchild, sd=sdchild)
 ```
+
 `@solution`
 ```{r}
 ht_child <- heights$child_ht
@@ -71,6 +65,7 @@ mchild <- mean(ht_child)
 sdchild <- sd(ht_child)
 pnorm(72,mean=mchild, sd=sdchild)
 ```
+
 `@sct`
 ```{r}
 test_error()
@@ -78,23 +73,14 @@ test_object("ht_child", incorrect_msg = "The child's height variable was defined
 success_msg("Excellent! With this procedure, you can now calculate probabilities for any distribution using a normal curve approximation.")
 ```
 
-
-
-
-
-
 ---
+
 ## Visualizing child's height distribution
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 7dc98dc1ff
-
-
-
+xp: 100
 ```
 
 As in the prior exercise, from the Galton dataset `heights`, the heights of 928 adult children have been used to create a local variable called `ht_child`. We also have basic summary statistics, the mean height `mchild` and the standard deviation of heights in `sdchild`. In this exercise, we explore the fit of the normal curve to this distribution.
@@ -114,6 +100,7 @@ ht_child <- heights$child_ht
 mchild <- mean(ht_child)
 sdchild <- sd(ht_child)
 ```
+
 `@sample_code`
 ```{r}
 #Visualize the Distribution
@@ -126,6 +113,7 @@ ___(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 # Determine the probability that a son's height is greater than 60 inches
 1 - pnorm__
 ```
+
 `@solution`
 ```{r}
 hist(ht_child, freq = FALSE)
@@ -133,45 +121,33 @@ x <- seq(60, 80,by = 0.1)
 lines(x, dnorm(x,mean = mchild, sd = sdchild), col = "blue")
 1 - pnorm(72, mean = mchild , sd = sdchild)
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! Visualizing the distribution, especially with reference to a normal, is important for communicating results of your analysis.")
 ```
 
-
-
-
-
-
 ---
+
 ## Visualizing distributions
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: a6c75bd534
-
-
-
+xp: 50
 ```
 
 `@projector_key`
 eb65055761c45534183ae2de06b6d265
 
 ---
+
 ## Visualizing injury claims with density plots
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 2b2ea998af
-
-
-
+xp: 100
 ```
 
 In the prior video, you got somebackground information on the Massachusetts bodily injury dataset. This dataset, `injury`, has been read in and local variables `claims` has been created. This assignment reviews the  [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function for visualizing the distribution and allows you to explore density plotting, a smoothed version of the histogram.
@@ -190,6 +166,7 @@ No hints for now. No hints for now. No hints for now.
 injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
+
 `@sample_code`
 ```{r}
 #Create the logarithmic claims variable
@@ -205,6 +182,7 @@ plot(___(logclaims))
 # Create a density plot of logarithmic claims with a smaller bandwidth
 ___
 ```
+
 `@solution`
 ```{r}
 logclaims <- log(claims)
@@ -213,46 +191,34 @@ box()
 plot(density(logclaims))
 plot(density(logclaims, bw = 0.03))
 ```
+
 `@sct`
 ```{r}
 ex() %>% check_object("logclaims") %>% check_equal(incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
 success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
 ```
 
-
-
-
-
-
 ---
+
 ## Summarizing distributions
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: 210f239af2
-
-
-
+xp: 50
 ```
 
 `@projector_key`
 548a52c0975ffc2c8719c26dc5a1d00a
 
 ---
+
 ## Summarizing injury claims with box and qq plots
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 70a5a3a60b
-
-
-
+xp: 100
 ```
 
 The Massachusetts bodily injury data has already been read and used to create the local variable `claims` representing bodily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
@@ -273,6 +239,7 @@ No hints for now. No hints for now. No hints for now.
 injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
+
 `@sample_code`
 ```{r}
 #Produce a box plot for claims
@@ -288,6 +255,7 @@ ___(p = ___, mean = mean(claims), sd = sd(claims))
 ___(claims)
 ___(claims)
 ```
+
 `@solution`
 ```{r}
 boxplot(claims)
@@ -296,28 +264,20 @@ qnorm(p = 0.25, mean = mean(claims), sd = sd(claims))
 qqnorm(claims)
 qqline(claims)
 ```
+
 `@sct`
 ```{r}
 success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools as we explore multivariate aspects of data.")
 ```
 
-
-
-
-
-
 ---
+
 ## Effects on distributions of removing the largest claim
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 127a1f92ec
-
-
-
+xp: 100
 ```
 
 The Massachusetts bodily injury dataset `injury` has been read in; our focus is on the `claims` variable in that dataset. 
@@ -338,6 +298,7 @@ In the previous exercise, we learned that the Massachusetts bodily injury `claim
 injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
+
 `@sample_code`
 ```{r}
 tail(injury)
@@ -348,6 +309,7 @@ par(mfrow = c(1, 2))
 hist(claims, freq = FALSE,  main = "Full Data")
 hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 ```
+
 `@solution`
 ```{r}
 tail(injury)
@@ -358,45 +320,33 @@ par(mfrow = c(1, 2))
 hist(claims, freq = FALSE,  main = "Full Data")
 hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 ```
+
 `@sct`
 ```{r}
 success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
 ```
 
-
-
-
-
-
 ---
+
 ## Transformations
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: 6efae24831
-
-
-
+xp: 50
 ```
 
 `@projector_key`
 470199e6243748dfac8891486e37b372
 
 ---
+
 ## Distribution of transformed bodily injury claims
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 2127303de1
-
-
-
+xp: 100
 ```
 
 We have now examined the distributions of bodily injury claims and its logarithmic version. Grudgingly, we have concluded that to fit a normal curve the logarithmic version of claims is a better choice (again, we really do not like log dollars but you'll get used to it in this course). But, why logarithmic and not some other transformations?
@@ -419,6 +369,7 @@ You can use basic `R` calculation functions to transform data. For example, `-cl
 injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
+
 `@sample_code`
 ```{r}
 #This code helps to organize the four graphs into a 2 by 2 format
@@ -432,6 +383,7 @@ plot(density(___))
 #Plot the density of the negative reciprocal of claims
 plot(density(___))
 ```
+
 `@solution`
 ```{r}
 par(mfrow = c(2, 2))
@@ -440,28 +392,20 @@ plot(density(claims^(0.5)))
 plot(density(log(claims)))  
 plot(density(-claims^(-1)))
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
 ```
 
-
-
-
-
-
 ---
+
 ## Course Introduction
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: b4bf7c0b88
-
-
-
+xp: 50
 ```
 
 `@projector_key`

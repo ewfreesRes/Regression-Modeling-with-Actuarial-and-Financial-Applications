@@ -1,37 +1,27 @@
 ---
-  title: "Chapter 5. Interpreting Regression Results"
-  description: "An application, determining an individual's characteristics that influence its health expenditures, illustrates the regression modeling process from start to finish. Subsequently, the chapter summarizes what we learn from the modeling process, underscoring the importance of variable selection."
-  v2: true
-
+title: 'Chapter 5. Interpreting Regression Results'
+description: 'An application, determining an individual''s characteristics that influence its health expenditures, illustrates the regression modeling process from start to finish. Subsequently, the chapter summarizes what we learn from the modeling process, underscoring the importance of variable selection.'
 ---
+
 ## Case study - MEPS health expenditures
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: 04ae7f9572
-
-
-
+xp: 50
 ```
 
 `@projector_key`
 9f660c963794c20e534c811dcee7577e
 
 ---
+
 ## Summarizing data
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 8b8b4db5e8
-
-
-
+xp: 100
 ```
 
 With a complex dataset, you will probably want to take a look at the structure of the data. You are already familiar with taking a *summary* of a dataset which provides summary statistics for many variables. You will see that several variables in this dataset are categorical, or factor, variables. We can use the `R` [table()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/table) function to summarize them.
@@ -49,11 +39,11 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
 
-
 `@pre_exercise_code`
 ```{r}
 meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 ```
+
 `@sample_code`
 ```{r}
 str(meps)
@@ -68,6 +58,7 @@ boxplot(logexpend ~ phstat, data = meps, main = "boxplot of log expend")
 plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
 lines(lowess(meps$age, meps$logexpend), col="red")
 ```
+
 `@solution`
 ```{r}
 str(meps)
@@ -82,28 +73,20 @@ boxplot(logexpend ~ phstat, data = meps, main = "boxplot of log expend")
 plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
 lines(lowess(meps$age, meps$logexpend), col="red")
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! Summarizing data, without reference to a model, is probably the most time-consuming part of any predictive modeling exercise. Summary statistics are also a key part of any report as the illustrate features of the data that are accessible to a broad audience.")
 ```
 
-
-
-
-
-
 ---
+
 ## Fit a benchmark multiple linear regression model
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: d8f858af77
-
-
-
+xp: 100
 ```
 
 As part of the pre-processing for the model fitting, we will split the data into training and test subsamples. For this exercise, we use a 75/25 split although other choices are certainly suitable. Some analysts prefer to do this splitting before looking at the data. Another approach, adopted here, is that the final report typically contains summary statistcs of the entire data set and so it makes sense to do so when examining summary statistics.
@@ -124,6 +107,7 @@ We start by fitting a benchmark model. It is common to use all available explana
 meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 meps$logexpend <- log(meps$expendop)
 ```
+
 `@sample_code`
 ```{r}
 # Split the sample into a `training` and `test` data
@@ -145,6 +129,7 @@ plot(meps_mlr2)
 summary(meps_mlr2)
 par(mfrow = c(1, 1))
 ```
+
 `@solution`
 ```{r}
 # Split the sample into a `training` and `test` data
@@ -166,28 +151,20 @@ plot(meps_mlr2)
 summary(meps_mlr2)
 par(mfrow = c(1, 1))
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! You may have compared the four diagnostic graphs from the MLR model fit of 'expend' to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling. Using logarithmic outcomes is a common feature of actuarial applications but can be difficult to diagnose and interpret without practice.")
 ```
 
-
-
-
-
-
 ---
+
 ## Variable selection
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: a41d08acf3
-
-
-
+xp: 100
 ```
 
 Modeling building can be approached using a "ground-up" strategy, where the analyst introduces a variable, examines residuls from a regression fit, and then seeks to understand the relationship between these residuals and other available variables so that these variables might be added to the model.
@@ -217,6 +194,7 @@ train_meps    <- shuffled_meps[train_indices, ]
 test_indices  <- (round(0.25 * n) + 1):n
 test_meps     <- shuffled_meps[test_indices, ]
 ```
+
 `@sample_code`
 ```{r}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
@@ -238,6 +216,7 @@ meps_mlr5 <- lm(logexpend ~ age  + anylimit + mpoor + insure  + usc  + phstat, d
 summary(meps_mlr5)
 anova(meps_mlr4, meps_mlr5)
 ```
+
 `@solution`
 ```{r}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
@@ -259,28 +238,20 @@ meps_mlr5 <- lm(logexpend ~ age  + anylimit + mpoor + insure  + usc  + phstat, d
 summary(meps_mlr5)
 anova(meps_mlr4, meps_mlr5)
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! Sometimes variables may have good predictive power but are unacceptable for public policy purposes - in insurance, ethnicity and sometimes sex are good examples. This implies that model interpretation can be just as important as the ability to predict.")
 ```
 
-
-
-
-
-
 ---
+
 ## Model comparisons using cross-validation
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: 587248a912
-
-
-
+xp: 100
 ```
 
 To compare alternative models, you decide to experiment with cross-validation. For this exercise, you split the training sample into six subsamples of approximately equal size.
@@ -345,6 +316,7 @@ crossvalfct <- function(explvars){
   crossval/1000000
 }
 ```
+
 `@sample_code`
 ```{r}
 explvars <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
@@ -354,6 +326,7 @@ crossvalfct(explvars)
 explvars <- c("gender", "age", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
 crossvalfct(explvars)
 ```
+
 `@solution`
 ```{r}
 explvars <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
@@ -363,28 +336,20 @@ crossvalfct(explvars)
 explvars <- c("gender", "age", "mpoor", "anylimit", "income", "insure", "usc", "phstat")
 crossvalfct(explvars)
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! ")
 ```
 
-
-
-
-
-
 ---
+
 ## Out of sample validation
 
 ```yaml
 type: NormalExercise
-
-xp: 100
-
 key: f86e97aa0f
-
-
-
+xp: 100
 ```
 
 From our prior work, the training `train_meps` and test `test_meps` datasets have already been loaded in. We think our best model is based on logarithmic expenditures as the outcome and the following explanatory variables:
@@ -425,6 +390,7 @@ test_meps     <- shuffled_meps[test_indices, ]
 explvars3 <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
 explvars4 <- c(explvars3, "region", "educ", "phstat", "unemploy", "managedcare")
 ```
+
 `@sample_code`
 ```{r}
 meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + income + insure + usc , data = train_meps)
@@ -441,6 +407,7 @@ sape4     <- sum(abs(predict_err_mlr4))/1000
 
 sape3;sape4
 ```
+
 `@solution`
 ```{r}
 meps_mlr3 <- lm(logexpend ~ gender + age + mpoor + anylimit + income + insure + usc , data = train_meps)
@@ -457,54 +424,36 @@ sape4     <- sum(abs(predict_err_mlr4))/1000
 
 sape3;sape4
 ```
+
 `@sct`
 ```{r}
 success_msg("Excellent! ")
 ```
 
-
-
-
-
-
 ---
+
 ## What the modeling procedure tells us
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: 19a5897edf
-
-
-
+xp: 50
 ```
 
 `@projector_key`
 a4e48282b4a5c9b11a4ff473d05854dc
 
 ---
+
 ## What modeling procedures tell us
 
 ```yaml
 type: PureMultipleChoiceExercise
-
-xp: 50
-
 key: b2c9c6ef17
-
-
-
+xp: 50
 ```
 
 Which of the following is not important when interpreting the effects of individual variables?
-
-
-
-
-
-
 
 `@possible_answers`
 - A. Substantive effect
@@ -512,7 +461,7 @@ Which of the following is not important when interpreting the effects of individ
 - [C. The amount of effort that it took to gather the data and do the analysis]
 - D. Role of causality
 
-`@feedbacks`
+`@feedback`
 ```{r}
 msg1 = "Incorrect"
 msg2 = "Incorrect"
@@ -521,22 +470,14 @@ msg4 = "Incorrect"
 test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
-
-
-
-
 ---
+
 ## The importance of variable selection
 
 ```yaml
 type: VideoExercise
-
-xp: 50
-
 key: 7760de33f6
-
-
-
+xp: 50
 ```
 
 `@projector_key`
