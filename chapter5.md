@@ -491,7 +491,8 @@ video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
 ```yaml
 type: VideoExercise
 xp: 50
-video_link: //mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj
+video_link: "//mediaspace.wisc.edu/media/CourseWelcomeIntro.mp4/0_bj34urmj"
+key: dc54a2506e
 ```
 *** =projector_key
 426ff54da81032fb015e873b9989c506
