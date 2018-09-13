@@ -479,7 +479,6 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 type: VideoExercise
 key: fc2d95ba73
 xp: 50
+video_link: //vimeo.com/user89492724/review/289718293/dbdfafedad
 ```
 
-`@projector_key`
-950e621e7171ba7920a55a6a7aa0df16
