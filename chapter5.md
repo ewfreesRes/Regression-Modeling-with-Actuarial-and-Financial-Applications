@@ -432,7 +432,7 @@ success_msg("Excellent! ")
 
 ---
 
-## What the modeling procedure tells us
+## What the modeling procedure tells us a
 
 ```yaml
 type: VideoExercise
@@ -470,3 +470,16 @@ msg3 = "Correct!"
 msg4 = "Incorrect"
 test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
+
+---
+
+## Test of Vimeo
+
+```yaml
+type: VideoExercise
+key: fc2d95ba73
+xp: 50
+```
+
+`@projector_key`
+950e621e7171ba7920a55a6a7aa0df16
