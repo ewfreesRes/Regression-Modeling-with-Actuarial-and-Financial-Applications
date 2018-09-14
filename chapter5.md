@@ -438,7 +438,7 @@ success_msg("Excellent! ")
 type: VideoExercise
 key: 19a5897edf
 xp: 50
-video_link: player.vimeo.com/video/289885887
+video_link: //player.vimeo.com/video/289885887
 ```
 
 `@projector_key`
