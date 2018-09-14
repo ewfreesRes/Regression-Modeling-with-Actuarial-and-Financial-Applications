@@ -1,6 +1,6 @@
 library(remotes)
-install.packages("psych")
 install.packages("copula")
+install.packages("psych")
 install.packages("Rcmdr")
 
 ##### Install specific package versions from CRAN #####
