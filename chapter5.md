@@ -438,7 +438,7 @@ success_msg("Excellent! ")
 type: VideoExercise
 key: 19a5897edf
 xp: 50
-video_link: //player.vimeo.com/video/289885887
+video_link: player.vimeo.com/video/289885887
 ```
 
 `@projector_key`
@@ -479,7 +479,7 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3, msg4))
 type: VideoExercise
 key: fc2d95ba73
 xp: 50
-video_link: //vimeo.com/289885887
+video_link: https://player.vimeo.com/video/289885887
 ```
 
 `@projector_key`
