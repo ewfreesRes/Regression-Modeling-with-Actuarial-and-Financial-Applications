@@ -1,5 +1,6 @@
 library(remotes)
-
+install.packages("psych")
+install.packages("Rcmdr")
 ##### Install specific package versions from CRAN #####
 
 # install_version("ggplot2", "2.2.1")
