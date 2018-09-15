@@ -7,3 +7,5 @@
 
 # e.g., XML and Cairo graphics
 # apt-get update && apt-get --yes install libxml2-dev libcairo2-dev
+
+apt-get update && apt-get install --yes libgsl-dev
