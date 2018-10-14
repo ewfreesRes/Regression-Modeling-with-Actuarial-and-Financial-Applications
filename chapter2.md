@@ -34,6 +34,9 @@ Like insurance, lotteries are uncertain events and so the skills to work with an
 - Plot `pop_1000` versus `sales_1000`.
 - Calculate the correlation between `pop_1000` versus `sales_1000` using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor). How does this differ between the correlation between population and sales in the original units?
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
@@ -93,6 +96,9 @@ The prior video analyzed the effect that a zip code's population has on lottery 
 - Plot `medhome` versus `sales`. Summarize this relationship by calculating the corresponding correlation coefficient using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor).
 - Using the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), regress `medhome`, the explanatory variable, on `sales`, the dependent variable.
 - Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) and the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -157,6 +163,9 @@ How reliable is the regression line? In this excercise, you will compute some of
 - Summarize the fitted regression model in an ANOVA table.
 - Determine the size of the typical residual, $s$.
 - Determine the coefficient of determination, $R^2$.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -273,6 +282,9 @@ This exercise will give you practice in the standard inferential tasks: hypothes
 - Use the function [confint()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint) to provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
 - Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) to provide a point prediction and a 95\% prediction interval for sales.
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
@@ -334,6 +346,9 @@ This exercise summarizes the regression fit both with and without this zip code 
 - A basic linear regression fit of population on sales has already been fit in the object `model_blr`. Fit this same model to the data, omiting Kenosha (observation number 9).
 - Plot these two least squares fitted lines superimposed on the full data set.
 -  What is the effect on the distribution  of residuals by removing this point? Calculate a qq plot with and without Kenosha.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}

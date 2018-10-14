@@ -39,6 +39,9 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
@@ -455,6 +458,9 @@ xp: 50
 ```
 
 Which of the following is not important when interpreting the effects of individual variables?
+
+`@hint`
+
 
 `@possible_answers`
 - A. Substantive effect

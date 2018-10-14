@@ -26,7 +26,7 @@ xp: 50
 
 Which of the following is not true?
 
-`@instructions`
+`@possible_answers`
 - A. Diagnostic checking reveals symptoms of mistakes made in previous specifications.
 - B. Diagnostic checking provides ways to correct mistakes made in previous specifications.
 - C. Model formulation is accomplished by using prior knowledge of relationships.
@@ -34,6 +34,16 @@ Which of the following is not true?
 
 `@hint`
 
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```
 
 ---
 
@@ -69,6 +79,9 @@ As part of the code set-up, we have *n* = 100 observations generated of the outc
 - Fit a multiple linear regression model with all fifty explanatory variables. Compare this model to the one with ten variables via an *F* test.
 - Use the `stepwise` function to find the best model starting with the fitted model containing all fifty explanatory variables.
 - Fit the model identified by the stepwise regression algorithm and summarize the fit.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -176,6 +189,9 @@ A measure of risk management cost effectiveness, `logcost`, is the outcome varia
 - Fit and summarize a MLR model of `logcost` on `logsize`, `indcost` and a squared version of `indcost`.
 - Plot residuals of the fitted model versus `indcost' and superimpose a locally fitted line using [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess).
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 survey <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv", header=TRUE)
@@ -241,6 +257,26 @@ Nothing yet
 `@hint`
 
 
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```
+
 ---
 
 ## Unusual observations
@@ -271,6 +307,9 @@ In chapter 2, we consider a fictitious data set of 19 "base" points plus three d
 - Use the function [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals from the fitted regression model object and summarize them. 
 - Use the function [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the leverages from the model fitted and summarize them. 
 - Plot the standardized residuals versus the leverages to see the relationship between these two measures that calibrate how unusual an observation is.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -401,6 +440,9 @@ This exercise returns to our term life data set `Term1` (preloaded) and demonstr
 - Use the function [vif()](https://www.rdocumentation.org/packages/car/versions/3.0-0/topics/vif) from the `car` package (preloaded) to calculation variance inflation factors.
 - Fit a MLR model of `logface` on explanatory variables `education` , `numhh` and `logincome` with an interaction between `numhh` and `logincome` and extract variance inflation factors.
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -499,6 +541,9 @@ crossvalfct <- function(explvars){
 
 The best model has the lowest cross-validation statistic.
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -554,4 +599,9 @@ explvars <- c("education", "numhh", "logincome")
 crossvalfct(explvars)
 explvars <- c("education", "numhh", "logincome", "marstat")
 crossvalfct(explvars)
+```
+
+`@sct`
+```{r}
+
 ```

@@ -47,6 +47,9 @@ Suppose that you wish to predict the amount of term life insurance that someone 
 - Using the method of least squares and the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
 - With this fitted model and the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict), predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -236,6 +239,9 @@ In later chapters, we will learn how to specify a model using diagnostics techni
 - Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
 - Summarize this model and identify the residual standard error ($s$) as well as the coefficient of determination ($R^2$) and the version adjusted for degrees of freedom ($R_a^2$).
 
+`@hint`
+
+
 `@pre_exercise_code`
 ```{r}
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -293,6 +299,9 @@ In the prior video, we saw how the variable `single` can be used with logarithmi
 - Calculate a table of correlation coefficients to examine pairwise linear relationships among the variables `numhh`, `education`, `logincome`, `single`, and  `logface`.
 - Fit a MLR model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`. Examine the residual standard deviation $s$, the coefficient of determination $R^2$, and the adjusted version $R_a^2$. Also note the statistical significance of the coefficient associated with `single`.
 - Repeat the MLR model fit while adding the interaction term  `single*logincome`.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -361,6 +370,9 @@ Some preliminary analysis of the data has already been done. In this exercise, w
 - Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.
 - Fit a MLR model using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.
 - Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -457,6 +469,9 @@ As part of the preparatory work, the dataset `Term4` is available that includes 
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
 - Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
 - Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+
+`@hint`
+
 
 `@pre_exercise_code`
 ```{r}
@@ -621,6 +636,16 @@ c. Run a regression of `logpaid` on `age`, `gender` and the categorical variable
 `@pre_exercise_code`
 ```{r}
 #AutoC <- read.csv("CSVData\\Auto_claims.csv", header = TRUE)
+```
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+
 ```
 
 `@sct`
